@@ -2,15 +2,17 @@
 // External modules
 import React from 'react'
 
-export class PageContainer extends React.Component {
+class PageContainer extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <div>
+      Hello World!
       </div>
     );
   }
 }
 
+export default PageContainer

@@ -1,11 +1,11 @@
 'use strict';
 
 // React
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Components
-const PageContainer = require('./PageContainer');
+import PageContainer from './PageContainer'
 
 class App extends React.Component {
   constructor() {
@@ -19,4 +19,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('appContainer'));
