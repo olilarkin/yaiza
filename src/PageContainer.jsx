@@ -19,6 +19,7 @@ class PageContainer extends React.Component {
   getPrismicData() {
     Prismic.api('https://yaiza.prismic.io/api').then(function (api) {
       return api.query(''); // An empty query will return all the documents
+      
     }).then(function (response) {
       console.log('Documents: ', response.results);
     }, function (err) {
