@@ -18,46 +18,7 @@ var execErrorHandler = function(error, stdout, stderr) {
 };
 var plugins = [];
 
-// This removes the locale strings from Moment.js to reduce the file size on minification
-var squishMoment = new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/);
-
-var minifyReact = new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': JSON.stringify('production') } }); // This has effect on the react lib size
-var dedupePlugin = new webpack.optimize.DedupePlugin();
-var uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-  compress: {
-    warnings: false,
-    properties: true,
-    sequences: true,
-    dead_code: true,
-    conditionals: true,
-    comparisons: true,
-    evaluate: true,
-    booleans: true,
-    unused: true,
-    loops: true,
-    hoist_funs: true,
-    cascade: true,
-    if_return: true,
-    join_vars: true,
-    drop_debugger: true,
-    unsafe: true,
-    hoist_vars: true,
-    negate_iife: true
-  },
-  sourceMap: true,
-  mangle: {
-    toplevel: false,
-    sort: false,
-    eval: false,
-    properties: false
-  },
-  output: {
-    space_colon: false,
-    comments: false
-  }
-});
-
-plugins.unshift(HTMLWebpackPluginConfig, minifyReact, dedupePlugin, uglifyPlugin, squishMoment);
+plugins.unshift(HTMLWebpackPluginConfig);
 
 var pkg = require('./package.json');
 var version = pkg.version;
