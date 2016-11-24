@@ -15,15 +15,14 @@ class PageContainer extends React.Component {
         this.slicesArray.push(slice);
       };
     });
-    console.log('this.slicesArray', this.slicesArray);
+
+    const slicesOutput = this.slicesArray.map((slice, index) => {
+      return (<div key={index} dangerouslySetInnerHTML={{ __html: slice.asHtml() }} />);
+    })
 
     return (
       <div>
-        {this.slicesArray && 
-          this.slicesArray.map((slice, index) => {
-          return (<div key={index} dangerouslySetInnerHTML={{ __html: slice.asHtml() }} />);
-        })
-        }
+        {slicesOutput }
       </div>
     );
   }
