@@ -17,7 +17,7 @@ class App extends React.Component {
     this.state = {};
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
-    this.query = Prismic.Predicates.at('document.type', 'casestudy');
+    this.query = [Prismic.Predicates.at('document.type', 'casestudy')];
   }
 
   componentWillMount() {

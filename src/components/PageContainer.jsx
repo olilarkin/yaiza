@@ -6,20 +6,24 @@ import 'prismic-react';
 class PageContainer extends React.Component {
   constructor() {
     super();
+    this.slicesArray = [];
   }
   render() {
-    const caseStudies = this.props.data && this.props.data.map((doc, key) => {
-      return (<div
-        key={key}
-        dangerouslySetInnerHTML={{ __html: doc.asHtml() }} />)
-      // for (let slice of doc.getSliceZone('casestudy.contentArea')) {
-          
-      // };
+    const caseStudies = this.props.data && this.props.data.map((doc) => {
+      for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
+        console.log('slice', slice);
+        this.slicesArray.push(slice);
+      };
     });
+    console.log('this.slicesArray', this.slicesArray);
 
     return (
       <div>
-        {caseStudies}
+        {this.slicesArray && 
+          this.slicesArray.map((slice, index) => {
+          return (<div key={index} dangerouslySetInnerHTML={{ __html: slice.asHtml() }} />);
+        })
+        }
       </div>
     );
   }
