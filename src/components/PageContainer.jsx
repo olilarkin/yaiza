@@ -1,30 +1,39 @@
 'use strict';
 // External modules
 import React from 'react';
-import 'prismic-react';
 
 class PageContainer extends React.Component {
   constructor() {
     super();
     this.slicesArray = [];
+    this.pageContent;
   }
   render() {
-    const caseStudies = this.props.data && this.props.data.map((doc) => {
-      for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
-        console.log('slice', slice);
-        this.slicesArray.push(slice);
+    const content = this.props.data && this.props.data.map((doc) => {
+      switch (doc.type) {
+        case 'casestudy':
+          for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
+            console.log('slice', slice);
+            this.slicesArray.push(slice);
+          };
+          break;
+        case 'page':
+          this.pageContent = doc.getStructuredText('page.description').asHtml();
       };
     });
 
-    const slicesOutput = this.slicesArray.map((slice, index) => {
-      return (<div key={index} dangerouslySetInnerHTML={{ __html: slice.asHtml() }} />);
-    })
+    const pageContentOutput = this.slicesArray.length
+      ? this.slicesArray.map((slice, index) => {
+        return (<div key={index} dangerouslySetInnerHTML={{ __html: slice.asHtml() }} />);
+      })
+      : (<div dangerouslySetInnerHTML={{ __html: this.pageContent }} />);
 
     return (
       <div>
-        {slicesOutput }
+        {pageContentOutput}
       </div>
     );
+
   }
 }
 
