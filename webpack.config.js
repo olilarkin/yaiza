@@ -57,7 +57,9 @@ var uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
   }
 });
 
-plugins.unshift(HTMLWebpackPluginConfig, minifyReact, dedupePlugin, uglifyPlugin, squishMoment);
+occurenceOrder = new webpack.optimize.OccurrenceOrderPlugin();
+
+plugins.unshift(occurenceOrder, HTMLWebpackPluginConfig, minifyReact, dedupePlugin, uglifyPlugin, squishMoment);
 
 var pkg = require('./package.json');
 var version = pkg.version;
