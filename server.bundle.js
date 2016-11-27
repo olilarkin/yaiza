@@ -60,9 +60,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var express = __webpack_require__(11);
-	var path = __webpack_require__(12);
-	var compression = __webpack_require__(13);
+	var express = __webpack_require__(12);
+	var path = __webpack_require__(13);
+	var compression = __webpack_require__(14);
 	// we'll use this to render our app to an html string
 
 	// and these to match the url to routes and then render
@@ -140,21 +140,17 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _About = __webpack_require__(7);
+	var _About = __webpack_require__(6);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Repos = __webpack_require__(8);
-
-	var _Repos2 = _interopRequireDefault(_Repos);
-
-	var _Repo = __webpack_require__(9);
-
-	var _Repo2 = _interopRequireDefault(_Repo);
-
-	var _Home = __webpack_require__(10);
+	var _Home = __webpack_require__(7);
 
 	var _Home2 = _interopRequireDefault(_Home);
+
+	var _PageWrapper = __webpack_require__(8);
+
+	var _PageWrapper2 = _interopRequireDefault(_PageWrapper);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -162,11 +158,7 @@
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-	  _react2.default.createElement(
-	    _reactRouter.Route,
-	    { path: '/repos', component: _Repos2.default },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/repos/:userName/:repoName', component: _Repo2.default })
-	  ),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/case', component: _PageWrapper2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default })
 	);
 
@@ -184,89 +176,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavLink = __webpack_require__(6);
-
-	var _NavLink2 = _interopRequireDefault(_NavLink);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: 'App',
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h1',
 	      null,
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'React Router Tutorial'
-	      ),
-	      _react2.default.createElement(
-	        'ul',
-	        { role: 'nav' },
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            _NavLink2.default,
-	            { to: '/', onlyActiveOnIndex: true },
-	            'Home'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            _NavLink2.default,
-	            { to: '/about' },
-	            'About'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            _NavLink2.default,
-	            { to: '/repos' },
-	            'Repos'
-	          )
-	        )
-	      ),
-	      this.props.children
-	    );
-	  }
-	});
+	      'React Router Tutorial'
+	    ),
+	    props.children
+	  );
+	};
 
 /***/ },
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // modules/NavLink.js
-
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(3);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: 'NavLink',
-	  render: function render() {
-	    return _react2.default.createElement(_reactRouter.Link, _extends({}, this.props, { activeClassName: 'active' }));
-	  }
-	});
-
-/***/ },
-/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -293,132 +219,7 @@
 	});
 
 /***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _NavLink = __webpack_require__(6);
-
-	var _NavLink2 = _interopRequireDefault(_NavLink);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: 'Repos',
-
-	  contextTypes: {
-	    router: _react2.default.PropTypes.object
-	  },
-
-	  handleSubmit: function handleSubmit(event) {
-	    event.preventDefault();
-	    var userName = event.target.elements[0].value;
-	    var repo = event.target.elements[1].value;
-	    var path = '/repos/' + userName + '/' + repo;
-	    this.context.router.push(path);
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Repos'
-	      ),
-	      _react2.default.createElement(
-	        'ul',
-	        null,
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            _NavLink2.default,
-	            { to: '/repos/reactjs/react-router' },
-	            'React Router'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            _NavLink2.default,
-	            { to: '/repos/facebook/react' },
-	            'React'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          _react2.default.createElement(
-	            'form',
-	            { onSubmit: this.handleSubmit },
-	            _react2.default.createElement('input', { type: 'text', placeholder: 'userName' }),
-	            ' / ',
-	            ' ',
-	            _react2.default.createElement('input', { type: 'text', placeholder: 'repo' }),
-	            ' ',
-	            _react2.default.createElement(
-	              'button',
-	              { type: 'submit' },
-	              'Go'
-	            )
-	          )
-	        )
-	      ),
-	      this.props.children
-	    );
-	  }
-	});
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: 'Repo',
-	  render: function render() {
-	    var _props$params = this.props.params,
-	        userName = _props$params.userName,
-	        repoName = _props$params.repoName;
-
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        userName,
-	        ' / ',
-	        repoName
-	      )
-	    );
-	  }
-	});
-
-/***/ },
-/* 10 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -445,19 +246,238 @@
 	});
 
 /***/ },
-/* 11 */
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// React
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _prismic = __webpack_require__(9);
+
+	var _prismic2 = _interopRequireDefault(_prismic);
+
+	var _config = __webpack_require__(10);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	var _PageContainer = __webpack_require__(11);
+
+	var _PageContainer2 = _interopRequireDefault(_PageContainer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// Prismic
+
+	// Config
+
+
+	// Components
+
+
+	var PageWrapper = function (_React$Component) {
+	  _inherits(PageWrapper, _React$Component);
+
+	  function PageWrapper() {
+	    _classCallCheck(this, PageWrapper);
+
+	    var _this = _possibleConstructorReturn(this, (PageWrapper.__proto__ || Object.getPrototypeOf(PageWrapper)).call(this));
+
+	    _this.state = {};
+	    _this.getPrismicData = _this.getPrismicData.bind(_this);
+	    _this.setPrismicData = _this.setPrismicData.bind(_this);
+	    _this.query = [_prismic2.default.Predicates.at('my.casestudy.uid', "test-page")];
+	    console.log('pageWrapper');
+	    return _this;
+	  }
+
+	  _createClass(PageWrapper, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.getPrismicData(this.query);
+	    }
+	  }, {
+	    key: 'createMarkup',
+	    value: function createMarkup(markup) {
+	      return { __html: markup };
+	    }
+	  }, {
+	    key: 'setPrismicData',
+	    value: function setPrismicData(data) {
+	      console.log('data', data);
+	      this.setState({
+	        data: data
+	      });
+	    }
+	  }, {
+	    key: 'getPrismicData',
+	    value: function getPrismicData(query) {
+	      var _this2 = this;
+
+	      _prismic2.default.api(_config2.default.apiURL).then(function (api) {
+	        return api.query(query);
+	      }).then(function (response) {
+	        return _this2.setPrismicData(response.results);
+	      }, function (err) {
+	        console.log('Something went wrong: ', err);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_PageContainer2.default, { data: this.state.data, createMarkup: this.createMarkup });
+	    }
+	  }]);
+
+	  return PageWrapper;
+	}(_react2.default.Component);
+
+	exports.default = PageWrapper;
+
+/***/ },
+/* 9 */
 /***/ function(module, exports) {
 
-	module.exports = require("express");
+	module.exports = require("prismic.io");
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  apiURL: 'https://yaiza.prismic.io/api'
+	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	// External modules
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PageContainer = function (_React$Component) {
+	  _inherits(PageContainer, _React$Component);
+
+	  function PageContainer() {
+	    _classCallCheck(this, PageContainer);
+
+	    var _this = _possibleConstructorReturn(this, (PageContainer.__proto__ || Object.getPrototypeOf(PageContainer)).call(this));
+
+	    _this.slicesArray = [];
+	    _this.pageContent;
+	    return _this;
+	  }
+
+	  _createClass(PageContainer, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var content = this.props.data && this.props.data.map(function (doc) {
+	        switch (doc.type) {
+	          case 'casestudy':
+	            var _iteratorNormalCompletion = true;
+	            var _didIteratorError = false;
+	            var _iteratorError = undefined;
+
+	            try {
+	              for (var _iterator = doc.getSliceZone('casestudy.contentArea').slices[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                var slice = _step.value;
+
+	                console.log('slice', slice);
+	                _this2.slicesArray.push(slice);
+	              }
+	            } catch (err) {
+	              _didIteratorError = true;
+	              _iteratorError = err;
+	            } finally {
+	              try {
+	                if (!_iteratorNormalCompletion && _iterator.return) {
+	                  _iterator.return();
+	                }
+	              } finally {
+	                if (_didIteratorError) {
+	                  throw _iteratorError;
+	                }
+	              }
+	            }
+
+	            ;
+	            break;
+	          case 'page':
+	            _this2.pageContent = doc.getStructuredText('page.description').asHtml();
+	        };
+	      });
+
+	      var pageContentOutput = this.slicesArray.length ? this.slicesArray.map(function (slice, index) {
+	        return _react2.default.createElement('div', { key: index, dangerouslySetInnerHTML: { __html: slice.asHtml() } });
+	      }) : _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: this.pageContent } });
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        pageContentOutput
+	      );
+	    }
+	  }]);
+
+	  return PageContainer;
+	}(_react2.default.Component);
+
+	exports.default = PageContainer;
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = require("path");
+	module.exports = require("express");
 
 /***/ },
 /* 13 */
+/***/ function(module, exports) {
+
+	module.exports = require("path");
+
+/***/ },
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = require("compression");

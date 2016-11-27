@@ -10,7 +10,7 @@ import config from '../config/config';
 // Components
 import PageContainer from './PageContainer'
 
-class App extends React.Component {
+class PageWrapper extends React.Component {
   constructor() {
     super();
     this.state = {};
@@ -19,6 +19,7 @@ class App extends React.Component {
     this.query = [
       Prismic.Predicates.at('my.casestudy.uid', "test-page")
     ];
+    console.log('pageWrapper');
   }
 
   componentWillMount() {
@@ -52,3 +53,6 @@ class App extends React.Component {
     );
   }
 }
+
+
+export default PageWrapper

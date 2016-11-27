@@ -6,7 +6,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 // and these to match the url to routes and then render
 import { match, RouterContext } from 'react-router'
-import routes from './modules/routes'
+import routes from './config/routes'
 
 var app = express()
 
