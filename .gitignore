@@ -42,3 +42,5 @@ jsonconfig.jsonconfig
 # Temp files
 yaiza
 dist
+bundle.js
+*.bundle.js

@@ -207,16 +207,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: 'About',
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      'About'
-	    );
-	  }
-	});
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'About'
+	  );
+	};
 
 /***/ },
 /* 7 */
@@ -234,16 +231,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: 'Home',
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      'Home'
-	    );
-	  }
-	});
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Home'
+	  );
+	};
 
 /***/ },
 /* 8 */
@@ -302,7 +296,6 @@
 	    _this.getPrismicData = _this.getPrismicData.bind(_this);
 	    _this.setPrismicData = _this.setPrismicData.bind(_this);
 	    _this.query = [_prismic2.default.Predicates.at('my.casestudy.uid', "test-page")];
-	    console.log('pageWrapper');
 	    return _this;
 	  }
 
