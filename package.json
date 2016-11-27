@@ -1,42 +1,27 @@
 {
-  "name": "transformer-ui-on",
+  "name": "yaiza",
   "version": "0.0.1",
-  "description": "Transformer UI - ON",
+  "description": "Yaiza",
   "main": "index.js",
   "engines": {
     "node": ">=6.9.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.config.js --progress --color --hot --inline --history-api-fallback",
-    "build": "webpack --progress --color"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --colors --inline --content-base public/ --history-api-fallback",
+    "start:prod": "npm run build && node server.bundle.js",
+    "build:client": "webpack",
+    "build:server": "webpack --colors --config webpack.server.config.js",
+    "build": "npm run build:client && npm run build:server"
   },
   "repository": {
-    "type": "git",
-    "url": "git@github.com:holidayextras/transformer-ui-on.git"
+    "type": "git"
   },
   "author": "Owen Nicol",
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-preset-stage-0": "^6.5.0",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
     "css-loader": "^0.25.0",
-    "deployment-helpers": "git+ssh://git@github.com:holidayextras/deployment-helpers.git",
-    "dirty-chai": "^1.2.2",
-    "enzyme": "^2.3.0",
-    "grunt-contrib-uglify": "^2.0.0",
-    "html-webpack-plugin": "^2.24.1",
-    "istanbul": "^1.0.0-alpha.2",
-    "jsdom": "^9.4.1",
-    "make-up": "^9.2.0",
-    "mocha": "^3.1.2",
-    "mocha-jsdom": "^1.1.0",
-    "moment": "^2.14.1",
-    "node-sass": "^3.7.0",
-    "on-build-webpack": "^0.1.0",
-    "react-addons-test-utils": "^15.1.0",
-    "sinon": "^1.17.4",
-    "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1"
   },
   "dependencies": {
@@ -57,7 +42,6 @@
     "prismic.io": "^3.3.0",
     "react": "^15.4.0",
     "react-bootstrap": "^0.30.6",
-    "react-cookie": "^0.4.7",
     "react-dom": "^15.4.0",
     "react-router": "^3.0.0",
     "superagent": "^2.2.0",

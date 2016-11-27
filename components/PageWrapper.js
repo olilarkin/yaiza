@@ -2,14 +2,13 @@
 
 // React
 import React from 'react';
-import ReactDOM from 'react-dom';
 // Prismic
 import Prismic from 'prismic.io';
 // Config
-import config from './config/config';
+import config from '../config/config';
 
 // Components
-import PageContainer from './components/PageContainer'
+import PageContainer from './PageContainer'
 
 class App extends React.Component {
   constructor() {
@@ -18,7 +17,7 @@ class App extends React.Component {
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.query = [
-      Prismic.Predicates.at('my.casestudy.uid', "testing")
+      Prismic.Predicates.at('my.casestudy.uid', "test-page")
     ];
   }
 
@@ -53,5 +52,3 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('appContainer'));
