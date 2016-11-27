@@ -37,10 +37,11 @@ jspm_packages
 .node_repl_history
 
 # Editor files
-jsonconfig.jsonconfig
+.jsonconfig
 
 # Temp files
 yaiza
 dist
 bundle.js
 *.bundle.js
+

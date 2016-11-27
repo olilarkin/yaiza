@@ -60,9 +60,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var express = __webpack_require__(12);
-	var path = __webpack_require__(13);
-	var compression = __webpack_require__(14);
+	var express = __webpack_require__(11);
+	var path = __webpack_require__(12);
+	var compression = __webpack_require__(13);
 	// we'll use this to render our app to an html string
 
 	// and these to match the url to routes and then render
@@ -140,17 +140,17 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _About = __webpack_require__(6);
+	var _About = __webpack_require__(8);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Home = __webpack_require__(7);
+	var _Home = __webpack_require__(9);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _PageWrapper = __webpack_require__(8);
+	var _PageContainer = __webpack_require__(10);
 
-	var _PageWrapper2 = _interopRequireDefault(_PageWrapper);
+	var _PageContainer2 = _interopRequireDefault(_PageContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -158,7 +158,7 @@
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/case', component: _PageWrapper2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/case', component: _PageContainer2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default })
 	);
 
@@ -172,102 +172,19 @@
 	  value: true
 	});
 
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function (props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h1',
-	      null,
-	      'React Router Tutorial'
-	    ),
-	    props.children
-	  );
-	};
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function () {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'About'
-	  );
-	};
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function () {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'Home'
-	  );
-	};
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	// React
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _prismic = __webpack_require__(9);
+	var _prismic = __webpack_require__(6);
 
 	var _prismic2 = _interopRequireDefault(_prismic);
 
-	var _config = __webpack_require__(10);
+	var _config = __webpack_require__(7);
 
 	var _config2 = _interopRequireDefault(_config);
-
-	var _PageContainer = __webpack_require__(11);
-
-	var _PageContainer2 = _interopRequireDefault(_PageContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -275,22 +192,20 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // React
+
 	// Prismic
 
 	// Config
 
 
-	// Components
+	var App = function (_React$Component) {
+	  _inherits(App, _React$Component);
 
+	  function App() {
+	    _classCallCheck(this, App);
 
-	var PageWrapper = function (_React$Component) {
-	  _inherits(PageWrapper, _React$Component);
-
-	  function PageWrapper() {
-	    _classCallCheck(this, PageWrapper);
-
-	    var _this = _possibleConstructorReturn(this, (PageWrapper.__proto__ || Object.getPrototypeOf(PageWrapper)).call(this));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	    _this.state = {};
 	    _this.getPrismicData = _this.getPrismicData.bind(_this);
@@ -299,10 +214,10 @@
 	    return _this;
 	  }
 
-	  _createClass(PageWrapper, [{
+	  _createClass(App, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.getPrismicData(this.query);
+	      if (!this.state.data) this.getPrismicData(this.query);
 	    }
 	  }, {
 	    key: 'createMarkup',
@@ -333,23 +248,44 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_PageContainer2.default, { data: this.state.data, createMarkup: this.createMarkup });
+	      var _this3 = this;
+
+	      var childrenWithProps = _react2.default.Children.map(this.props.children, function (child) {
+	        return _react2.default.cloneElement(child, {
+	          data: _this3.state.data
+	        });
+	      });
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Yaiza'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          childrenWithProps
+	        )
+	      );
 	    }
 	  }]);
 
-	  return PageWrapper;
+	  return App;
 	}(_react2.default.Component);
 
-	exports.default = PageWrapper;
+	exports.default = App;
 
 /***/ },
-/* 9 */
+/* 6 */
 /***/ function(module, exports) {
 
 	module.exports = require("prismic.io");
 
 /***/ },
-/* 10 */
+/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -362,11 +298,58 @@
 	};
 
 /***/ },
-/* 11 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// External modules
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'About'
+	  );
+	};
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Home'
+	  );
+	};
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -384,7 +367,8 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // External modules
+
 
 	var PageContainer = function (_React$Component) {
 	  _inherits(PageContainer, _React$Component);
@@ -458,19 +442,19 @@
 	exports.default = PageContainer;
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = require("express");
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = require("path");
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = require("compression");

@@ -1,6 +1,6 @@
-'use strict';
 // External modules
 import React from 'react';
+import NavLink from './NavLink'
 
 class PageContainer extends React.Component {
   constructor() {
@@ -30,6 +30,7 @@ class PageContainer extends React.Component {
 
     return (
       <div>
+        <NavLink to="/">Home</NavLink>
         {pageContentOutput}
       </div>
     );
