@@ -5,30 +5,42 @@ import Prismic from 'prismic.io';
 // Config
 import config from '../config/config';
 
+// Styles
+import '../public/styles/index.scss';
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {};
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
+    this.getCaseStudies = this.getCaseStudies.bind(this);
+    this.getHomePage = this.getHomePage.bind(this);
     this.query = [
       Prismic.Predicates.at('my.casestudy.uid', "test-page")
     ];
   }
 
   componentWillMount() {
-    if (!this.state.data) this.getPrismicData(this.query);
+    this.getPrismicData(this.query);
   }
 
-  createMarkup(markup) {
-    return { __html: markup };
+  getCaseStudies(data){
+    this.setState({
+      caseStudies: data.filter(doc => doc.type === 'casestudy')
+    });
+  }
+
+  getHomePage(data){
+    this.setState({
+      homePage: data.find(doc => doc.type === 'homepage')
+    });
   }
 
   setPrismicData(data) {
     console.log('data', data);
-    this.setState({
-      data
-    });
+    this.getCaseStudies(data);
+    this.getHomePage(data);
   }
 
   getPrismicData(query) {
@@ -44,7 +56,8 @@ class App extends React.Component {
   render() {
     const childrenWithProps = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, {
-        data: this.state.data
+        caseStudies: this.state.caseStudies,
+        homePage: this.state.homePage
       })
     );
 
