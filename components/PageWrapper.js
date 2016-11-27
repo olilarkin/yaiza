@@ -19,7 +19,6 @@ class PageWrapper extends React.Component {
     this.query = [
       Prismic.Predicates.at('my.casestudy.uid', "test-page")
     ];
-    console.log('pageWrapper');
   }
 
   componentWillMount() {
