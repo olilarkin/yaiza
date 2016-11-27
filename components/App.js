@@ -32,9 +32,8 @@ class App extends React.Component {
   }
 
   getPrismicData(query) {
-    console.log('query', query);
     Prismic.api(config.apiURL).then((api) => {
-      return api.query(query);
+      return api.query('');
     }).then((response) => {
       return this.setPrismicData(response.results);
     }, (err) => {

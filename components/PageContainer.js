@@ -19,6 +19,7 @@ class PageContainer extends React.Component {
           break;
         case 'page':
           this.pageContent = doc.getStructuredText('page.description').asHtml();
+          break;
       };
     });
 
