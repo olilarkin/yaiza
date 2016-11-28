@@ -5,9 +5,6 @@ import Prismic from 'prismic.io';
 // Config
 import config from '../config/config';
 
-// Styles
-import '../public/styles/index.scss';
-
 class App extends React.Component {
   constructor() {
     super();
