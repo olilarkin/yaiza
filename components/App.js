@@ -13,7 +13,9 @@ if (process.env.APP_ENV === 'browser') {
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      isLoading: true
+    };
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.getCaseStudies = this.getCaseStudies.bind(this);
@@ -43,6 +45,9 @@ class App extends React.Component {
     console.log('data', data);
     this.getCaseStudies(data);
     this.getHomePage(data);
+    this.setState({
+      isLoading: false
+    });
   }
 
   getPrismicData(query) {
@@ -59,7 +64,8 @@ class App extends React.Component {
     const childrenWithProps = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, {
         caseStudies: this.state.caseStudies,
-        homePage: this.state.homePage
+        homePage: this.state.homePage,
+        isLoading: this.state.isLoading
       })
     );
 
