@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1871,4 +1872,7 @@ select[multiple].input-lg {
     display: none !important; } }
 
 body {
-  background: #000; }
+  background: #000;
+  color: #fff;
+  font-size: 1.4rem;
+  font-family: 'Lato', sans-serif; }

@@ -5,6 +5,11 @@ import Prismic from 'prismic.io';
 // Config
 import config from '../config/config';
 
+if (process.env.APP_ENV === 'browser') {
+  // Styles
+  require('../styles/index.scss');
+}
+
 class App extends React.Component {
   constructor() {
     super();
@@ -22,13 +27,13 @@ class App extends React.Component {
     this.getPrismicData(this.query);
   }
 
-  getCaseStudies(data){
+  getCaseStudies(data) {
     this.setState({
       caseStudies: data.filter(doc => doc.type === 'casestudy')
     });
   }
 
-  getHomePage(data){
+  getHomePage(data) {
     this.setState({
       homePage: data.find(doc => doc.type === 'homepage')
     });
@@ -49,7 +54,7 @@ class App extends React.Component {
       console.log('Something went wrong: ', err);
     });
   }
-  
+
   render() {
     const childrenWithProps = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, {
