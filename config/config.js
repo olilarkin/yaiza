@@ -1,3 +1,3 @@
 export default {
-  apiURL: 'https://yaiza.prismic.io/api'
+  apiURL: 'https://yaiza.cdn.prismic.io/api'
 } 
