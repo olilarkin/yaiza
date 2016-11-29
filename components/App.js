@@ -4,6 +4,8 @@ import React from 'react';
 import Prismic from 'prismic.io';
 // Config
 import config from '../config/config';
+// Components
+import Splash from './Splash';
 
 if (process.env.APP_ENV === 'browser') {
   // Styles
@@ -14,12 +16,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true
+      hasLoaded: false
     };
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.getCaseStudies = this.getCaseStudies.bind(this);
     this.getHomePage = this.getHomePage.bind(this);
+    this.handleHideSplash = this.handleHideSplash.bind(this);
     this.query = [
       Prismic.Predicates.at('my.casestudy.uid', "test-page")
     ];
@@ -46,7 +49,13 @@ class App extends React.Component {
     this.getCaseStudies(data);
     this.getHomePage(data);
     this.setState({
-      isLoading: false
+      hasLoaded: true
+    });
+  }
+
+  handleHideSplash() {
+    this.setState({
+      hideSplash: true
     });
   }
 
@@ -65,14 +74,22 @@ class App extends React.Component {
       (child) => React.cloneElement(child, {
         caseStudies: this.state.caseStudies,
         homePage: this.state.homePage,
-        isLoading: this.state.isLoading
+        hasLoaded: this.state.hasLoaded
       })
     );
 
     return (
       <div>
-        <h1>Yaiza</h1>
-        <div>{childrenWithProps}</div>
+        <Splash
+           handleHideSplash={this.handleHideSplash}
+           hideSplash={this.state.hideSplash}
+        />
+        {this.state.hasLoaded &&
+          <div>
+            <h1>Yaiza</h1>
+            <div>{childrenWithProps}</div>
+          </div>
+        }
       </div>
     );
   }

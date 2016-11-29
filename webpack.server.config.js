@@ -40,6 +40,10 @@ module.exports = {
         loader: 'json'
       },
       {
+        test: /flickity/,
+        loader: 'imports?define=>false&this=>window'
+      },
+      {
         test: /\.(png|gif|jpg)$/,
         loader: 'url?limit=8192'
       },

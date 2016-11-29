@@ -1,12 +1,19 @@
 // Bootstrap
 @import "bootstrap-custom";
-@import url('https://fonts.googleapis.com/css?family=Lato:300');
-
-body{
-  background:#000;
-  color:#fff;
+@import url('https://fonts.googleapis.com/css?family=Lato:300|Playfair+Display:700');
+body {
+  background: #000;
+  color: #fff;
   font-size: 1.4rem;
   font-family: 'Lato', sans-serif;
 }
 
+h1,
+h2,
+h3 {
+  font-family: 'Playfair Display', serif;
+}
+
 @import "includes/splash";
+@import "includes/flickity";
+@import "includes/carousel";

@@ -31,6 +31,10 @@ module.exports = {
         loaders: ["style", "css", "sass"]
       },
       {
+        test: /flickity/,
+        loader: 'imports?define=>false&this=>window'
+      },
+      {
         test: /\.json$/,
         loader: 'json'
       },
