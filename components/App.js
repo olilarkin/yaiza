@@ -5,7 +5,7 @@ import Prismic from 'prismic.io';
 // Config
 import config from '../config/config';
 // Components
-import Splash from './Splash';
+
 
 if (process.env.APP_ENV === 'browser') {
   // Styles
@@ -74,22 +74,15 @@ class App extends React.Component {
       (child) => React.cloneElement(child, {
         caseStudies: this.state.caseStudies,
         homePage: this.state.homePage,
-        hasLoaded: this.state.hasLoaded
+        hasLoaded: this.state.hasLoaded,
+        handleHideSplash: this.handleHideSplash,
+        hideSplash: this.state.hideSplash
       })
     );
 
     return (
       <div>
-        <Splash
-           handleHideSplash={this.handleHideSplash}
-           hideSplash={this.state.hideSplash}
-        />
-        {this.state.hasLoaded &&
-          <div>
-            <h1>Yaiza</h1>
-            <div>{childrenWithProps}</div>
-          </div>
-        }
+        <div>{childrenWithProps}</div>
       </div>
     );
   }
