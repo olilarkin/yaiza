@@ -1,5 +1,6 @@
 var fs = require('fs')
 var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
 
@@ -10,6 +11,8 @@ module.exports = {
   },
 
   target: 'node',
+
+  plugins: new webpack.ProvidePlugin({ Flickity: 'flickity'}),
 
   // keep node_module paths out of the bundle
   externals: fs.readdirSync(path.resolve(__dirname, 'node_modules')).concat([

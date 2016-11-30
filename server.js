@@ -1,3 +1,6 @@
+if (typeof(window) == 'undefined'){
+    global.window = new Object();
+}
 var express = require('express')
 var path = require('path')
 var compression = require('compression')

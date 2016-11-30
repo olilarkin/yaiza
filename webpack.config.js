@@ -11,13 +11,20 @@ module.exports = {
 
   plugins: process.env.NODE_ENV === 'production'
     ? [
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
-      new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': JSON.stringify('production') } })
-    ] : [
-      new webpack.DefinePlugin({ 'process.env': { APP_ENV: JSON.stringify('browser') } })
-    ],
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.ProvidePlugin({ Flickity: 'flickity'}),
+        new webpack.DefinePlugin({
+          'process.env': {
+            'NODE_ENV': JSON.stringify('production')
+          }
+        })
+      ]
+    : [
+        new webpack.DefinePlugin({ 'process.env': { APP_ENV: JSON.stringify('browser') } }),
+        new webpack.ProvidePlugin({ Flickity: 'flickity'})
+      ],
 
   module: {
     loaders: [
