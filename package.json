@@ -9,7 +9,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "webpack-dev-server --colors --inline --content-base public/ --history-api-fallback",
-    "start:prod": "npm run build && node server.bundle.js",
+    "start:prod": "npm run build",
     "build:client": "webpack",
     "build:server": "webpack --colors --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server",
