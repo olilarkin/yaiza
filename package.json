@@ -13,7 +13,7 @@
     "build:client": "webpack",
     "build:server": "webpack --colors --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server",
-    "build:sass": "node-sass styles/index.scss public/index.css",
+    "build:sass": "./node_modules/.bin/node-sass styles/index.scss public/index.css",
     "prebuild": "npm run build:sass",
     "postinstall": "npm run start:prod"
   },
