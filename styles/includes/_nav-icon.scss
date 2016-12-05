@@ -19,12 +19,12 @@
 .toggle .cross span:before {
   transition-property: margin, -webkit-transform, top, left, width;
   transition-property: margin, transform, top, left, width;
-  transition-duration: .2s
+  transition-duration: .1s
 }
 .toggle .cross span:after {
   transition-property: margin, -webkit-transform, top, left, width;
   transition-property: margin, transform, top, left, width;
-  transition-duration: .2s
+  transition-duration: .1s
 }
 .toggle .cross.open span {
   background-color: transparent
