@@ -8,7 +8,7 @@ const Home = (props) => {
 
   return (
     <div>
-      {/*<Splash {...props} />*/}
+      <Splash {...props} />
       {props.hasLoaded && <Carousel />}
     </div>
   )
