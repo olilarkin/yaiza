@@ -3,7 +3,6 @@ import React from 'react'
 import classNames from 'classnames'
 
 const NavIcon = (props) => {
-    console.log('propsd', props);
   const menuClasses = classNames({
     cross: true,
     open: props.menuIsOpen
