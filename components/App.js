@@ -5,7 +5,7 @@ import Prismic from 'prismic.io';
 // Config
 import config from '../config/config';
 // Components
-
+import Header from '../components/Header/Header';
 
 if (process.env.APP_ENV === 'browser') {
   // Styles
@@ -16,13 +16,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      hasLoaded: false
+      hasLoaded: false,
+      menuIsOpen: false
     };
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.getCaseStudies = this.getCaseStudies.bind(this);
     this.getHomePage = this.getHomePage.bind(this);
     this.handleHideSplash = this.handleHideSplash.bind(this);
+    this.handleToggleMenu = this.handleToggleMenu.bind(this);
     this.query = [
       Prismic.Predicates.at('my.casestudy.uid', "test-page")
     ];
@@ -59,6 +61,12 @@ class App extends React.Component {
     });
   }
 
+  handleToggleMenu() {
+    this.setState({
+      menuIsOpen: !this.state.menuIsOpen
+    })
+  }
+
   getPrismicData(query) {
     Prismic.api(config.apiURL).then((api) => {
       return api.query('');
@@ -82,6 +90,9 @@ class App extends React.Component {
 
     return (
       <div>
+        <Header 
+        toggleMenu={this.handleToggleMenu}
+        menuIsOpen={this.state.menuIsOpen} />
         <div>{childrenWithProps}</div>
       </div>
     );
