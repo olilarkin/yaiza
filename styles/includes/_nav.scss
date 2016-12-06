@@ -1,0 +1,24 @@
+.nav-container{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  color:#000;
+  background:#fff;
+  opacity:0;
+  visibility: hidden;
+  z-index:999;
+  transition: opacity $transitionTime $transitionEase, visibility $transitionTime $transitionEase;
+  &.active{
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav{
+    list-style:none;
+    li{
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+}

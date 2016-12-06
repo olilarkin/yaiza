@@ -2,7 +2,7 @@
   position: relative;
   right: 0;
   top: 7px;
-  z-index: 99999;
+  z-index: 11;
 }
 
 .toggle {
@@ -38,13 +38,13 @@
 .toggle .cross.open span:before {
   margin-top: 0;
   transform: rotate(45deg);
-  background-color: #fff;
+  background-color: #000;
 }
 
 .toggle .cross.open span:after {
   margin-top: 0;
   transform: rotate(-45deg);
-  background-color: #fff;
+  background-color: #000;
 }
 
 .toggle .cross.open.arrow span:before {

@@ -8,13 +8,21 @@
   text-transform: uppercase;
   color: $lightColor;
   font-size: 1.2rem;
+  z-index: 11;
   .menu-container {
-    width:130px;
-    position: relative;
+    width: 130px;
+    position: fixed;
     cursor: pointer;
+    z-index: 9999;
     transition: color $transitionTime $transitionEase;
     &:hover {
       color: #fff;
+    }
+    &.active {
+      color: #000;
+      &:hover {
+        color: #000;
+      }
     }
     .menu-text {
       position: absolute;
@@ -24,6 +32,8 @@
   }
   .logo {
     width: 20px;
+    position: fixed;
+    z-index: 9999;
     path {
       fill: $lightColor;
       transition: fill $transitionTime $transitionEase;
@@ -31,6 +41,16 @@
     &:hover {
       path {
         fill: #fff;
+      }
+    }
+    &.active {
+      path {
+        fill: #000;
+      }
+      &:hover {
+        path {
+          fill: #000;
+        }
       }
     }
   }
