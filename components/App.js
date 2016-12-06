@@ -61,7 +61,8 @@ class App extends React.Component {
     });
   }
 
-  handleToggleMenu() {
+  handleToggleMenu(e) {
+    e.preventDefault();
     this.setState({
       menuIsOpen: !this.state.menuIsOpen
     })

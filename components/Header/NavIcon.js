@@ -8,7 +8,7 @@ const NavIcon = (props) => {
     open: props.menuIsOpen
   })
   return (
-    <div className="toggle" id="navMenuToggleButton" onClick={props.toggleMenu}>
+    <div className="toggle" id="navMenuToggleButton">
       <a href="#" className={menuClasses}><span></span></a>
     </div>
   );

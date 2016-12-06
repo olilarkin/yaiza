@@ -15,6 +15,11 @@ export default class extends React.Component {
     super();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
+  }
+  
+
   render() {
     let slider;
 
