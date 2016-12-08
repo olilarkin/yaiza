@@ -7,18 +7,19 @@ const flickityOptions = {
   accessibility: true,
   pageDots: true,
   prevNextButtons: false,
-  wrapAround: true
+  wrapAround: false
 }
 
 export default class extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log('props.homepageContent', props.homepageContent);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return false;
   }
-  
+
 
   render() {
     let slider;
@@ -34,33 +35,24 @@ export default class extends React.Component {
           options={flickityOptions} // takes flickity options {} 
           disableImagesLoaded={false} // default false 
           >
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-baroque.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-eurotunnel.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-ferrari.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-link.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-maserati.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-me-colour.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-nexio.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-rako.jpg)' }} />
-          </div>
-          <div className="carousel-cell">
-            <div style={{ backgroundImage: 'url(/assets/homepage/homepage-transport.jpg)' }} />
-          </div>
+          {this.props.homepageContent
+            .sort(function(a, b){
+              return a.fragments["casestudy.homepage-slide-order"] 
+              && b.fragments["casestudy.homepage-slide-order"] 
+              && a.fragments["casestudy.homepage-slide-order"].value - b.fragments["casestudy.homepage-slide-order"].value})
+            .map((content, key) => {
+              return (
+                <div className="carousel-cell" key={key}>
+                  <div className="carousel-cell__content" style={{ backgroundImage: `url(${content.fragments["casestudy.homepage-slider-image"].url})` }} >
+                    <div className="carousel-cell__text">
+                      <h2>{content.fragments["casestudy.homepage-slide-heading"].value}</h2>
+                      <p>{content.fragments["casestudy.homepage-slide-sub-heading"].value}</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
         </Flickity>
       )
     }

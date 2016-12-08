@@ -22,12 +22,9 @@ class App extends React.Component {
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.getCaseStudies = this.getCaseStudies.bind(this);
-    this.getHomePage = this.getHomePage.bind(this);
+    this.getHomePageContent = this.getHomePageContent.bind(this);
     this.handleHideSplash = this.handleHideSplash.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
-    this.query = [
-      Prismic.Predicates.at('my.casestudy.uid', "test-page")
-    ];
   }
 
   componentWillMount() {
@@ -40,16 +37,16 @@ class App extends React.Component {
     });
   }
 
-  getHomePage(data) {
+  getHomePageContent(data) {
     this.setState({
-      homePage: data.find(doc => doc.type === 'homepage')
+      homepageContent: data.filter(doc => doc.tags.find(tag => 'homepage'))
     });
   }
 
   setPrismicData(data) {
     console.log('data', data);
     this.getCaseStudies(data);
-    this.getHomePage(data);
+    this.getHomePageContent(data);
     this.setState({
       hasLoaded: true
     });
@@ -82,7 +79,7 @@ class App extends React.Component {
     const childrenWithProps = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, {
         caseStudies: this.state.caseStudies,
-        homePage: this.state.homePage,
+        homepageContent: this.state.homepageContent,
         hasLoaded: this.state.hasLoaded,
         handleHideSplash: this.handleHideSplash,
         hideSplash: this.state.hideSplash
@@ -91,9 +88,10 @@ class App extends React.Component {
 
     return (
       <div>
-        <Header 
-        toggleMenu={this.handleToggleMenu}
-        menuIsOpen={this.state.menuIsOpen} />
+        {this.state.hasLoaded && <Header
+          toggleMenu={this.handleToggleMenu}
+          menuIsOpen={this.state.menuIsOpen} />
+        }
         <div>{childrenWithProps}</div>
       </div>
     );
