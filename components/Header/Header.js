@@ -21,7 +21,7 @@ const Header = (props) => {
           <NavIcon {...props} />
         </div>
       </div>
-      <Nav menuIsOpen={props.menuIsOpen} />
+      <Nav menuIsOpen={props.menuIsOpen} toggleMenu={props.toggleMenu} />
     </div>
   );
 };

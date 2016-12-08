@@ -1,7 +1,13 @@
 // modules/NavLink.js
 import React from 'react'
-import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 
-export default (props) => (
-  <Link {...props} activeClassName="active" />
-)
+const NavLink = (props) => {
+  const navigate = (url, evt) => {
+    browserHistory.push(url);
+    props.toggleMenu(evt);
+  };
+  return (<a href="#" onClick={ navigate.bind(this, props.url)}>{props.children}</a>);
+}
+
+export default NavLink;
