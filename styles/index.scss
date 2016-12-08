@@ -1,7 +1,12 @@
 // Bootstrap
 @import "bootstrap-custom";
 @import "includes/variables";
-@import url('https://fonts.googleapis.com/css?family=Lato:300,700|Playfair+Display:700');
+@font-face{ 
+	font-family: 'DomaineDisplay';
+	src: url('../fonts/DomaineDisplayWeb-Semibold.woff') format('woff'),
+	     url('../fonts/DomaineDisplayWeb-Semibold.woff2') format('woff2'),
+}
+@import url('https://fonts.googleapis.com/css?family=Lato:300,700');
 body {
   background: #000;
   color: #fff;
@@ -13,7 +18,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'DomaineDisplay', serif;
 }
 
 @import "includes/splash";

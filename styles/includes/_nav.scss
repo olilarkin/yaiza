@@ -1,22 +1,28 @@
-.nav-container{
+.nav-container {
   position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  color:#000;
-  background:#fff;
-  opacity:0;
+  font-family: 'DomaineDisplay', serif;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #000;
+  background: #fff;
+  opacity: 0;
   visibility: hidden;
-  z-index:999;
+  z-index: 50;
   transition: opacity $transitionTime $transitionEase, visibility $transitionTime $transitionEase;
-  &.active{
+  &.active {
     opacity: 1;
     visibility: visible;
   }
-  .nav{
-    list-style:none;
-    li{
+  .nav {
+    list-style: none;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    li {
       display: block;
       margin-bottom: 20px;
     }
