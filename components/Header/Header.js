@@ -18,13 +18,11 @@ const Header = (props) => {
   return (
     <div className="header">
       <div className="row">
-        <div className="col-sm-2"><Link to="/"><SVGLogo width={33} height={34} className={logoClasses} /></Link></div>
-        <div className="col-sm-8"><p className="strapline">Design, Illustration &amp; Art Direction</p></div>
-        <div className="col-sm-2">
-          <div className={menuContainerClasses} onClick={props.toggleMenu}>
-            <div className="menu-text">Menu</div>
-            <NavIcon {...props} />
-          </div>
+        <Link to="/" className="logo-link"><SVGLogo width={33} height={34} className={logoClasses} /></Link>
+        <div className="hidden-xs col-sm-12"><p className="strapline">Design, Illustration &amp; Art Direction</p></div>
+        <div className={menuContainerClasses} onClick={props.toggleMenu}>
+          <div className="menu-text">Menu</div>
+          <NavIcon {...props} />
         </div>
       </div>
       <Nav menuIsOpen={props.menuIsOpen} />

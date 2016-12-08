@@ -7,7 +7,7 @@
 
 .toggle {
   display: inline-block;
-  width: 50px;
+  width: 30px;
   height: 30px;
   cursor: pointer
 }
@@ -65,7 +65,7 @@
   z-index: 999;
   top: 12px;
   width: 30px;
-  height: 1px;
+  height: 0.9px;
   border-radius: 10px;
   background-color: $lightColor;
   display: block

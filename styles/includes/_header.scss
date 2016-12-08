@@ -9,11 +9,16 @@
   color: $lightColor;
   font-size: 1.2rem;
   z-index: 11;
+  font-weight: bold;
+  height: $headerHeight;
   .menu-container {
-    width: 130px;
+    width: 75px;
     position: fixed;
     cursor: pointer;
     z-index: 9999;
+    text-align: right;
+    right: 30px;
+    top: 20px;
     transition: color $transitionTime $transitionEase;
     &:hover {
       color: #fff;
@@ -30,12 +35,17 @@
       left: 0px;
     }
   }
-  .logo {
-    width: 20px;
+  .logo-link {
     position: fixed;
     z-index: 9999;
+    left: 30px;
+    top: 20px;
+    display: block;
+  }
+  .logo {
+    width: 20px;
     path {
-      fill: $lightColor;
+      fill: #666666;
       transition: fill $transitionTime $transitionEase;
     }
     &:hover {
@@ -55,6 +65,6 @@
     }
   }
   .strapline {
-    margin: 10px 0 0;
+    margin: 30px 0;
   }
 }

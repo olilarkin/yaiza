@@ -1,11 +1,13 @@
 // Bootstrap
 @import "bootstrap-custom";
-@import url('https://fonts.googleapis.com/css?family=Lato:300|Playfair+Display:700');
+@import "includes/variables";
+@import url('https://fonts.googleapis.com/css?family=Lato:300,700|Playfair+Display:700');
 body {
   background: #000;
   color: #fff;
   font-size: 1.4rem;
   font-family: 'Lato', sans-serif;
+  padding-top: $headerHeight;
 }
 
 h1,
@@ -14,7 +16,6 @@ h3 {
   font-family: 'Playfair Display', serif;
 }
 
-@import "includes/variables";
 @import "includes/splash";
 @import "includes/header";
 @import "includes/nav";
