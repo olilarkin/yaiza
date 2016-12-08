@@ -90,7 +90,9 @@ class App extends React.Component {
       <div>
         {this.state.hasLoaded && <Header
           toggleMenu={this.handleToggleMenu}
-          menuIsOpen={this.state.menuIsOpen} />
+          menuIsOpen={this.state.menuIsOpen}
+          caseStudies={this.state.caseStudies}
+          />
         }
         <div>{childrenWithProps}</div>
       </div>

@@ -35,7 +35,7 @@ export default class extends React.Component {
           options={flickityOptions} // takes flickity options {} 
           disableImagesLoaded={false} // default false 
           >
-          {this.props.homepageContent
+          {this.props.homepageContent.slice()
             .sort(function(a, b){
               return a.fragments["casestudy.homepage-slide-order"] 
               && b.fragments["casestudy.homepage-slide-order"] 
