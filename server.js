@@ -47,7 +47,7 @@ function renderPage(appHtml) {
     <head>
     <meta charset=utf-8/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1">
-    <title>Yaiza website</title>
+    <title>Yaiza</title>
     <base href="/">
     <link type="text/css" rel="stylesheet" href="index.css">
     </head>
