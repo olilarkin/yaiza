@@ -6,6 +6,37 @@
   width: 80vw;
   height: 80vh;
   margin: 0 2vw;
+  &[data-effect="Black and White"] {
+    filter: grayscale(1);
+    transition: filter ($transitionTime * 4) ease-in-out;
+    &:hover {
+      filter: grayscale(0);
+    }
+  }
+  &[data-effect="Fade Overlay"] {
+    .carousel-cell__content {
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 1;
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: opacity ($transitionTime * 4) ease-in-out, visibility ($transitionTime * 4) ease-in-out;
+      }
+    }
+    &:hover {
+      .carousel-cell__content {
+        &::after {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    }
+  }
   &__content {
     position: relative;
     width: 100%;

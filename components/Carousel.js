@@ -41,8 +41,9 @@ export default class extends React.Component {
                 && a.fragments["casestudy.homepage-slide-order"].value - b.fragments["casestudy.homepage-slide-order"].value
             })
             .map((content, key) => {
+              const effect = content.fragments["casestudy.homepage-image-effect"] && content.fragments["casestudy.homepage-image-effect"].value;
               return (
-                <div className="carousel-cell" key={key}>
+                <div className="carousel-cell" key={key} data-effect={effect}>
                   <div
                     className="carousel-cell__content"
                     style={{ backgroundImage: `url(${content.fragments["casestudy.homepage-slider-image"].url})` }}
