@@ -28,9 +28,14 @@
     li {
       display: block;
       margin-bottom: 20px;
-      a {
-        color: #000;
-      }
     }
+  }
+}
+
+.nav-link {
+  color: #000;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
   }
 }

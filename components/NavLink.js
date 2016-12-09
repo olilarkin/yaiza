@@ -3,11 +3,18 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 const NavLink = (props) => {
-  const navigate = (url, evt) => {
+  const navigate = (url, willToggle, evt) => {
     browserHistory.push(url);
-    props.toggleMenu(evt);
+    if (willToggle) {
+      props.toggleMenu(evt);
+    }
   };
-  return (<a href="#" onClick={ navigate.bind(this, props.url)}>{props.children}</a>);
+  const linkClasses = 'nav-link ' + (props.className || '');
+  return (<div className={linkClasses} onClick={navigate.bind(this, props.url, props.willToggle)}>{props.children}</div>);
+}
+
+NavLink.defaultProps = {
+  willToggle: true
 }
 
 export default NavLink;
