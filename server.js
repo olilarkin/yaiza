@@ -17,6 +17,7 @@ app.use(compression())
 
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'fonts')))
 
 app.get('*', (req, res) => {
   match({ routes: routes, location: req.url }, (err, redirect, props) => {
@@ -43,12 +44,18 @@ function renderPage(appHtml) {
   return `
     <!doctype html public="storage">
     <html>
+    <head>
     <meta charset=utf-8/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1">
-    <title>Yaiza</title>
-    <link rel=stylesheet href=/index.css>
+    <title>Yaiza website</title>
+    <base href="/">
+    <link type="text/css" rel="stylesheet" href="index.css">
+    </head>
+    <body>
     <div id=app>${appHtml}</div>
     <script src="/bundle.js"></script>
+    </body>
+    </html>
    `
 }
 

@@ -3,8 +3,8 @@
 @import "includes/variables";
 @font-face{ 
 	font-family: 'DomaineDisplay';
-	src: url('../fonts/DomaineDisplayWeb-Semibold.woff') format('woff'),
-	     url('../fonts/DomaineDisplayWeb-Semibold.woff2') format('woff2'),
+	src: url('/fonts/DomaineDisplayWeb-Semibold.woff') format('woff'),
+	     url('/fonts/DomaineDisplayWeb-Semibold.woff2') format('woff2'),
 }
 @import url('https://fonts.googleapis.com/css?family=Lato:300,700');
 body {

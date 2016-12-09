@@ -5,7 +5,7 @@ const flickityOptions = {
   initialIndex: 0,
   cellSelector: '.carousel-cell',
   accessibility: true,
-  pageDots: true,
+  pageDots: false,
   prevNextButtons: false,
   wrapAround: false
 }
@@ -23,7 +23,6 @@ export default class extends React.Component {
 
   render() {
     let slider;
-
     if (window === undefined) {
       slider = null;
     } else {
