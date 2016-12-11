@@ -11,7 +11,8 @@ export default (props) => {
     <div>
       <div className={splashClasses} onClick={props.handleHideSplash}>
         <div className="splash-container__logo">
-          <SVGYaizaLogo width={336} height={97} className="yaiza-logo" />
+          <img src="assets/yaiza-logo.svg" className="yaiza-logo img-responsive" />
+          {/*<SVGYaizaLogo width={672} height={364} className="yaiza-logo" />*/}
           <div className="splash-container__strapline">
             <p>DESIGN, ILLUSTRATION &amp; ART DIRECTION</p>
           </div>
