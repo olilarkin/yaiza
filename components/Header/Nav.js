@@ -13,16 +13,19 @@ const Nav = (props) => {
   });
 
 
-  const navOutput = props.caseStudies && props.caseStudies.map((item, key) => {
+  const navOutput = props.projects && props.projects
+  .filter(item => item.uid !== 'about-me')
+  .map((item, key) => {
     return (
-      <li key={key}><NavLink toggleMenu={props.toggleMenu} url={`/case-studies/${item.uid}`}>{item.fragments["casestudy.homepage-slide-heading"].value}</NavLink></li>)
+      <li key={key}><NavLink toggleMenu={props.toggleMenu} url={`/projects/${item.uid}`}>{item.fragments["casestudy.homepage-slide-heading"].value}</NavLink></li>)
   });
 
 
   return (
     <div className={navClassNames}>
       <ul className="nav">
-        <li><NavLink toggleMenu={props.toggleMenu} url="/case-studies">All Case studies</NavLink></li>
+        <li><NavLink toggleMenu={props.toggleMenu} url="/projects/about-me">About me</NavLink></li>
+        <li><NavLink toggleMenu={props.toggleMenu} url="/projects">All Case studies</NavLink></li>
         {navOutput}
       </ul>
     </div>

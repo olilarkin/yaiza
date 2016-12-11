@@ -2,13 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router'
 
-class CaseStudyContainer extends React.Component {
+class ProjectContainer extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     let slicesArray = [];
-    const content = this.props.caseStudies && this.props.caseStudies
+    const content = this.props.projects && this.props.projects
       .filter(doc => doc.uid === this.props.params.id)
       .map(doc => {
       // map through each slice and output into array
@@ -39,4 +39,4 @@ class CaseStudyContainer extends React.Component {
   }
 }
 
-export default CaseStudyContainer
+export default ProjectContainer

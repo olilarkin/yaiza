@@ -2,13 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router'
 
-class CaseStudiesContainer extends React.Component {
+class ProjectsContainer extends React.Component {
   constructor() {
     super();
   }
   render() {
     let slicesArray = [];
-    const content = this.props.caseStudies && this.props.caseStudies.map((doc) => {
+    const content = this.props.projects && this.props.projects.map((doc) => {
       // map through each slice and output into array
       for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
         console.log('slice', slice);
@@ -24,9 +24,6 @@ class CaseStudiesContainer extends React.Component {
 
     return (
       <div>
-        <p>
-          <Link to="/case-studies/test-page">Test page</Link>
-        </p>
         {pageContentOutput}
       </div>
     );
@@ -34,4 +31,4 @@ class CaseStudiesContainer extends React.Component {
   }
 }
 
-export default CaseStudiesContainer
+export default ProjectsContainer

@@ -1,11 +1,12 @@
-// Bootstrap
+/* Bootstrap*/
+
 @import "bootstrap-custom";
 @import "includes/variables";
-@font-face{ 
-	font-family: 'DomaineDisplay';
-	src: url('/fonts/DomaineDisplayWeb-Semibold.woff') format('woff'),
-	     url('/fonts/DomaineDisplayWeb-Semibold.woff2') format('woff2'),
+@font-face {
+  font-family: 'DomaineDisplay';
+  src: url('/fonts/DomaineDisplayWeb-Semibold.woff') format('woff'), url('/fonts/DomaineDisplayWeb-Semibold.woff2') format('woff2'),
 }
+
 @import url('https://fonts.googleapis.com/css?family=Lato:300,700');
 body {
   background: #000;
@@ -19,6 +20,15 @@ h1,
 h2,
 h3 {
   font-family: 'DomaineDisplay', serif;
+}
+
+#MY404 {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 @import "includes/splash";
