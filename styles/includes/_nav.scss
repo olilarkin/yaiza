@@ -5,22 +5,31 @@
   left: 0;
   right: 0;
   bottom: 0;
-  color: #000;
-  background: #fff;
+  background-color: #000;
+  color: #565656;
   opacity: 0;
   visibility: hidden;
   z-index: 50;
+  -webkit-transition: opacity $transitionTime $transitionEase, visibility $transitionTime $transitionEase;
   transition: opacity $transitionTime $transitionEase, visibility $transitionTime $transitionEase;
   &.active {
     opacity: 1;
     visibility: visible;
   }
+  .nav-info{
+    color:#fff;
+    small{
+      color:$lightColor;
+    }
+  }
   .nav {
+    font-family: 'Lato', sans-serif;
     list-style: none;
     width: 240px;
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     margin: 0;
     padding: 0;
@@ -28,14 +37,45 @@
     li {
       display: block;
       margin-bottom: 20px;
+      color: #565656;
+      cursor: pointer;
+      overflow: hidden;
+      .nav-link {
+        &::before {
+          position: absolute;
+          content: '/';
+          padding-right: 3px;
+          opacity: 0;
+          transform: translateX(-30px);
+          transition: transform $transitionTime $transitionEase, opacity $transitionTime $transitionEase;
+        }
+        &.active {
+          &::before {
+            transform: translateX(-10px);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .nav-logo {
+    position: absolute;
+    bottom: -30%;
+    width: 100%;
+    @extend .img-responsive;
+    path {
+      fill: #0f0f0f;
     }
   }
 }
 
 .nav-link {
-  color: #000;
+  color: #565656;
   cursor: pointer;
-  &:hover {
-    text-decoration: underline;
+  transition: color $transitionTime $transitionEase;
+  &:hover,
+  &.active {
+    text-decoration: none;
+    color: #fff;
   }
 }

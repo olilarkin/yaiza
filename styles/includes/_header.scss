@@ -10,7 +10,9 @@
   font-size: 1.2rem;
   z-index: 51;
   font-weight: bold;
+  background-color:#000;
   height: $headerHeight;
+  -webkit-transition: color $transitionTime $transitionEase;
   transition: color $transitionTime $transitionEase;
   .menu-button-container {
     width: 75px;
@@ -29,11 +31,6 @@
         color: #000;
       }
     }
-    .menu-text {
-      position: absolute;
-      top: 11px;
-      left: 0px;
-    }
   }
   .logo-link {
     position: fixed;
@@ -47,21 +44,12 @@
     width: 100%;
     path {
       fill: #666666;
+      -webkit-transition: fill $transitionTime $transitionEase;
       transition: fill $transitionTime $transitionEase;
     }
     &:hover {
       path {
         fill: #fff;
-      }
-    }
-    &.active {
-      path {
-        fill: #000;
-      }
-      &:hover {
-        path {
-          fill: #000;
-        }
       }
     }
   }
@@ -76,19 +64,19 @@
     margin-left: -120px;
   }
   &.active {
-    color: #000;
+    color: $lightColor;
     .menu-button-container {
       &:hover {
-        color: #000;
+        color: $lightColor;
       }
     }
     .logo {
       path {
-        fill: #000;
+        fill: $lightColor;
       }
       &:hover {
         path {
-          fill: #000;
+          fill: $lightColor;
         }
       }
     }

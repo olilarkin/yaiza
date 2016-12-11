@@ -19,7 +19,6 @@ const Header = (props) => {
         </NavLink>
         <div className="hidden-xs strapline"><p>Design, Illustration &amp; Art Direction</p></div>
         <div className="menu-button-container" onClick={props.toggleMenu}>
-          <div className="menu-text">Menu</div>
           <NavIcon {...props} />
         </div>
       </div>

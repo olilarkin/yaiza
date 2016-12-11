@@ -26,12 +26,6 @@ class ProjectContainer extends React.Component {
 
     return (
       <div>
-        <p>
-          <Link to="/">Back Home</Link>
-        </p>
-        <p>
-          <Link to="/case-studies">Back to case Studies</Link>
-        </p>
         {pageContentOutput}
       </div>
     );

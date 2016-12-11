@@ -9,6 +9,7 @@ const SVG = (props) => (
     width={props.width}
     height={props.height}
     viewBox={`0 0 ${props.width} ${props.height}`}
+    preserveAspectRatio="xMidYMid meet"
     className={props.className}
     >
     {props.children}

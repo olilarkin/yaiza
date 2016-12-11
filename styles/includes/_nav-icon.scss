@@ -13,6 +13,7 @@
 }
 
 .toggle .cross {
+  -webkit-transition-duration: 0s;
   transition-duration: 0s;
   display: block;
   width: 100%;
@@ -21,13 +22,21 @@
 
 .toggle .cross span:before {
   transition-property: margin, -webkit-transform, top, left, width;
+  -webkit-transition-property: margin, top, left, width, -webkit-transform;
+  transition-property: margin, top, left, width, -webkit-transform;
   transition-property: margin, transform, top, left, width;
+  transition-property: margin, transform, top, left, width, -webkit-transform;
+  -webkit-transition-duration: .1s;
   transition-duration: .1s
 }
 
 .toggle .cross span:after {
   transition-property: margin, -webkit-transform, top, left, width;
+  -webkit-transition-property: margin, top, left, width, -webkit-transform;
+  transition-property: margin, top, left, width, -webkit-transform;
   transition-property: margin, transform, top, left, width;
+  transition-property: margin, transform, top, left, width, -webkit-transform;
+  -webkit-transition-duration: .1s;
   transition-duration: .1s
 }
 
@@ -37,14 +46,16 @@
 
 .toggle .cross.open span:before {
   margin-top: 0;
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  background-color: #000;
+  background-color: $lightColor;
 }
 
 .toggle .cross.open span:after {
   margin-top: 0;
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  background-color: #000;
+  background-color: $lightColor;
 }
 
 .toggle .cross.open.arrow span:before {

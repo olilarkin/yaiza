@@ -20,6 +20,12 @@
     top: 30vh;
     left: 5vw;
     width: 70vw;
+    svg{
+    @extend .img-responsive;
+     path{
+       fill: rgba(255,255,255,0.3);
+     }
+    }
     .yaiza-logo{
       width:100%;
       opacity:0.3;
