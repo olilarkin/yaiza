@@ -18,10 +18,8 @@
   }
   .nav-info {
     color: #fff;
-    position: absolute;
-    top: 30px;
-    left: 30px;
     text-align: left;
+    padding: 10px 30px;
     small {
       color: $lightColor;
       margin-bottom: 30px;
@@ -36,14 +34,11 @@
   .nav {
     @extend .lato;
     list-style: none;
-    width: 240px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    width: 100%;
+    top: auto;
+    left: auto;
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     text-align: left;
     li {
       display: block;
@@ -51,12 +46,14 @@
       color: #565656;
       cursor: pointer;
       overflow: hidden;
+      padding: 0 30px;
       .nav-link {
         &.active {
+          position: relative;
           &::before {
             position: absolute;
             content: '/';
-            left:-10px;
+            left: -10px;
           }
         }
       }
@@ -81,5 +78,25 @@
   &.active {
     text-decoration: none;
     color: #fff;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .nav-container {
+    .nav {
+      width: 240px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      padding: 0;
+    }
+    .nav-info {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      padding:0;
+    }
   }
 }

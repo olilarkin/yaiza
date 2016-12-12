@@ -2093,9 +2093,6 @@ body {
     visibility: visible; }
   .nav-container .nav-info {
     color: #fff;
-    position: absolute;
-    top: 30px;
-    left: 30px;
     text-align: left; }
     .nav-container .nav-info small {
       color: #b3b3b3;
@@ -2106,14 +2103,11 @@ body {
       color: #fff; }
   .nav-container .nav {
     list-style: none;
-    width: 240px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    width: 100%;
+    top: auto;
+    left: auto;
     margin: 0;
-    padding: 0;
+    padding: 20px 30px;
     text-align: left; }
     .nav-container .nav li {
       display: block;
@@ -2124,7 +2118,7 @@ body {
       .nav-container .nav li .nav-link.active::before {
         position: absolute;
         content: '/';
-        padding-right: 3px; }
+        left: -10px; }
   .nav-container .nav-logo {
     position: absolute;
     bottom: -50%;
@@ -2139,6 +2133,20 @@ body {
   .nav-link:hover, .nav-link.active {
     text-decoration: none;
     color: #fff; }
+
+@media screen and (min-width: 768px) {
+  .nav-container .nav {
+    width: 240px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 0; }
+  .nav-container .nav-info {
+    position: absolute;
+    top: 30px;
+    left: 30px; } }
 
 /*! Flickity v1.1.2
 http://flickity.metafizzy.co
@@ -2268,7 +2276,11 @@ http://flickity.metafizzy.co
 .carousel-cell {
   width: 80vw;
   height: 80vh;
-  margin: 0 2vw; }
+  margin: 0 2vw;
+  color: #fff; }
+  .carousel-cell:active, .carousel-cell:focus, .carousel-cell:visited, .carousel-cell:hover {
+    color: #fff;
+    text-decoration: none; }
   .carousel-cell[data-effect="Black and White"] {
     filter: grayscale(1);
     transition: filter 0.6s ease-in-out; }
