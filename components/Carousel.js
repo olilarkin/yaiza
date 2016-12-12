@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 
 const flickityOptions = {
@@ -42,8 +43,9 @@ export default class extends React.Component {
             })
             .map((content, key) => {
               const effect = content.fragments["casestudy.homepage-image-effect"] && content.fragments["casestudy.homepage-image-effect"].value;
+              const url = `/projects/${content.uid}`;
               return (
-                <div className="carousel-cell" key={key} data-effect={effect}>
+                <Link to={url} className="carousel-cell" key={key} data-effect={effect}>
                   <div
                     className="carousel-cell__content"
                     style={{ backgroundImage: `url(${content.fragments["casestudy.homepage-slider-image"].url})` }}
@@ -55,7 +57,7 @@ export default class extends React.Component {
                       {content.fragments["casestudy.homepage-slide-heading"].value}
                     </h2>
                   </div>
-                </div>
+                </Link>
               )
             })
           }
