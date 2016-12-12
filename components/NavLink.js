@@ -5,12 +5,13 @@ import { browserHistory } from 'react-router'
 const NavLink = (props) => {
   const navigate = (url, willToggle, evt) => {
     browserHistory.push(url);
-    props.setCurrentPage(url);
     if (willToggle) {
       props.toggleMenu(evt);
     }
   };
-  const linkClasses = 'nav-link ' + (props.className || '');
+  let linkClasses = 'nav-link ' + (props.className || '');
+  linkClasses += props.pathname === props.url ? 'active' : '';
+  
   return (<div className={linkClasses} onClick={navigate.bind(this, props.url, props.willToggle)}>{props.children}</div>);
 }
 

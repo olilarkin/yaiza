@@ -1,6 +1,6 @@
 .nav-container {
   position: fixed;
-  font-family: 'DomaineDisplay', serif;
+  @extend .domaine;
   top: 0;
   left: 0;
   right: 0;
@@ -29,11 +29,12 @@
     }
     a {
       @extend .lato;
+      text-transform: none;
       color: #fff;
     }
   }
   .nav {
-    font-family: 'Lato', sans-serif;
+    @extend .lato;
     list-style: none;
     width: 240px;
     position: absolute;
@@ -51,18 +52,11 @@
       cursor: pointer;
       overflow: hidden;
       .nav-link {
-        &::before {
-          position: absolute;
-          content: '/';
-          padding-right: 3px;
-          opacity: 0;
-          transform: translateX(-30px);
-          transition: transform $transitionTime $transitionEase, opacity $transitionTime $transitionEase;
-        }
         &.active {
           &::before {
-            transform: translateX(-10px);
-            opacity: 1;
+            position: absolute;
+            content: '/';
+            padding-right: 3px;
           }
         }
       }
