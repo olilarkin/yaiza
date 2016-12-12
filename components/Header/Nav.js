@@ -18,14 +18,14 @@ const Nav = (props) => {
   .filter(item => item.uid !== 'about-me')
   .map((item, key) => {
     return (
-      <li key={key}><NavLink toggleMenu={props.toggleMenu} url={`/projects/${item.uid}`}>{item.fragments["casestudy.homepage-slide-heading"].value}</NavLink></li>)
+      <li key={key}><NavLink setCurrentPage={props.setCurrentPage} toggleMenu={props.toggleMenu} url={`/projects/${item.uid}`}>{item.fragments["casestudy.homepage-slide-heading"].value}</NavLink></li>)
   });
 
 
   return (
     <div className={navClassNames}>
       <div className="nav-info">
-        <p>Yaiza Gardner</p>
+        <h3>Yaiza Gardner</h3>
         <small>Design, Illustration &amp; Art direction</small>
         <p><a href="mailto:info@yaiza.co.uk">info@yaiza.co.uk</a></p>
       </div>

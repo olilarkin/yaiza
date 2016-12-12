@@ -17,7 +17,8 @@ class App extends React.Component {
     super();
     this.state = {
       hasLoaded: false,
-      menuIsOpen: false
+      menuIsOpen: false,
+      currentPage: ''
     };
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
@@ -25,6 +26,7 @@ class App extends React.Component {
     this.getHomePageContent = this.getHomePageContent.bind(this);
     this.handleHideSplash = this.handleHideSplash.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
+    this.setCurrentPage = this.setCurrentPage.bind(this);
   }
 
   componentWillMount() {
@@ -56,6 +58,12 @@ class App extends React.Component {
     this.setState({
       hideSplash: true
     });
+  }
+
+  setCurrentPage(url){
+    this.setState({
+      currentPage: url
+    })
   }
 
   handleToggleMenu(e) {
@@ -92,6 +100,8 @@ class App extends React.Component {
           toggleMenu={this.handleToggleMenu}
           menuIsOpen={this.state.menuIsOpen}
           projects={this.state.projects}
+          setCurrentPage={this.setCurrentPage}
+          currentPage={this.state.currentPage}
           />
         }
         <div>{childrenWithProps}</div>

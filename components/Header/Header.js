@@ -14,7 +14,7 @@ const Header = (props) => {
   return (
     <div className={headerClasses}>
       <div className="row">
-        <NavLink url="/" className="logo-link" toggleMenu={props.toggleMenu.bind(null)} willToggle={props.menuIsOpen}>
+        <NavLink url="/" className="logo-link" toggleMenu={props.toggleMenu.bind(null)} willToggle={props.menuIsOpen} setCurrentPage={props.setCurrentPage}>
           <SVGLogo width={33} height={34} className="logo" />
         </NavLink>
         <div className="hidden-xs strapline"><p>Design, Illustration &amp; Art Direction</p></div>

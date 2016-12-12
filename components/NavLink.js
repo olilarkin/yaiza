@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router'
 const NavLink = (props) => {
   const navigate = (url, willToggle, evt) => {
     browserHistory.push(url);
+    props.setCurrentPage(url);
     if (willToggle) {
       props.toggleMenu(evt);
     }

@@ -16,10 +16,20 @@
     opacity: 1;
     visibility: visible;
   }
-  .nav-info{
-    color:#fff;
-    small{
-      color:$lightColor;
+  .nav-info {
+    color: #fff;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    text-align: left;
+    small {
+      color: $lightColor;
+      margin-bottom: 30px;
+      display: block;
+    }
+    a {
+      @extend .lato;
+      color: #fff;
     }
   }
   .nav {
@@ -60,7 +70,7 @@
   }
   .nav-logo {
     position: absolute;
-    bottom: -30%;
+    bottom: -50%;
     width: 100%;
     @extend .img-responsive;
     path {
