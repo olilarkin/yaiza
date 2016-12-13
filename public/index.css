@@ -2093,7 +2093,8 @@ body {
     visibility: visible; }
   .nav-container .nav-info {
     color: #fff;
-    text-align: left; }
+    text-align: left;
+    padding: 10px 30px; }
     .nav-container .nav-info small {
       color: #b3b3b3;
       margin-bottom: 30px;
@@ -2107,18 +2108,21 @@ body {
     top: auto;
     left: auto;
     margin: 0;
-    padding: 20px 30px;
+    padding: 20px 0;
     text-align: left; }
     .nav-container .nav li {
       display: block;
       margin-bottom: 20px;
       color: #565656;
       cursor: pointer;
-      overflow: hidden; }
-      .nav-container .nav li .nav-link.active::before {
-        position: absolute;
-        content: '/';
-        left: -10px; }
+      overflow: hidden;
+      padding: 0 30px; }
+      .nav-container .nav li .nav-link.active {
+        position: relative; }
+        .nav-container .nav li .nav-link.active::before {
+          position: absolute;
+          content: '/';
+          left: -10px; }
   .nav-container .nav-logo {
     position: absolute;
     bottom: -50%;
@@ -2146,7 +2150,8 @@ body {
   .nav-container .nav-info {
     position: absolute;
     top: 30px;
-    left: 30px; } }
+    left: 30px;
+    padding: 0; } }
 
 /*! Flickity v1.1.2
 http://flickity.metafizzy.co

@@ -34,7 +34,13 @@ class App extends React.Component {
 
   getProjects(data) {
     this.setState({
-      projects: data.filter(doc => doc.type === 'casestudy')
+      projects: data
+        .filter(doc => doc.type === 'casestudy')
+        .sort(function (a, b) {
+          return a.fragments["casestudy.navigation-order"]
+            && b.fragments["casestudy.navigation-order"]
+            && a.fragments["casestudy.navigation-order"].value - b.fragments["casestudy.navigation-order"].value
+        })
     });
   }
 

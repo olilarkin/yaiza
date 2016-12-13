@@ -39,7 +39,10 @@
     left: auto;
     margin: 0;
     padding: 20px 0;
+    max-height: 100%;
     text-align: left;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     li {
       display: block;
       margin-bottom: 20px;
@@ -60,6 +63,7 @@
     }
   }
   .nav-logo {
+    display: none;
     position: absolute;
     bottom: -50%;
     width: 100%;
@@ -96,7 +100,10 @@
       position: absolute;
       top: 30px;
       left: 30px;
-      padding:0;
+      padding: 0;
     }
+     .nav-logo {
+       display: block;
+     }
   }
 }

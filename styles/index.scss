@@ -14,12 +14,17 @@ body {
   font-size: 1.4rem;
   @extend .lato;
   padding-top: $headerHeight;
+  -webkit-overflow-scrolling: touch;
 }
 
 h1,
 h2,
 h3 {
   @extend .domaine;
+}
+
+iframe{
+  width:100%;
 }
 
 #MY404 {
