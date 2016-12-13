@@ -23,10 +23,6 @@ h3 {
   @extend .domaine;
 }
 
-iframe{
-  width:100%;
-}
-
 #MY404 {
   text-align: center;
   position: absolute;
@@ -41,3 +37,4 @@ iframe{
 @import "includes/nav";
 @import "includes/flickity";
 @import "includes/carousel";
+@import "includes/project";
