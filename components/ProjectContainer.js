@@ -1,31 +1,7 @@
 // External modules
 import React from 'react';
 import { Link } from 'react-router';
-import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
-const Youtube = require('react-youtube').default;
-
-const VideoPlayer = ({videoID}) => {
-  const opts = {
-    width:'100%',
-    playerVars: {
-      autoplay: false
-    }
-  };
-
-  const videoURL = `https://www.youtube-nocookie.com/embed/${videoID}?rel=0&controls=0&showinfo=0`;
-  return (
-    <div className="video-container" style={{ backgroundImage: 'url(/assets/homepage/homepage-maserati.jpg)' }}>
-      <div className="video-overlay"></div>
-      <div className="video-icon-container">
-        <SVGPlayIcon width={103} height={105} className="video-icon" />
-      </div>
-      {/*<iframe width="1280" height="720" src={videoURL} frameborder="0" allowFullScreen></iframe>*/}
-      <Youtube
-        videoId={videoID}
-        opts={opts}
-        />
-    </div>)
-};
+import YoutubeVideoPlayer from './YoutubeVideoPlayer';
 
 class ProjectContainer extends React.Component {
   constructor(props) {
@@ -51,7 +27,7 @@ class ProjectContainer extends React.Component {
           case 'content':
             return (<div key={index} dangerouslySetInnerHTML={{ __html: `<p>${slice.value.blocks["0"].text}</p>` }} />);
           case 'video':
-            return (<div key={index}><VideoPlayer videoID={slice.value.value} /></div>);
+            return (<div key={index}><YoutubeVideoPlayer videoID={slice.value.value} isYoutubeVideoPlaying={this.props.isYoutubeVideoPlaying} toggleYoutubeVideo={this.props.toggleYoutubeVideo}  /></div>);
 
         }
       })

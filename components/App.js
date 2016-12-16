@@ -18,7 +18,8 @@ class App extends React.Component {
     this.state = {
       hasLoaded: false,
       menuIsOpen: false,
-      currentPage: ''
+      currentPage: '',
+      isYoutubeVideoPlaying: false
     };
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
@@ -26,6 +27,7 @@ class App extends React.Component {
     this.getHomePageContent = this.getHomePageContent.bind(this);
     this.handleHideSplash = this.handleHideSplash.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
+    this.handleToggleYoutubeVideo = this.handleToggleYoutubeVideo.bind(this);
   }
 
   componentWillMount() {
@@ -72,6 +74,12 @@ class App extends React.Component {
     })
   }
 
+  handleToggleYoutubeVideo(){
+    this.setState({
+      isYoutubeVideoPlaying: !this.state.isYoutubeVideoPlaying
+    })
+  }
+
   getPrismicData(query) {
     Prismic.api(config.apiURL).then((api) => {
       return api.query('');
@@ -89,7 +97,9 @@ class App extends React.Component {
         homepageContent: this.state.homepageContent,
         hasLoaded: this.state.hasLoaded,
         handleHideSplash: this.handleHideSplash,
-        hideSplash: this.state.hideSplash
+        hideSplash: this.state.hideSplash,
+        toggleYoutubeVideo: this.handleToggleYoutubeVideo,
+        isYoutubeVideoPlaying: this.state.isYoutubeVideoPlaying
       })
     );
 

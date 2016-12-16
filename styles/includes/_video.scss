@@ -1,0 +1,50 @@
+.yt-video-container {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  .yt-video-icon,
+  .yt-video-overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .35s ease-out, visibility .35s ease-out;
+  }
+  .yt-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .yt-video-icon-container{
+   width: 103px;
+    height: 105px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  .yt-video-icon {
+    
+  }
+  iframe {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+  }
+  &.active {
+    .yt-video-icon,
+    .yt-video-overlay {
+      opacity: 0;
+      visibility: hidden;
+    }
+    iframe {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
