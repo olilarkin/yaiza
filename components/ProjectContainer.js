@@ -7,6 +7,7 @@ class ProjectContainer extends React.Component {
   constructor(props) {
     super(props);
   }
+  
   render() {
     let slicesArray = [];
     const content = this.props.projects && this.props.projects
@@ -27,7 +28,7 @@ class ProjectContainer extends React.Component {
           case 'content':
             return (<div key={index} dangerouslySetInnerHTML={{ __html: `<p>${slice.value.blocks["0"].text}</p>` }} />);
           case 'video':
-            return (<div key={index}><YoutubeVideoPlayer videoID={slice.value.value} isYoutubeVideoPlaying={this.props.isYoutubeVideoPlaying} toggleYoutubeVideo={this.props.toggleYoutubeVideo}  /></div>);
+            return (<div key={index}><YoutubeVideoPlayer videoID={slice.value.value} isYoutubeVideoPlaying={this.props.isYoutubeVideoPlaying} toggleYoutubeVideo={this.props.toggleYoutubeVideo} /></div>);
 
         }
       })

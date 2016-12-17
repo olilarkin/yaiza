@@ -74,9 +74,10 @@ class App extends React.Component {
     })
   }
 
-  handleToggleYoutubeVideo(){
+  handleToggleYoutubeVideo(isVideoPlaying){
+    console.log('isVideoPlaying', isVideoPlaying);
     this.setState({
-      isYoutubeVideoPlaying: !this.state.isYoutubeVideoPlaying
+      isYoutubeVideoPlaying: isVideoPlaying
     })
   }
 
