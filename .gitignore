@@ -46,4 +46,4 @@ bundle.js
 *.bundle.js
 
 
-/public/assets/videos
+public/assets/videos/*
