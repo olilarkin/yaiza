@@ -11,13 +11,15 @@ const Header = (props) => {
     header: true,
     active: props.menuIsOpen
   });
+  console.log('props.pathname', props.pathname);
   return (
     <div className={headerClasses}>
       <div className="row">
         <NavLink url="/" className="logo-link" toggleMenu={props.toggleMenu.bind(null)} willToggle={props.menuIsOpen}>
           <SVGLogo width={33} height={34} className="logo" />
         </NavLink>
-        <div className="hidden-xs strapline"><p>Design, Illustration &amp; Art Direction</p></div>
+        {props.pathname === '/' && 
+        <div className="hidden-xs strapline"><p>Design, Illustration &amp; Art Direction</p></div>}
         <div className="menu-button-container" onClick={props.toggleMenu}>
           <NavIcon {...props} />
         </div>
