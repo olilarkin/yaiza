@@ -14,7 +14,6 @@ const flickityOptions = {
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    console.log('props.homepageContent', props.homepageContent);
   }
 
   shouldComponentUpdate(nextProps, nextState) {

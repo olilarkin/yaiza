@@ -53,7 +53,7 @@ class App extends React.Component {
   }
 
   setPrismicData(data) {
-    console.log('data', data);
+    //console.log('data', data);
     this.getProjects(data);
     this.getHomePageContent(data);
     this.setState({
@@ -75,7 +75,6 @@ class App extends React.Component {
   }
 
   handleToggleYoutubeVideo(isVideoPlaying){
-    console.log('isVideoPlaying', isVideoPlaying);
     this.setState({
       isYoutubeVideoPlaying: isVideoPlaying
     })

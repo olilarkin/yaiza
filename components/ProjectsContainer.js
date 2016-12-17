@@ -11,7 +11,7 @@ class ProjectsContainer extends React.Component {
     const content = this.props.projects && this.props.projects.map((doc) => {
       // map through each slice and output into array
       for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
-        console.log('slice', slice);
+        //console.log('slice', slice);
         slicesArray.push(slice);
       };
     });

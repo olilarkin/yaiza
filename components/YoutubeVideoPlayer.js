@@ -13,11 +13,15 @@ class YoutubeVideoPlayer extends React.Component {
       width: '100%',
       origin: baseUrl,
       playerVars: {
-        autoplay: false,
-        enablejsapi: 1,
+        keyboard: 1,
+        controls: 0,
+        autohide: 1,
         modestbranding: 1,
+        fs: 0,
+        showinfo: 0,
         rel: 0,
-        showInfo: 0
+        iv_load_policy: 3,
+        frameborder: 0
       }
     };
     this.playerReady = this.playerReady.bind(this);
@@ -31,11 +35,13 @@ class YoutubeVideoPlayer extends React.Component {
 
   playerReady(event) {
     this.playerInstance = event.target;
+    
   };
 
   playVideo() {
     this.props.toggleYoutubeVideo(true);
-    this.playerInstance && this.playerInstance.playVideo();
+    this.playerInstance
+      && this.playerInstance.playVideo();
   }
 
   render() {
@@ -50,11 +56,13 @@ class YoutubeVideoPlayer extends React.Component {
         <div className="yt-video-icon-container" onClick={this.playVideo}>
           <SVGPlayIcon width={103} height={105} className="yt-video-icon" />
         </div>
-        <Youtube
-          videoId={this.props.videoID}
-          opts={this.opts}
-          onReady={this.playerReady}
-          />
+        <div className="videoWrapper">
+          <Youtube
+            videoId={this.props.videoID}
+            opts={this.opts}
+            onReady={this.playerReady}
+            />
+        </div>
       </div>)
   }
 };

@@ -1888,7 +1888,7 @@ body {
   background: #000;
   color: #fff;
   font-size: 1.4rem;
-  padding-top: 70px; }
+  -webkit-overflow-scrolling: touch; }
 
 #MY404 {
   text-align: center;
@@ -2030,7 +2030,6 @@ body {
   font-size: 1.2rem;
   z-index: 51;
   font-weight: bold;
-  background-color: #000;
   height: 70px;
   -webkit-transition: color 0.15s ease-in;
   transition: color 0.15s ease-in; }
@@ -2109,7 +2108,10 @@ body {
     left: auto;
     margin: 0;
     padding: 20px 0;
-    text-align: left; }
+    max-height: 100%;
+    text-align: left;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; }
     .nav-container .nav li {
       display: block;
       margin-bottom: 20px;
@@ -2124,6 +2126,7 @@ body {
           content: '/';
           left: -10px; }
   .nav-container .nav-logo {
+    display: none;
     position: absolute;
     bottom: -50%;
     width: 100%; }
@@ -2151,7 +2154,9 @@ body {
     position: absolute;
     top: 30px;
     left: 30px;
-    padding: 0; } }
+    padding: 0; }
+  .nav-container .nav-logo {
+    display: block; } }
 
 /*! Flickity v1.1.2
 http://flickity.metafizzy.co
@@ -2339,3 +2344,65 @@ http://flickity.metafizzy.co
         font-family: 'Lato', sans-serif;
         font-size: 1.2rem;
         margin-left: -20px; }
+
+#player a.ytp-watermark.yt-uix-sessionlink {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: 0 !important;
+  height: 0 !important;
+  width: 0 !important; }
+
+.yt-video-container {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  width: auto; }
+  .yt-video-container .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    padding-top: 25px;
+    height: 0; }
+  .yt-video-container .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .yt-video-container.active .yt-video-icon-container {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; }
+  .yt-video-container.active .yt-video-overlay {
+    background-color: transparent; }
+  .yt-video-container.active iframe {
+    opacity: 1;
+    visibility: visible; }
+  .yt-video-container .yt-video-icon-container,
+  .yt-video-container .yt-video-overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .35s ease-out, visibility .35s ease-out; }
+  .yt-video-container .yt-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.4); }
+  .yt-video-container .yt-video-icon-container {
+    width: 103px;
+    height: 105px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 3; }
+  .yt-video-container iframe {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%; }
