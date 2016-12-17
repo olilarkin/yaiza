@@ -45,3 +45,5 @@ dist
 bundle.js
 *.bundle.js
 
+
+/public/assets/videos
