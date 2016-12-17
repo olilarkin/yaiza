@@ -11,7 +11,6 @@ const Header = (props) => {
     header: true,
     active: props.menuIsOpen
   });
-  console.log('props.pathname', props.pathname);
   return (
     <div className={headerClasses}>
       <div className="row">
