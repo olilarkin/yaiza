@@ -2,14 +2,6 @@ video{
   width:100%;
   object-fit: cover;
 }
-
-#player a.ytp-watermark.yt-uix-sessionlink {
-  display: none!important;
-  opacity: 0 !important;
-  visibility: 0!important;
-  height: 0!important;
-  width: 0!important;
-}
 .yt-video-container {
   position: relative;
   background-repeat: no-repeat;
@@ -32,7 +24,8 @@ video{
     height: 100%;
   }
   &.active {
-    .yt-video-icon-container{
+    .yt-video-icon-container,
+    .yt-video-overlay{
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -45,8 +38,7 @@ video{
       visibility: visible;
     }
   }
-  .yt-video-icon-container,
-  .yt-video-overlay {
+  .yt-video-icon-container{
     opacity: 1;
     visibility: visible;
     transition: opacity .35s ease-out, visibility .35s ease-out;

@@ -3,6 +3,7 @@ import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
 import Youtube from './Video/react-youtube/dist/YouTube';
 import { getBaseUrl } from '../helpers/utils';
 import classNames from 'classnames';
+import $ from 'jquery';
 
 class YoutubeVideoPlayer extends React.Component {
   constructor() {
@@ -28,6 +29,7 @@ class YoutubeVideoPlayer extends React.Component {
     this.playVideo = this.playVideo.bind(this);
   }
 
+
   componentWillUnmount() {
     this.props.toggleYoutubeVideo(false);
   }
@@ -35,11 +37,11 @@ class YoutubeVideoPlayer extends React.Component {
 
   playerReady(event) {
     this.playerInstance = event.target;
-    
   };
 
   playVideo() {
     this.props.toggleYoutubeVideo(true);
+
     this.playerInstance
       && this.playerInstance.playVideo();
   }
