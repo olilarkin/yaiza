@@ -16,6 +16,15 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+[data-reactroot]{
+  display: flex;
+  flex-direction: column;
+
+  & > *{
+    flex:1 1 auto;
+  }
+}
+
 h1,
 h2,
 h3 {

@@ -3,9 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
-import YoutubeVideoPlayer from './YoutubeVideoPlayer';
-// import VideoPlayer from './VideoPlayer';
-// import { default as Video, Controls, Play, Mute, Seek, Fullscreen, Time, Overlay } from 'react-html5video';
+import { default as Video, Play, Mute, Seek } from 'react-html5video';
 
 
 const Image = (props) => {
@@ -18,10 +16,6 @@ class ProjectContainer extends React.Component {
   }
 
   render() {
-    let videoPlayerClasses = classNames({
-      'yt-video-container': true,
-      'active': this.props.isYoutubeVideoPlaying
-    });
     let slicesArray = [];
     const slices = this.props.projects && this.props.projects
       .filter(doc => doc.uid === this.props.params.id)
@@ -31,33 +25,42 @@ class ProjectContainer extends React.Component {
           slicesArray.push(slice);
         };
       });
-    const youTubeVideo = this.props.projects && this.props.projects
-      .filter(doc => doc.uid === this.props.params.id)
-      .map((doc, key) => {
-        return (doc.fragments["casestudy.video"]) ? (<div key={key} className="video-player"><YoutubeVideoPlayer videoID={doc.fragments["casestudy.youtubeVideo"].value} isYoutubeVideoPlaying={this.props.isYoutubeVideoPlaying} toggleYoutubeVideo={this.props.toggleYoutubeVideo} /></div>) : null;
-        // return (<Video key={key} autoPlay poster="/assets/homepage/homepage-maserati.jpg">
-        //     <source src="/assets/videos/maserati-film.webm" type="video/webm" />
-        // </Video>)
-      });
 
 
-    const vid = this.props.projects && this.props.projects
+    const heroPanel = this.props.projects && this.props.projects
       .filter(doc => doc.uid === this.props.params.id)
       .map((doc, key) => {
-        return (doc.fragments["casestudy.video"]) ?
-          (<div 
-          key={key} 
-          className={videoPlayerClasses} 
-          style={{ backgroundImage: 'url(/assets/homepage/homepage-maserati.jpg)' }}>
-            <div className="yt-video-overlay"></div>
-            <div className="yt-video-icon-container" onClick={this.playVideo}>
-              <SVGPlayIcon width={103} height={105} className="yt-video-icon" />
-            </div>
-            <div className="videoWrapper">
-              <div dangerouslySetInnerHTML={{ __html: doc.fragments["casestudy.video"].asHtml() }} />
-            </div>
+        const videoFile = doc.fragments["casestudy.hero-video-file"] && doc.fragments["casestudy.hero-video-file"].value;
+        console.log('videoFile', videoFile);
+        const heroImage = doc.fragments["casestudy.hero-image"] && doc.fragments["casestudy.hero-image"].url;
+        console.log('heroImage', heroImage);
+        let heroClasses = classNames({
+          'hero': true,
+          'has-image': heroImage !== undefined,
+          'video-container': videoFile !== undefined,
+          'active': videoFile !== undefined && this.props.isYoutubeVideoPlaying
+        });
+        return (videoFile)
+          ?
+          (<div
+            key={key}
+            className={heroClasses} >
+            <div className="video-overlayd"></div>
+            <Video
+              autoPlay
+              poster={heroImage}
+              onCanPlayThrough={() => {
+                // Do stuff 
+              } }>
+              <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
+              <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
+            </Video>
           </div>)
-          : null;
+          :
+          <div
+            key={key}
+            className={heroClasses}
+            style={{ 'backgroundImage': `url(${heroImage})` }} />;
       });
 
 
@@ -82,8 +85,7 @@ class ProjectContainer extends React.Component {
 
     return (
       <div>
-        {/*youTubeVideo*/}
-        {vid}
+        {heroPanel}
         {pageContentOutput}
       </div>
     );

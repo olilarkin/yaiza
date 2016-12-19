@@ -99,7 +99,8 @@ class App extends React.Component {
         handleHideSplash: this.handleHideSplash,
         hideSplash: this.state.hideSplash,
         toggleYoutubeVideo: this.handleToggleYoutubeVideo,
-        isYoutubeVideoPlaying: this.state.isYoutubeVideoPlaying
+        isYoutubeVideoPlaying: this.state.isYoutubeVideoPlaying,
+        videoURL: config.videoURL
       })
     );
 
