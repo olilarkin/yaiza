@@ -1,0 +1,38 @@
+body {
+  background: #000;
+  color: #fff;
+  font-size: 1.4rem;
+  @extend .lato;
+  -webkit-overflow-scrolling: touch;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  &>*:not(.header) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+h1,
+h2,
+h3 {
+  @extend .domaine;
+  margin-top: 0;
+}
+
+.content-container {
+  border:3px solid purple;
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  .content {
+    border: 3px solid lime;
+    flex-wrap: wrap;
+    flex: 1 1 100%;
+    &.half-width {
+      flex-basis: 50%;
+    }
+  }
+}

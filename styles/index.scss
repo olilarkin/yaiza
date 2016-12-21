@@ -8,42 +8,14 @@
 }
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,700');
-body {
-  background: #000;
-  color: #fff;
-  font-size: 1.4rem;
-  @extend .lato;
-  -webkit-overflow-scrolling: touch;
-}
 
-#wrapper{
-  display: flex;
-  flex-direction: column;
-
-  & > * {
-    flex:1 1 auto;
-  }
-}
-
-h1,
-h2,
-h3 {
-  @extend .domaine;
-}
-
-#MY404 {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
+@import "includes/general";
 @import "includes/splash";
 @import "includes/header";
 @import "includes/nav";
 @import "includes/flickity";
+@import "includes/home";
 @import "includes/carousel";
 @import "includes/project";
 @import "includes/video";
+@import "includes/404";

@@ -7,7 +7,7 @@ import Splash from './Splash';
 const Home = (props) => {
 
   return (
-    <div>
+    <div id="home">
       {/*<Splash {...props} />*/}
       {props.hasLoaded && <Carousel homepageContent={props.homepageContent} />}
     </div>

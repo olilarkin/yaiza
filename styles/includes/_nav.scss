@@ -42,6 +42,8 @@
     max-height: 100%;
     text-align: left;
     overflow: auto;
+    z-index: 5;
+    background: #000;
     -webkit-overflow-scrolling: touch;
     li {
       display: block;
@@ -67,6 +69,7 @@
     position: absolute;
     bottom: -50%;
     width: 100%;
+    z-index: 1;
     @extend .img-responsive;
     path {
       fill: #0f0f0f;
@@ -98,12 +101,12 @@
     }
     .nav-info {
       position: absolute;
-      top: 30px;
+      top: 60px;
       left: 30px;
       padding: 0;
     }
-     .nav-logo {
-       display: block;
-     }
+    .nav-logo {
+      display: block;
+    }
   }
 }

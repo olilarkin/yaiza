@@ -64,7 +64,7 @@ export default class extends React.Component {
       )
     }
     return (
-      <div>
+      <div id="carousel">
         {slider}
       </div>
     );

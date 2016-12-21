@@ -31,9 +31,7 @@ class ProjectContainer extends React.Component {
       .filter(doc => doc.uid === this.props.params.id)
       .map((doc, key) => {
         const videoFile = doc.fragments["casestudy.hero-video-file"] && doc.fragments["casestudy.hero-video-file"].value;
-        console.log('videoFile', videoFile);
         const heroImage = doc.fragments["casestudy.hero-image"] && doc.fragments["casestudy.hero-image"].url;
-        console.log('heroImage', heroImage);
         let heroClasses = classNames({
           'hero': true,
           'has-image': heroImage !== undefined,
@@ -66,12 +64,17 @@ class ProjectContainer extends React.Component {
 
     const pageContentOutput = slicesArray.length
       ? slicesArray.map((slice, index) => {
-        console.log('slice', slice);
+        const sliceLabel = slice.label || '';
+        const contentContainerClasses = `content-container ${sliceLabel}`;
         switch (slice.sliceType) {
           case 'header':
-            return (<div key={index} dangerouslySetInnerHTML={{ __html: `<h1>${slice.value.blocks["0"].text}</h1>` }} />);
+            return (<div className={contentContainerClasses} key={index}>
+              <div className="content" dangerouslySetInnerHTML={{ __html: `<h1>${slice.value.blocks["0"].text}</h1>` }} />
+            </div>);
           case 'content':
-            return (<div key={index} dangerouslySetInnerHTML={{ __html: `<p>${slice.value.blocks["0"].text}</p>` }} />);
+            return (<div className={contentContainerClasses} key={index}>
+              <div className="content" dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} />
+            </div>);
           case 'images':
             const images = slice.value.value;
             let imagesHtml = images.map(image => {
@@ -85,8 +88,8 @@ class ProjectContainer extends React.Component {
 
     return (
       <div id="project">
-        {heroPanel}
-        {pageContentOutput}
+        {/*heroPanel*/}
+        <div className="content-wrapper">{pageContentOutput}</div>
       </div>
     );
 
