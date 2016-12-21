@@ -105,7 +105,7 @@ class App extends React.Component {
     );
 
     return (
-      <div>
+      <div id="wrapper">
         {this.state.hasLoaded && <Header
           toggleMenu={this.handleToggleMenu}
           menuIsOpen={this.state.menuIsOpen}
@@ -113,7 +113,7 @@ class App extends React.Component {
           pathname={this.props.location.pathname}
           />
         }
-        <div>{childrenWithProps}</div>
+        {childrenWithProps}
       </div>
     );
   }

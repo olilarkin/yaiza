@@ -84,7 +84,7 @@ class ProjectContainer extends React.Component {
       : null;
 
     return (
-      <div>
+      <div id="project">
         {heroPanel}
         {pageContentOutput}
       </div>

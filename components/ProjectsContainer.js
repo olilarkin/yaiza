@@ -23,7 +23,7 @@ class ProjectsContainer extends React.Component {
       : null;
 
     return (
-      <div>
+      <div id="projects">
         {pageContentOutput}
       </div>
     );
