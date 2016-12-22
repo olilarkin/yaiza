@@ -65,16 +65,12 @@ class ProjectContainer extends React.Component {
     const pageContentOutput = slicesArray.length
       ? slicesArray.map((slice, index) => {
         const sliceLabel = slice.label || '';
-        const contentContainerClasses = `content-container ${sliceLabel}`;
+        const contentClasses = `content-container ${sliceLabel}`;
         switch (slice.sliceType) {
           case 'header':
-            return (<div className={contentContainerClasses} key={index}>
-              <div className="content" dangerouslySetInnerHTML={{ __html: `<h1>${slice.value.blocks["0"].text}</h1>` }} />
-            </div>);
+            return (<div className={contentClasses} key={index} dangerouslySetInnerHTML={{ __html: `<h1>${slice.value.blocks["0"].text}</h1>` }} />);
           case 'content':
-            return (<div className={contentContainerClasses} key={index}>
-              <div className="content" dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} />
-            </div>);
+            return (<div className={contentClasses} key={index} dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} />);
           case 'images':
             const images = slice.value.value;
             let imagesHtml = images.map(image => {
@@ -89,7 +85,7 @@ class ProjectContainer extends React.Component {
     return (
       <div id="project">
         {/*heroPanel*/}
-        <div className="content-wrapper">{pageContentOutput}</div>
+        {pageContentOutput}
       </div>
     );
 

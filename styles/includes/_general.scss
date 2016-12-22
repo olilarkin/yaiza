@@ -11,7 +11,8 @@ body {
   flex-direction: column;
   &>*:not(.header) {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -23,16 +24,10 @@ h3 {
 }
 
 .content-container {
-  border:3px solid purple;
   padding: 40px;
   display: flex;
   flex-wrap: wrap;
-  .content {
-    border: 3px solid lime;
-    flex-wrap: wrap;
-    flex: 1 1 100%;
-    &.half-width {
-      flex-basis: 50%;
-    }
+  &:not(:first-of-type) {
+    padding-top: 0;
   }
 }
