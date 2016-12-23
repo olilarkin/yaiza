@@ -81,7 +81,7 @@ class ProjectContainer extends React.Component {
                 const imageObj = image.fragments.src.main;
                 return (<Image classes={imageClasses} url={imageObj.url}></Image>);
               });
-              return imagesHtml.map(image => image);
+              return (<div className="image-slider">{imagesHtml.map(image => image)}</div>);
             }
         }
       })
