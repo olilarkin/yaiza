@@ -29,6 +29,7 @@ class App extends React.Component {
     this.handleHideSplash = this.handleHideSplash.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
     this.handleToggleYoutubeVideo = this.handleToggleYoutubeVideo.bind(this);
+    this.handleSetHomepageSlide = this.handleSetHomepageSlide.bind(this);
   }
 
   componentWillMount() {
@@ -81,6 +82,12 @@ class App extends React.Component {
     })
   }
 
+  handleSetHomepageSlide(index){
+    this.setState({
+      homepageSlide: index
+    });
+  }
+
   getPrismicData(query) {
     Prismic.api(config.apiURL).then((api) => {
       return api.query('');
@@ -96,6 +103,7 @@ class App extends React.Component {
       (child) => React.cloneElement(child, {
         projects: this.state.projects,
         homepageContent: this.state.homepageContent,
+        setHomepageSlide: this.handleSetHomepageSlide,
         homepageSlide: this.state.homepageSlide,
         hasLoaded: this.state.hasLoaded,
         handleHideSplash: this.handleHideSplash,

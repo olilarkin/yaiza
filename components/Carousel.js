@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default class extends React.Component {
+export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.flickityOptions = {
@@ -42,7 +42,7 @@ export default class extends React.Component {
               const effect = content.fragments["casestudy.homepage-image-effect"] && content.fragments["casestudy.homepage-image-effect"].value;
               const url = `/projects/${content.uid}`;
               return (
-                <Link to={url} className="carousel-cell" key={key} data-effect={effect}>
+                <Link to={url} onClick={this.props.setHomepageSlide.bind(this, key)} className="carousel-cell" key={key} data-effect={effect}>
                   <div
                     className="carousel-cell__content"
                     style={{ backgroundImage: `url(${content.fragments["casestudy.homepage-slider-image"].url})` }}
