@@ -7,7 +7,7 @@ import { default as Video, Play, Mute, Seek } from 'react-html5video';
 
 
 const Image = (props) => {
-  return <div className="image"><img src={props.url} className="img-responsive" /></div>
+  return <div className={props.classes}><img src={props.url} className="img-responsive" /></div>
 }
 
 class ProjectContainer extends React.Component {
@@ -65,20 +65,21 @@ class ProjectContainer extends React.Component {
     const pageContentOutput = slicesArray.length
       ? slicesArray.map((slice, index) => {
         const sliceLabel = slice.label || '';
-        const contentClasses = `content-container ${sliceLabel}`;
         switch (slice.sliceType) {
           case 'content':
+          const contentClasses = `content-container ${sliceLabel}`;
             return (<div className={contentClasses} key={index} dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} />);
           case 'images':
             const images = slice.value.value;
+            const imageClasses = `image-container ${sliceLabel}`;
             if (images.length === 1) {
               let imageObj = images[0].fragments.src.main;
-              return (<Image key={index} url={imageObj.url}></Image>);
+              return (<Image classes={imageClasses}  key={index} url={imageObj.url}></Image>);
             }
             else {
               const imagesHtml = images.map(image => {
                 const imageObj = image.fragments.src.main;
-                return (<Image url={imageObj.url}></Image>);
+                return (<Image classes={imageClasses} url={imageObj.url}></Image>);
               });
               return imagesHtml.map(image => image);
             }
