@@ -9,9 +9,10 @@
   .half-width {
     flex-basis: 50%;
   }
-  // &>div:nth-child(2) {
-  //   margin-top: 100vh;
-  // }
+  &>div:nth-child(2),
+  &>div:nth-child(3) {
+    margin-top: 100vh;
+  }
   .hero.has-image {
     background-repeat: no-repeat;
     background-position: center center;
@@ -27,6 +28,6 @@
     background-color: #000;
     top: 0;
     z-index: 1;
+    flex-basis:100%;
   }
-  
 }

@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
-const flickityOptions = {
-  initialIndex: 0,
-  cellSelector: '.carousel-cell',
-  accessibility: true,
-  pageDots: false,
-  prevNextButtons: false,
-  wrapAround: false
-}
-
 export default class extends React.Component {
   constructor(props) {
     super(props);
+    this.flickityOptions = {
+      initialIndex: props.homepageSlide,
+      cellSelector: '.carousel-cell',
+      accessibility: true,
+      pageDots: false,
+      prevNextButtons: false,
+      wrapAround: false
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -31,7 +29,7 @@ export default class extends React.Component {
         <Flickity
           className={'carousel'} // default '' 
           elementType={'div'} // default 'div' 
-          options={flickityOptions} // takes flickity options {} 
+          options={this.flickityOptions} // takes flickity options {} 
           disableImagesLoaded={false} // default false 
           >
           {this.props.homepageContent.slice()

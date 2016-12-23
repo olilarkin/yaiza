@@ -45,7 +45,7 @@ class ProjectContainer extends React.Component {
             className={heroClasses} >
             <div className="video-overlayd"></div>
             <Video
-              autoPlay
+              // autoPlay
               poster={heroImage}
               onCanPlayThrough={() => {
                 // Do stuff 
@@ -67,24 +67,28 @@ class ProjectContainer extends React.Component {
         const sliceLabel = slice.label || '';
         const contentClasses = `content-container ${sliceLabel}`;
         switch (slice.sliceType) {
-          case 'header':
-            return (<div className={contentClasses} key={index} dangerouslySetInnerHTML={{ __html: `<h1>${slice.value.blocks["0"].text}</h1>` }} />);
           case 'content':
             return (<div className={contentClasses} key={index} dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} />);
           case 'images':
             const images = slice.value.value;
-            let imagesHtml = images.map(image => {
-              const imageObj = image.fragments.src.main;
-              return (<Image url={imageObj.url}></Image>);
-            });
-            return imagesHtml.map(image => image);
+            if (images.length === 1) {
+              let imageObj = images[0].fragments.src.main;
+              return (<Image key={index} url={imageObj.url}></Image>);
+            }
+            else {
+              const imagesHtml = images.map(image => {
+                const imageObj = image.fragments.src.main;
+                return (<Image url={imageObj.url}></Image>);
+              });
+              return imagesHtml.map(image => image);
+            }
         }
       })
       : null;
 
     return (
       <div id="project">
-        {/*heroPanel*/}
+        {heroPanel}
         {pageContentOutput}
       </div>
     );

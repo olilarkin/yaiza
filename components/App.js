@@ -19,7 +19,8 @@ class App extends React.Component {
       hasLoaded: false,
       menuIsOpen: false,
       currentPage: '',
-      isYoutubeVideoPlaying: false
+      isYoutubeVideoPlaying: false,
+      homepageSlide: 0
     };
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
@@ -95,6 +96,7 @@ class App extends React.Component {
       (child) => React.cloneElement(child, {
         projects: this.state.projects,
         homepageContent: this.state.homepageContent,
+        homepageSlide: this.state.homepageSlide,
         hasLoaded: this.state.hasLoaded,
         handleHideSplash: this.handleHideSplash,
         hideSplash: this.state.hideSplash,
