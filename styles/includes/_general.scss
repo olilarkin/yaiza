@@ -2,8 +2,8 @@ body {
   background: #000;
   color: #fff;
   font-size: 1.4rem;
-  line-height:1.6;
-  letter-spacing:0.05rem;
+  line-height: 1.6;
+  letter-spacing: 0.05rem;
   @extend .lato;
   -webkit-overflow-scrolling: touch;
 }
@@ -51,8 +51,23 @@ h4 {
   &>* {
     flex: 1 1 100%;
   }
-  &.half-width + .content-container.half-width + .content-container.half-width,
-  &.half-width + .content-container.half-width + .content-container.half-width .content-container.half-width{
+  &.half-width+.content-container.half-width+.content-container.half-width,
+  &.half-width+.content-container.half-width+.content-container.half-width .content-container.half-width {
     padding-top: 0;
+  }
+}
+
+#footer {
+     background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  p {
+    margin: 0;
   }
 }

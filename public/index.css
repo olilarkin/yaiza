@@ -1874,7 +1874,7 @@ select[multiple].input-lg {
 
 .domaine, h1,
 h2,
-h3, .nav-container {
+h4, .nav-container {
   font-family: 'DomaineDisplay', serif; }
 
 .lato, body, h3, .nav-container .nav-info a, .nav-container .nav {
@@ -1888,7 +1888,13 @@ body {
   background: #000;
   color: #fff;
   font-size: 1.4rem;
+  line-height: 1.6;
+  letter-spacing: 0.05rem;
   -webkit-overflow-scrolling: touch; }
+
+* {
+  min-height: 0;
+  min-width: 0; }
 
 #wrapper {
   display: flex;
@@ -1900,11 +1906,19 @@ body {
 
 h1,
 h2,
-h3 {
+h4 {
   margin-top: 0; }
 
 h3 {
+  margin-top: 0;
   margin-bottom: 30px; }
+
+h4 {
+  margin: 100px 10%;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  line-height: 2; }
 
 .content-container {
   padding: 40px;
@@ -1912,6 +1926,22 @@ h3 {
   flex-wrap: wrap; }
   .content-container > * {
     flex: 1 1 100%; }
+  .content-container.half-width + .content-container.half-width + .content-container.half-width,
+  .content-container.half-width + .content-container.half-width + .content-container.half-width .content-container.half-width {
+    padding-top: 0; }
+
+#footer {
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  padding: 30px 0;
+  position: relative;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold; }
+  #footer p {
+    margin: 0; }
 
 .splash-container {
   position: absolute;
@@ -2136,7 +2166,7 @@ h3 {
       color: #565656;
       cursor: pointer;
       overflow: hidden;
-      padding: 0 30px; }
+      padding-left: 30px; }
       .nav-container .nav li .nav-link.active {
         position: relative; }
         .nav-container .nav li .nav-link.active::before {
@@ -2374,8 +2404,8 @@ http://flickity.metafizzy.co
   color: #000;
   flex: 1 1 100%; }
 
-#project .image-slider .image-container:not(:first-child) {
-  display: none; }
+#project .image-slider-container {
+  overflow: hidden; }
 
 #project .hero.has-image {
   background-repeat: no-repeat;

@@ -83,17 +83,21 @@ class ProjectContainer extends React.Component {
                 const imageObj = image.fragments.src.main;
                 return (<Image key={index} url={imageObj.url}></Image>);
               });
-              //return (<div className="image-slider">{imagesHtml.map(image => image)}</div>);
               return (<ImageSlider key={index} images={imagesHtml} />);
             }
         }
       })
       : null;
 
+    const thisProjectID = this.props.projects && this.props.projects
+      .filter(doc => doc.uid === this.props.params.id);
+
+
     return (
       <div id="project">
         {heroPanel}
         {pageContentOutput}
+
       </div>
     );
 

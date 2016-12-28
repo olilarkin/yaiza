@@ -6,6 +6,7 @@ import Prismic from 'prismic.io';
 import config from '../config/config';
 // Components
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer';
 
 if (process.env.APP_ENV === 'browser') {
   // Styles
@@ -76,13 +77,13 @@ class App extends React.Component {
     })
   }
 
-  handleToggleYoutubeVideo(isVideoPlaying){
+  handleToggleYoutubeVideo(isVideoPlaying) {
     this.setState({
       isYoutubeVideoPlaying: isVideoPlaying
     })
   }
 
-  handleSetHomepageSlide(index){
+  handleSetHomepageSlide(index) {
     this.setState({
       homepageSlide: index
     });
@@ -124,6 +125,9 @@ class App extends React.Component {
           />
         }
         {childrenWithProps}
+        {this.state.hasLoaded && this.props.pathname !== '/' &&
+          <Footer />
+        }
       </div>
     );
   }
