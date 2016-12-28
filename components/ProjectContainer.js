@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
+import ImageSlider from './ImageSlider'
 
 
 const Image = (props) => {
@@ -67,21 +68,23 @@ class ProjectContainer extends React.Component {
         const sliceLabel = slice.label || '';
         switch (slice.sliceType) {
           case 'content':
-          const contentClasses = `content-container ${sliceLabel}`;
+            const contentClasses = `content-container ${sliceLabel}`;
             return (<div className={contentClasses} key={index} dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} />);
           case 'images':
             const images = slice.value.value;
             const imageClasses = `image-container ${sliceLabel}`;
+            if (!images.length) return;
             if (images.length === 1) {
               let imageObj = images[0].fragments.src.main;
-              return (<Image classes={imageClasses}  key={index} url={imageObj.url}></Image>);
+              return (<Image classes={imageClasses} key={index} url={imageObj.url}></Image>);
             }
             else {
-              const imagesHtml = images.map(image => {
+              const imagesHtml = images.map((image, index) => {
                 const imageObj = image.fragments.src.main;
-                return (<Image classes={imageClasses} url={imageObj.url}></Image>);
+                return (<Image key={index} url={imageObj.url}></Image>);
               });
-              return (<div className="image-slider">{imagesHtml.map(image => image)}</div>);
+              //return (<div className="image-slider">{imagesHtml.map(image => image)}</div>);
+              return (<ImageSlider key={index} images={imagesHtml} />);
             }
         }
       })

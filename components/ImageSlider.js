@@ -3,34 +3,34 @@ import React from 'react';
 export default class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.flickityOptions = {
-      initialIndex: props.homepageSlide,
-      cellSelector: '.image-cell',
-      accessibility: true,
-      pageDots: false,
-      prevNextButtons: false,
-      wrapAround: false
-    }
+    this.settings = {
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      pauseOnHover: false,
+      fade: true,
+      draggable: false,
+      autoplay:true,
+      useCSS: true
+    };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return false;
+    return true;
   }
 
 
   render() {
-    let slider;
+    
+    let thisSlider;
     if (window === undefined) {
-      slider = null;
+      thisSlider = null;
     } else {
-      const Flickity = require('react-flickity-component')(React);
-      slider = (
-        <Flickity
-          className={'image-slider'} // default '' 
-          elementType={'div'} // default 'div' 
-          options={this.flickityOptions} // takes flickity options {} 
-          disableImagesLoaded={false} // default false 
-          >
+      const Slider = require('react-slick');
+      thisSlider = (
+        <Slider {...this.settings}>
           {this.props.images.map((image, key) => {
             return (
               <div className="image-cell" key={key}>
@@ -39,12 +39,12 @@ export default class ImageSlider extends React.Component {
             )
           })
           }
-        </Flickity>
+        </Slider>
       )
     }
     return (
-      <div id="image-slider-container">
-        {slider}
+      <div className="image-slider-container">
+        {thisSlider}
       </div>
     );
   }

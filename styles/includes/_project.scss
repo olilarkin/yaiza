@@ -6,11 +6,10 @@
     color: #000;
     flex: 1 1 100%;
   }
-
-  .image-slider .image-container:not(:first-child){
-    display: none;
-  }
  
+  .image-slider-container{
+    overflow: hidden;
+  }
   .hero.has-image {
     background-repeat: no-repeat;
     background-position: center center;
