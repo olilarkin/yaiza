@@ -1,5 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router';
+import SVGRightArrow from './SVG/SVGRightArrow';
+import SVGLeftArrow from './SVG/SVGLeftArrow';
+import classNames from 'classnames';
+let Flickity;
+if (typeof window === 'undefined') {
+  Flickity = () => {
+    return <div></div>;
+  }
+}
+else {
+  Flickity = require('react-flickity-component')(React);
+}
+
 
 export default class Carousel extends React.Component {
   constructor(props) {
@@ -12,25 +25,49 @@ export default class Carousel extends React.Component {
       prevNextButtons: false,
       wrapAround: false
     }
+    this.goNext = this.goNext.bind(this);
+    this.goPrev = this.goPrev.bind(this);
+    this.checkArrows = this.checkArrows.bind(this);
+    this.state = {
+      isLeftArrowVisible: false,
+      isRightArrowVisible: true
+    }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return false;
+  checkArrows() {
+    this.setState({
+      isLeftArrowVisible: this.sliderInstance.flkty.selectedIndex > 0,
+      isRightArrowVisible: this.sliderInstance.flkty.selectedIndex < this.sliderInstance.flkty.slides.length - 1
+    });
   }
 
+  goNext() {
+    this.sliderInstance.flkty.next();
+    this.checkArrows();
+  }
+
+  goPrev() {
+    this.sliderInstance.flkty.previous();
+    this.checkArrows();
+
+  }
 
   render() {
-    let slider;
-    if (window === undefined) {
-      slider = null;
-    } else {
-      const Flickity = require('react-flickity-component')(React);
+    const leftArrowClasses = classNames({
+      'carousel-arrow carousel-arrow--left': true,
+      hidden: !this.state.isLeftArrowVisible
+    });
+    const rightArrowClasses = classNames({
+      'carousel-arrow carousel-arrow--right': true,
+      hidden: !this.state.isRightArrowVisible
+    });
+    let slider = null;
+    if (window !== undefined) {
       slider = (
         <Flickity
           className={'carousel'} // default '' 
-          elementType={'div'} // default 'div' 
-          options={this.flickityOptions} // takes flickity options {} 
-          disableImagesLoaded={false} // default false 
+          options={this.flickityOptions} // takes flickity options {}
+          ref={(slider) => { this.sliderInstance = slider } }
           >
           {this.props.homepageContent.slice()
             .sort(function (a, b) {
@@ -64,6 +101,12 @@ export default class Carousel extends React.Component {
     return (
       <div id="carousel">
         {slider}
+        <div className="arrow-container">
+          <div className={leftArrowClasses} onClick={() => { this.goPrev() } }><SVGLeftArrow width={67} height={30} className="left-arrow" /></div>
+
+          <div className={rightArrowClasses} onClick={() => { this.goNext() } }><SVGRightArrow width={67} height={30} className="right-arrow" /></div>
+
+        </div>
       </div>
     );
   }

@@ -125,7 +125,7 @@ class App extends React.Component {
           />
         }
         {childrenWithProps}
-        {this.state.hasLoaded && this.props.pathname !== '/' &&
+        {this.state.hasLoaded && this.props.location.pathname !== '/' &&
           <Footer />
         }
       </div>

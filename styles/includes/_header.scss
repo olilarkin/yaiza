@@ -55,12 +55,11 @@
   .strapline {
     margin: 26px 0;
     position: fixed;
-    // z-index: 51;
     left: 0;
     right: 0;
-    width: 240px;
+    width: 260px;
     left: 50%;
-    margin-left: -120px;
+    margin-left: -130px;
   }
   &.active {
     color: $lightColor;

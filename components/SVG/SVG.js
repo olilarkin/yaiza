@@ -19,7 +19,6 @@ const SVG = (props) => (
 SVG.propTypes = {
   width: React.PropTypes.number,
   height: React.PropTypes.number,
-  children: React.PropTypes.element,
   className: React.PropTypes.string
 };
 
