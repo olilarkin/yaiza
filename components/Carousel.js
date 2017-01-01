@@ -34,6 +34,12 @@ export default class Carousel extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.sliderInstance.flkty.on('select', () => {
+      this.checkArrows();
+    });
+  }
+
   checkArrows() {
     this.setState({
       isLeftArrowVisible: this.sliderInstance.flkty.selectedIndex > 0,
@@ -49,17 +55,16 @@ export default class Carousel extends React.Component {
   goPrev() {
     this.sliderInstance.flkty.previous();
     this.checkArrows();
-
   }
 
   render() {
     const leftArrowClasses = classNames({
       'carousel-arrow carousel-arrow--left': true,
-      hidden: !this.state.isLeftArrowVisible
+      hideme: !this.state.isLeftArrowVisible
     });
     const rightArrowClasses = classNames({
       'carousel-arrow carousel-arrow--right': true,
-      hidden: !this.state.isRightArrowVisible
+      hideme: !this.state.isRightArrowVisible
     });
     let slider = null;
     if (window !== undefined) {
@@ -102,10 +107,16 @@ export default class Carousel extends React.Component {
       <div id="carousel">
         {slider}
         <div className="arrow-container">
-          <div className={leftArrowClasses} onClick={() => { this.goPrev() } }><SVGLeftArrow width={67} height={30} className="left-arrow" /></div>
-
-          <div className={rightArrowClasses} onClick={() => { this.goNext() } }><SVGRightArrow width={67} height={30} className="right-arrow" /></div>
-
+          <div className="arrow">
+            <div className={leftArrowClasses} onClick={() => { this.goPrev() } }>
+              <SVGLeftArrow width={67} height={30} className="left-arrow" />
+            </div>
+          </div>
+          <div className="arrow">
+            <div className={rightArrowClasses} onClick={() => { this.goNext() } }>
+              <SVGRightArrow width={67} height={30} className="right-arrow" />
+            </div>
+          </div>
         </div>
       </div>
     );
