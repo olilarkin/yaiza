@@ -60,6 +60,7 @@
     width: 260px;
     left: 50%;
     margin-left: -130px;
+    user-select: none;
   }
   &.active {
     color: $lightColor;

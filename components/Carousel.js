@@ -36,12 +36,18 @@ export default class Carousel extends React.Component {
 
   componentDidMount() {
     this.checkArrows();
-    this.sliderInstance.flkty.on('select', () => {
+    this.sliderInstance.flkty.once('settle', () => {
       this.checkArrows();
     });
   }
 
+  componentWillUnmount() {
+    this.sliderInstance.flkty.off('settle');
+  }
+
+
   checkArrows() {
+    if (!this.sliderInstance) return;
     this.setState({
       isLeftArrowVisible: this.sliderInstance.flkty.selectedIndex > 0,
       isRightArrowVisible: this.sliderInstance.flkty.selectedIndex < this.sliderInstance.flkty.slides.length - 1
