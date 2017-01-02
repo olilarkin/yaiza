@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
+import SVGRightChevron from '../components/SVG/SVGRightChevron';
+import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import ImageSlider from './ImageSlider'
 
@@ -16,8 +18,8 @@ const PrevNextLinks = ({projects, thisID}) => {
 
   return (
     <div className="prev-next-links-container">
-      {prevProjectURL && <Link to={prevProjectURL}>Previous Project</Link>}
-      {nextProjectURL && <Link to={nextProjectURL}>Next Project</Link>}
+      {prevProjectURL && <Link className="prev-link" to={prevProjectURL}><span><SVGLeftChevron width={67} height={144.5} /></span>Previous Project</Link>}
+      {nextProjectURL && <Link className="next-link" to={nextProjectURL}>Next Project<span><SVGRightChevron width={67} height={144.5}/></span></Link>}
     </div>
   );
 

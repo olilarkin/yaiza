@@ -6,8 +6,7 @@
     color: #000;
     flex: 1 1 100%;
   }
- 
-  .image-slider-container{
+  .image-slider-container {
     overflow: hidden;
   }
   .hero.has-image {
@@ -25,6 +24,21 @@
     top: 0;
     z-index: 1;
     flex-basis: 100%;
+  }
+  .prev-next-links-container {
+    a{
+      @extend .domaine;
+      font-size:20px;
+      display: inline-block;
+      width:50%;
+      color:#000;
+    }
+    span svg {
+      width: 6px;
+      height: auto;
+      position: relative;
+      top: 2px;
+    }
   }
 }
 
