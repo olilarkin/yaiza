@@ -8,6 +8,40 @@ import config from '../config/config';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer';
 
+Array.prototype.findIndex = Array.prototype.findIndex || function (evaluator, thisArg) {
+  'use strict';
+  if (!this) {
+    throw new TypeError('Array.prototype.some called on null or undefined');
+  }
+
+  if (typeof (evaluator) !== 'function') {
+    if (typeof (evaluator) === 'string') {
+      // Attempt to convert it to a function
+      if (!(evaluator = eval(evaluator))) {
+        throw new TypeError();
+      }
+    } else {
+      throw new TypeError();
+    }
+  }
+
+  var i;
+  if (thisArg === undefined) {  // Optimize for thisArg
+    for (i in this) {
+      if (evaluator(this[i], i, this)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  for (i in this) {
+    if (evaluator.call(thisArg, this[i], i, this)) {
+      return i;
+    }
+  }
+  return -1;
+};
+
 if (process.env.APP_ENV === 'browser') {
   // Styles
   require('../styles/index.scss');

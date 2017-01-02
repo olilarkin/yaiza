@@ -7,8 +7,20 @@ import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import ImageSlider from './ImageSlider'
 
 
-const Image = (props) => {
-  return <div className={props.classes}><img src={props.url} className="img-responsive" /></div>
+const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
+
+const PrevNextLinks = ({projects, thisID}) => {
+  const thisIndex = projects && projects.findIndex(project => project.uid === thisID);
+  const nextProjectURL = projects && thisIndex !== projects.length -1 && `/projects/${projects[(thisIndex + 1)].uid}`;
+  const prevProjectURL = projects && thisIndex > 0 && `/projects/${projects[(thisIndex - 1)].uid}`;
+
+  return (
+    <div className="prev-next-links-container">
+      {prevProjectURL && <Link to={prevProjectURL}>Previous Project</Link>}
+      {nextProjectURL && <Link to={nextProjectURL}>Next Project</Link>}
+    </div>
+  );
+
 }
 
 class ProjectContainer extends React.Component {
@@ -18,8 +30,10 @@ class ProjectContainer extends React.Component {
 
   render() {
     let slicesArray = [];
-    const slices = this.props.projects && this.props.projects
-      .filter(doc => doc.uid === this.props.params.id)
+    const thisID = this.props.params.id;
+    const projects = this.props.projects;
+    const slices = projects && projects
+      .filter(doc => doc.uid === thisID)
       .map(doc => {
         // map through each slice and output into array
         for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
@@ -28,8 +42,8 @@ class ProjectContainer extends React.Component {
       });
 
 
-    const heroPanel = this.props.projects && this.props.projects
-      .filter(doc => doc.uid === this.props.params.id)
+    const heroPanel = projects && projects
+      .filter(doc => doc.uid === thisID)
       .map((doc, key) => {
         const videoFile = doc.fragments["casestudy.hero-video-file"] && doc.fragments["casestudy.hero-video-file"].value;
         const heroImage = doc.fragments["casestudy.hero-image"] && doc.fragments["casestudy.hero-image"].url;
@@ -47,6 +61,7 @@ class ProjectContainer extends React.Component {
             <div className="video-overlayd"></div>
             <Video
               // autoPlay
+              // controls
               poster={heroImage}
               onCanPlayThrough={() => {
                 // Do stuff 
@@ -89,15 +104,12 @@ class ProjectContainer extends React.Component {
       })
       : null;
 
-    const thisProjectID = this.props.projects && this.props.projects
-      .filter(doc => doc.uid === this.props.params.id);
-
 
     return (
       <div id="project">
         {heroPanel}
         {pageContentOutput}
-
+        <PrevNextLinks projects={this.props.projects} thisID={this.props.params.id} />
       </div>
     );
 
