@@ -153,7 +153,7 @@ class App extends React.Component {
         toggleYoutubeVideo: this.handleToggleYoutubeVideo,
         isYoutubeVideoPlaying: this.state.isYoutubeVideoPlaying,
         videoURL: config.videoURL,
-        mobile: md.mobile()
+        mobile: md && md.mobile()
       })
     );
 
