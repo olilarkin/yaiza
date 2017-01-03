@@ -43,6 +43,12 @@ Array.prototype.findIndex = Array.prototype.findIndex || function (evaluator, th
   return -1;
 };
 
+let MobileDetect = require('mobile-detect');
+let md;
+if (typeof window !== 'undefined') {
+  md = new MobileDetect(window.navigator.userAgent);
+}
+
 if (process.env.APP_ENV === 'browser') {
   // Styles
   require('../styles/index.scss');
@@ -58,8 +64,6 @@ class App extends React.Component {
       isYoutubeVideoPlaying: false,
       homepageSlide: 0
     };
-    this.isMobile = WURFL.is_mobile === true;
-    console.log('this.isMobile', this.isMobile);
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.getProjects = this.getProjects.bind(this);
@@ -148,7 +152,8 @@ class App extends React.Component {
         hideSplash: this.state.hideSplash,
         toggleYoutubeVideo: this.handleToggleYoutubeVideo,
         isYoutubeVideoPlaying: this.state.isYoutubeVideoPlaying,
-        videoURL: config.videoURL
+        videoURL: config.videoURL,
+        mobile: md.mobile()
       })
     );
 

@@ -62,6 +62,7 @@ class ProjectContainer extends React.Component {
           'video-container': videoFile !== undefined,
           'active': videoFile !== undefined && this.props.isYoutubeVideoPlaying
         });
+        console.log('this.props.mobile', this.props.mobile);
         return (videoFile)
           ?
           (<div
@@ -69,8 +70,8 @@ class ProjectContainer extends React.Component {
             className={heroClasses} >
             <div className="video-overlayd"></div>
             <Video
-              // autoPlay
-              // controls
+              autoPlay
+              controls={this.props.mobile !== null}
               poster={heroImage}
               onCanPlayThrough={() => {
                 // Do stuff 
@@ -78,6 +79,7 @@ class ProjectContainer extends React.Component {
               <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
               <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
             </Video>
+
           </div>)
           :
           <div
