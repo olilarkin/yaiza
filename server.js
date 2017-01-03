@@ -11,6 +11,8 @@ import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import routes from './config/routes'
 
+let MobileDetect = require('mobile-detect');
+
 var app = express()
 
 app.use(compression())
@@ -20,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'fonts')))
 
 app.get('*', (req, res) => {
+  let md = new MobileDetect(req.headers['user-agent']);
   match({ routes: routes, location: req.url }, (err, redirect, props) => {
     // in here we can make some decisions all at once
     if (err) {
