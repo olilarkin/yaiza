@@ -15,11 +15,17 @@
   &.active {
     opacity: 1;
     visibility: visible;
+    overflow: auto;
+    .nav li{
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .nav-info {
     color: #fff;
     text-align: left;
     padding: 10px 30px;
+    margin-top:$headerHeight;
     small {
       color: $lightColor;
       margin-bottom: 30px;
@@ -41,7 +47,7 @@
     padding: 20px 0;
     max-height: 100%;
     text-align: left;
-    overflow: auto;
+    overflow: hidden;
     z-index: 5;
     background: #000;
     -webkit-overflow-scrolling: touch;
@@ -52,6 +58,10 @@
       cursor: pointer;
       overflow: hidden;
       padding-left: 30px;
+      transform: translateY(5vh);
+      opacity:0;
+      transition: opacity .2s ease-out, transform .2s ease-out;
+      
       .nav-link {
         &.active {
           position: relative;
@@ -88,6 +98,11 @@
   }
 }
 
+/* Animation delays */
+@for $i from 1 to 20 {
+  .nav-container.active .nav li:nth-child(#{$i}) { transition-delay: $i * .05s; }
+}
+
 @media screen and (min-width:768px) {
   .nav-container {
     .nav {
@@ -104,6 +119,7 @@
       top: 60px;
       left: 30px;
       padding: 0;
+      margin-top:auto;
     }
     .nav-logo {
       display: block;
