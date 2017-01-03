@@ -13,7 +13,10 @@ export default class ImageSlider extends React.Component {
       fade: true,
       draggable: false,
       autoplay:true,
-      useCSS: true
+      useCSS: true,
+      swipe: false,
+      arrows: false,
+      touchMove: false
     };
   }
 

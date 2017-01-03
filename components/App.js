@@ -57,6 +57,8 @@ class App extends React.Component {
       isYoutubeVideoPlaying: false,
       homepageSlide: 0
     };
+    this.isMobile = WURFL.is_mobile === true;
+    console.log('this.isMobile', this.isMobile);
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.getProjects = this.getProjects.bind(this);

@@ -1874,7 +1874,7 @@ select[multiple].input-lg {
 
 .domaine, h1,
 h2,
-h4, .nav-container {
+h4, .nav-container, #project .prev-next-links-container a {
   font-family: 'DomaineDisplay', serif; }
 
 .lato, body, h3, .nav-container .nav-info a, .nav-container .nav {
@@ -2114,7 +2114,8 @@ h4 {
     right: 0;
     width: 260px;
     left: 50%;
-    margin-left: -130px; }
+    margin-left: -130px;
+    user-select: none; }
   .header.active {
     color: #f0f0f0; }
     .header.active .menu-button-container:hover {
@@ -2476,6 +2477,31 @@ http://flickity.metafizzy.co
   top: 0;
   z-index: 1;
   flex-basis: 100%; }
+
+#project .prev-next-links-container {
+  display: flex; }
+  #project .prev-next-links-container > div {
+    display: block;
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: flex-start; }
+    #project .prev-next-links-container > div.next {
+      justify-content: flex-end; }
+  #project .prev-next-links-container a {
+    font-size: 20px;
+    color: #000;
+    padding: 10px; }
+    #project .prev-next-links-container a.next-link {
+      text-align: right; }
+      #project .prev-next-links-container a.next-link span {
+        padding-left: 5px; }
+    #project .prev-next-links-container a.prev-link span {
+      padding-right: 5px; }
+  #project .prev-next-links-container span svg {
+    width: 6px;
+    height: auto;
+    position: relative;
+    top: 2px; }
 
 @media screen and (min-width: 768px) {
   #project > div:nth-child(2),

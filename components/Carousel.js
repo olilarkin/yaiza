@@ -36,13 +36,13 @@ export default class Carousel extends React.Component {
 
   componentDidMount() {
     this.checkArrows();
-    this.sliderInstance.flkty.once('settle', () => {
+    this.sliderInstance.flkty.once('select', () => {
       this.checkArrows();
     });
   }
 
   componentWillUnmount() {
-    this.sliderInstance.flkty.off('settle');
+    this.sliderInstance.flkty.off('select');
   }
 
 

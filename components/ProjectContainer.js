@@ -13,13 +13,19 @@ const Image = (props) => (<div className={props.classes}><img src={props.url} cl
 
 const PrevNextLinks = ({projects, thisID}) => {
   const thisIndex = projects && projects.findIndex(project => project.uid === thisID);
-  const nextProjectURL = projects && thisIndex !== projects.length -1 && `/projects/${projects[(thisIndex + 1)].uid}`;
+  const nextProjectURL = projects && thisIndex !== projects.length - 1 && `/projects/${projects[(thisIndex + 1)].uid}`;
   const prevProjectURL = projects && thisIndex > 0 && `/projects/${projects[(thisIndex - 1)].uid}`;
 
   return (
     <div className="prev-next-links-container">
-      {prevProjectURL && <Link className="prev-link" to={prevProjectURL}><span><SVGLeftChevron width={67} height={144.5} /></span>Previous Project</Link>}
-      {nextProjectURL && <Link className="next-link" to={nextProjectURL}>Next Project<span><SVGRightChevron width={67} height={144.5}/></span></Link>}
+      {prevProjectURL &&
+        <div className="prev">
+          <Link className="prev-link" to={prevProjectURL}><span><SVGLeftChevron width={67} height={144.5} /></span>Previous Project</Link>
+        </div>}
+      {nextProjectURL &&
+        <div className="next">
+          <Link className="next-link" to={nextProjectURL}>Next Project<span><SVGRightChevron width={67} height={144.5} /></span></Link>
+        </div>}
     </div>
   );
 
@@ -34,6 +40,7 @@ class ProjectContainer extends React.Component {
     let slicesArray = [];
     const thisID = this.props.params.id;
     const projects = this.props.projects;
+    console.log('projects', projects);
     const slices = projects && projects
       .filter(doc => doc.uid === thisID)
       .map(doc => {
