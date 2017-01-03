@@ -2,7 +2,6 @@
 import React from 'react'
 import SVGLogo from '../SVG/SVGLogo'
 import NavIcon from './NavIcon'
-import Nav from './Nav'
 import NavLink from '../NavLink'
 import classNames from 'classnames'
 
@@ -23,7 +22,6 @@ const Header = (props) => {
           <NavIcon {...props} />
         </div>
       </div>
-      <Nav {...props} />
     </div>
   );
 };

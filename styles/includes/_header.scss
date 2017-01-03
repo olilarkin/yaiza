@@ -11,8 +11,8 @@
   z-index: 51;
   font-weight: bold;
   height: $headerHeight;
-  -webkit-transition: color $transitionTime $transitionEase;
-  transition: color $transitionTime $transitionEase;
+  background-color:transparent;
+  transition: color $transitionTime $transitionEase, background-color $transitionTime $transitionEase;
   .menu-button-container {
     width: 75px;
     position: fixed;
@@ -64,6 +64,7 @@
   }
   &.active {
     color: $lightColor;
+    background-color:#000;
     .menu-button-container {
       &:hover {
         color: $lightColor;

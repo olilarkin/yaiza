@@ -6,6 +6,7 @@ import Prismic from 'prismic.io';
 import config from '../config/config';
 // Components
 import Header from '../components/Header/Header';
+import Nav from './Nav'
 import Footer from '../components/Footer';
 
 Array.prototype.findIndex = Array.prototype.findIndex || function (evaluator, thisArg) {
@@ -153,13 +154,21 @@ class App extends React.Component {
 
     return (
       <div id="wrapper">
-        {this.state.hasLoaded && <Header
-          toggleMenu={this.handleToggleMenu}
-          menuIsOpen={this.state.menuIsOpen}
-          projects={this.state.projects}
-          pathname={this.props.location.pathname}
-          />
+        {this.state.hasLoaded &&
+          <Header
+            toggleMenu={this.handleToggleMenu}
+            menuIsOpen={this.state.menuIsOpen}
+            projects={this.state.projects}
+            pathname={this.props.location.pathname}
+            />
         }
+        {this.state.hasLoaded &&
+          <Nav
+            toggleMenu={this.handleToggleMenu}
+            menuIsOpen={this.state.menuIsOpen}
+            projects={this.state.projects}
+            pathname={this.props.location.pathname}
+            />}
         {childrenWithProps}
         {this.state.hasLoaded && this.props.location.pathname !== '/' &&
           <Footer />

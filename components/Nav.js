@@ -1,10 +1,10 @@
 // React
 import React from 'react'
-import SVGLogo from '../SVG/SVGLogo'
-import NavIcon from './NavIcon'
-import NavLink from '../NavLink'
+import SVGLogo from './SVG/SVGLogo'
+import NavIcon from './Header/NavIcon'
+import NavLink from './NavLink'
 import classNames from 'classnames'
-import SVGYaizaLogo from '../SVG/SVGYaizaLogo'
+import SVGYaizaLogo from './SVG/SVGYaizaLogo'
 import { browserHistory } from 'react-router'
 
 const Nav = (props) => {
