@@ -3,8 +3,8 @@
 }
 
 .carousel-cell {
-  width: 90vw;
-  height: 80vh;
+  width: 75vw;
+  height: 75vh;
   margin: 0;
   color: #fff;
   &:active,
@@ -155,5 +155,11 @@
         fill: #fff;
       }
     }
+  }
+}
+@media screen and (min-width:768px){
+  .carousel-cell{
+    width:90vw;
+    height80vh;
   }
 }
