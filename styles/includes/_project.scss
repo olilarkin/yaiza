@@ -15,7 +15,12 @@
   .quote-container {
     text-align:centre;
     font-size: 1.8rem;
-    
+    .quote-container {
+      @extend .domaine;
+    }
+    .quote-source {
+      font-size: 1.4rem;
+    }
   }
   .hero.has-image {
     background-repeat: no-repeat;
