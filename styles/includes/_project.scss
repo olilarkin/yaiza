@@ -13,8 +13,12 @@
     overflow: hidden;
   }
   .quote-container {
-    text-align:centre;
+    padding: 10px;
+    text-align:center;
     font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center
     .quote-container {
       @extend .domaine;
     }
