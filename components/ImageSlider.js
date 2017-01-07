@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from './react-slick/dist/react-slick.min.js';
+import Slider from './react-slick/dist/react-slick';
 
 export default class ImageSlider extends React.Component {
   constructor(props) {
