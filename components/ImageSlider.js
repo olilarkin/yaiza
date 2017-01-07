@@ -1,5 +1,4 @@
 import React from 'react';
-import Slider from './react-slick/dist/react-slick';
 
 export default class ImageSlider extends React.Component {
   constructor(props) {
@@ -13,7 +12,7 @@ export default class ImageSlider extends React.Component {
       pauseOnHover: false,
       fade: true,
       draggable: false,
-      autoplay: true,
+      autoplay:true,
       useCSS: true,
       swipe: false,
       arrows: false,
@@ -21,20 +20,31 @@ export default class ImageSlider extends React.Component {
     };
   }
 
-  render() {
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
+  }
 
-    let thisSlider = (
-      <Slider {...this.settings}>
-        {this.props.images.map((image, key) => {
-          return (
-            <div className="image-cell" key={key}>
-              {image}
-            </div>
-          )
-        })
-        }
-      </Slider>
-    )
+
+  render() {
+    
+    let thisSlider;
+    if (window === undefined) {
+      thisSlider = null;
+    } else {
+      const Slider = require('react-slick');
+      thisSlider = (
+        <Slider {...this.settings}>
+          {this.props.images.map((image, key) => {
+            return (
+              <div className="image-cell" key={key}>
+                {image}
+              </div>
+            )
+          })
+          }
+        </Slider>
+      )
+    }
     return (
       <div className="image-slider-container">
         {thisSlider}
