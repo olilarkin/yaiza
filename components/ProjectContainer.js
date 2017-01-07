@@ -8,7 +8,6 @@ import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import ImageSlider from './ImageSlider';
 import Reveal from './Reveal';
-import 'animate.css/animate.css';
 
 
 const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
@@ -108,21 +107,52 @@ class ProjectContainer extends React.Component {
         switch (slice.sliceType) {
           case 'content':
             const contentClasses = `content-container ${sliceLabel}`;
-            return ( <Reveal effect="animated fadeInUp" className={contentClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
+            return (<Reveal effect="animated fadeInUp" className={contentClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
+          case 'Image Rollover':
+            const imageRollClasses = `content-container ${sliceLabel}`;
+            const imageRollColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;
+            const imageRollIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;
+            const imageRollImage = slice.value.value["0"].fragments["background-image"] && slice.value.value["0"].fragments["background-image"].value;
+            return (
+              <Reveal effect="animated fadeInUp" className={imageRollClasses} key={index} style={{backgroundColor: imageRollColor}}>
+                <div>
+                  {imageRollIcon && 
+                    <div className="image-roll-icon">
+                      <img src={imageRollIcon} className="img-responsive" />
+                    </div>
+                  }
+                  {imageRollImage && 
+                    <div className="image-roll-image">
+                      <img src={imageRollImage} className="img-responsive" />
+                    </div>
+                  }
+                </div>
+              </Reveal>);
+          case 'Quote':
+            const quoteClasses = `content-container ${sliceLabel}`;
+            const quoteText = slice.value.value["0"].fragments["quote-text"].value;
+            const quoteSource = slice.value.value["0"].fragments["quote-source"].value;
+            return (
+              <Reveal effect="animated fadeInUp" className={quoteClasses} key={index} style={{backgroundColor: '#000', color: '#fff'}}>
+                <div>
+                  <p className="quote-text">{quoteText}</p>
+                  <p className="quote-source">{quoteSource}</p>
+                </div>
+              </Reveal>);
           case 'images':
             const images = slice.value.value;
             const imageClasses = `image-container ${sliceLabel}`;
             if (!images.length) return;
             if (images.length === 1) {
               let imageObj = images[0].fragments.src.main;
-              return ( <Reveal effect="animated fadeInUp" key={index} className={imageClasses}><Image   url={imageObj.url}></Image></Reveal>);
+              return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}><Image url={imageObj.url}></Image></Reveal>);
             }
             else {
               const imagesHtml = images.map((image, index) => {
                 const imageObj = image.fragments.src.main;
                 return (<Image key={index} url={imageObj.url}></Image>);
               });
-              return ( <Reveal effect="animated fadeInUp" className={imageClasses} key={index}><ImageSlider key={index} images={imagesHtml} /></Reveal>);
+              return (<Reveal effect="animated fadeInUp" className={imageClasses} key={index}><ImageSlider key={index} images={imagesHtml} /></Reveal>);
             }
         }
       })

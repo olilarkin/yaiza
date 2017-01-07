@@ -8,3 +8,26 @@ $headerHeight: 70px;
 .lato {
   font-family: 'Lato', sans-serif;
 }
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animated {
+  animation-duration: .75s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
