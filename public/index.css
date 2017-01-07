@@ -2408,15 +2408,15 @@ http://flickity.metafizzy.co
 #home {
   overflow: hidden; }
   #home #carousel {
-    margin: 10vh 0; }
+    margin: 10vh 0 8vh; }
 
 .carousel {
   margin: 2vh 0; }
 
 .carousel-cell {
-  width: 80vw;
+  width: 90vw;
   height: 80vh;
-  margin: 0 2vw;
+  margin: 0;
   color: #fff; }
   .carousel-cell:active, .carousel-cell:focus, .carousel-cell:visited, .carousel-cell:hover {
     color: #fff;

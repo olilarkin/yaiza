@@ -6,7 +6,9 @@ import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
 import SVGRightChevron from '../components/SVG/SVGRightChevron';
 import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
-import ImageSlider from './ImageSlider'
+import ImageSlider from './ImageSlider';
+import Reveal from './Reveal';
+import 'animate.css/animate.css';
 
 
 const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
@@ -68,17 +70,28 @@ class ProjectContainer extends React.Component {
           (<div
             key={key}
             className={heroClasses} >
-            <div className="video-overlayd"></div>
-            <Video
-              autoPlay
-              controls={this.props.mobile !== null}
-              poster={heroImage}
-              onCanPlayThrough={() => {
-                // Do stuff 
-              } }>
-              <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
-              <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
-            </Video>
+            {this.props.mobile &&
+              <Video
+                controls
+                poster={heroImage}
+                onCanPlayThrough={() => {
+                  // Do stuff 
+                } }>
+                <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
+                <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
+              </Video>
+            }
+            {!this.props.mobile &&
+              <Video
+                autoPlay
+                poster={heroImage}
+                onCanPlayThrough={() => {
+                  // Do stuff 
+                } }>
+                <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
+                <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
+              </Video>
+            }
 
           </div>)
           :
@@ -95,21 +108,21 @@ class ProjectContainer extends React.Component {
         switch (slice.sliceType) {
           case 'content':
             const contentClasses = `content-container ${sliceLabel}`;
-            return (<div className={contentClasses} key={index} dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} />);
+            return ( <Reveal effect="animated fadeInUp" className={contentClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
           case 'images':
             const images = slice.value.value;
             const imageClasses = `image-container ${sliceLabel}`;
             if (!images.length) return;
             if (images.length === 1) {
               let imageObj = images[0].fragments.src.main;
-              return (<Image classes={imageClasses} key={index} url={imageObj.url}></Image>);
+              return ( <Reveal effect="animated fadeInUp" key={index} className={imageClasses}><Image   url={imageObj.url}></Image></Reveal>);
             }
             else {
               const imagesHtml = images.map((image, index) => {
                 const imageObj = image.fragments.src.main;
                 return (<Image key={index} url={imageObj.url}></Image>);
               });
-              return (<ImageSlider key={index} images={imagesHtml} />);
+              return ( <Reveal effect="animated fadeInUp" className={imageClasses} key={index}><ImageSlider key={index} images={imagesHtml} /></Reveal>);
             }
         }
       })
