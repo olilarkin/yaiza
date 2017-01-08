@@ -38,6 +38,18 @@
       font-size: 1.3rem;
     }
   }
+  .one-side-tall-container {
+    >div {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      >div{
+        flex: 1 1 auto;
+      }
+    }
+    &.left-side-tall {}
+    &.right-side-tall {}
+  }
   .hero.has-image {
     background-repeat: no-repeat;
     background-position: center center;

@@ -37,7 +37,7 @@ class ProjectContainer extends React.Component {
   constructor(props) {
     super(props);
     this.videoPlayer = null;
-    this.handleScroll  = this.handleScroll.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
     this.playVideo = this.playVideo.bind(this);
     this.pauseVideo = this.pauseVideo.bind(this);
   }
@@ -55,6 +55,7 @@ class ProjectContainer extends React.Component {
   }
 
   handleScroll(event) {
+    if (!this.videoPlayer) return;
     let scrollTop = event.srcElement.body.scrollTop;
     scrollTop > 70 ? this.pauseVideo() : this.playVideo();
   }
@@ -158,7 +159,35 @@ class ProjectContainer extends React.Component {
                     </div>
                   }
                 </div>
-              </Reveal>);
+              </Reveal>
+            );
+          case 'One Side Tall':
+            const oneSideTallClasses = `content-container one-side-tall-container ${sliceLabel}`;
+            const oneSideTallTImage = slice.value.value["0"].fragments["tallImage"] && slice.value.value["0"].fragments["tallImage"].main.url
+            const oneSideTallSImage = slice.value.value["0"].fragments["otherSideBottomImage"] && slice.value.value["0"].fragments["otherSideBottomImage"].main.url;
+            const oneSideTallText = slice.value.value["0"].fragments["otherSideTopText"] && slice.value.value["0"].fragments["otherSideTopText"].asHtml();
+            return (
+              <Reveal effect="animated fadeInUp" className={oneSideTallClasses} key={index}>
+                {sliceLabel === 'left-side-tall' &&
+                  <div>
+                    <div className="half-width">
+                      <Image url={oneSideTallTImage}></Image>
+                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
+                    <div className="half-width">
+                      <Image url={oneSideTallSImage}></Image>
+                    </div>
+                  </div>
+                }
+                {sliceLabel === 'right-side-tall' &&
+                  <div>
+                    <div className="half-width"></div>
+                    <div className="half-width"></div>
+                    <div className="half-width"></div>
+                  </div>
+                }
+              </Reveal>
+            );
           case 'Quote':
             const quoteClasses = `content-container quote-container ${sliceLabel}`;
             const quoteText = slice.value.value["0"].fragments["quote-text"].value;
