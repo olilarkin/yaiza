@@ -1,5 +1,6 @@
 // External modules
 import React from 'react';
+import ExecutionEnvironment from 'exenv';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
@@ -7,7 +8,7 @@ import SVGRightChevron from '../components/SVG/SVGRightChevron';
 import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import ImageSlider from './ImageSlider';
-import Reveal from './Reveal';
+import Reveal from 'react-reveal';
 
 
 const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
@@ -35,6 +36,35 @@ const PrevNextLinks = ({projects, thisID}) => {
 class ProjectContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.videoPlayer = null;
+    this.handleScroll  = this.handleScroll.bind(this);
+    this.playVideo = this.playVideo.bind(this);
+    this.pauseVideo = this.pauseVideo.bind(this);
+  }
+
+  componentDidMount() {
+    if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  componentWillUnmount() {
+    if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  handleScroll(event) {
+    let scrollTop = event.srcElement.body.scrollTop;
+    scrollTop > 70 ? this.pauseVideo() : this.playVideo();
+  }
+
+  playVideo() {
+    this.videoPlayer.play();
+  }
+
+  pauseVideo() {
+    this.videoPlayer.pause();
   }
 
   render() {
@@ -82,10 +112,11 @@ class ProjectContainer extends React.Component {
             }
             {!this.props.mobile &&
               <Video
+                ref={(player) => { this.videoPlayer = player } }
                 autoPlay
+                loop
                 poster={heroImage}
                 onCanPlayThrough={() => {
-                  // Do stuff 
                 } }>
                 <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
                 <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
@@ -114,14 +145,14 @@ class ProjectContainer extends React.Component {
             const imageRollIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;
             const imageRollImage = slice.value.value["0"].fragments["background-image"] && slice.value.value["0"].fragments["background-image"].value;
             return (
-              <Reveal effect="animated fadeInUp" className={imageRollClasses} key={index} style={{backgroundColor: imageRollColor}}>
+              <Reveal effect="animated fadeInUp" className={imageRollClasses} key={index} style={{ backgroundColor: imageRollColor }}>
                 <div>
-                  {imageRollIcon && 
+                  {imageRollIcon &&
                     <div className="image-roll-icon">
                       <img src={imageRollIcon} className="img-responsive" />
                     </div>
                   }
-                  {imageRollImage && 
+                  {imageRollImage &&
                     <div className="image-roll-image">
                       <img src={imageRollImage} className="img-responsive" />
                     </div>
@@ -133,7 +164,7 @@ class ProjectContainer extends React.Component {
             const quoteText = slice.value.value["0"].fragments["quote-text"].value;
             const quoteSource = slice.value.value["0"].fragments["quote-source"].value;
             return (
-              <Reveal effect="animated fadeInUp" className={quoteClasses} key={index} style={{backgroundColor: '#000', color: '#fff'}}>
+              <Reveal effect="animated fadeInUp" className={quoteClasses} key={index} style={{ backgroundColor: '#000', color: '#fff' }}>
                 <div>
                   <p className="quote-text">{quoteText}</p>
                   <p className="quote-source">{quoteSource}</p>

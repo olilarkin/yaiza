@@ -173,7 +173,8 @@ class App extends React.Component {
             menuIsOpen={this.state.menuIsOpen}
             projects={this.state.projects}
             pathname={this.props.location.pathname}
-            />}
+            />
+        }
         {childrenWithProps}
         {this.state.hasLoaded && this.props.location.pathname !== '/' &&
           <Footer />

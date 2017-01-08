@@ -1,6 +1,6 @@
 #project {
-  .slick-slide{
-    height:auto;
+  .slick-slide {
+    height: auto;
   }
   &>div {
     position: relative;
@@ -12,18 +12,30 @@
   .image-slider-container {
     overflow: hidden;
   }
-  .quote-container {
-    padding: 10px;
-    text-align: center;
-    font-size: 1.8rem;
+  .image-roll-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    .quote-container {
+    >div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .quote-container {
+    padding: 80px;
+    text-align: center;
+    font-size: 2.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .quote-text {
       @extend .domaine;
     }
     .quote-source {
-      font-size: 1.4rem;
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 1.3rem;
     }
   }
   .hero.has-image {
@@ -49,7 +61,7 @@
       flex: 1 1 50%;
       display: flex;
       justify-content: flex-start;
-      &.next{
+      &.next {
         justify-content: flex-end;
       }
     }
