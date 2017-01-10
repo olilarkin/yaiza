@@ -38,17 +38,84 @@
       font-size: 1.3rem;
     }
   }
+  .a {
+    background: lighten(purple, 35%);
+  }
+  .b {
+    background: lighten(blue, 25%);
+  }
+  .c {
+    background: lighten(green, 15%);
+  }
+  .columned {
+    display: flex;
+    flex-flow: column wrap;
+    border: 1px solid;
+    background: #CCC;
+    margin: 1em 0;
+    height: 800px;
+  }
+  .columned div {
+    flex: 1 1 auto;
+    border: 1px solid;
+    width: 50%;
+  }
+  .columned div:first-child {
+    flex-basis: 100%;
+  }
   .one-side-tall-container {
-    >div {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      >div{
-        flex: 1 1 auto;
+    padding: 0;
+    .one-side-tall {
+      display: block;
+      float: left;
+      width: 100%;
+      .content {
+        padding: 80px;
+      }
+      >div {
+        width: 50%;
+        float: left;
+        position: relative;
+        &.tall {}
+        &.others {
+          background: #f0f0f0;
+        }
+        .half-width {
+          height: 50%;
+          img {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+          }
+        }
       }
     }
-    &.left-side-tall {}
-    &.right-side-tall {}
+    // .one-side-tall {
+    //   display: flex;
+    //   flex-direction: column;
+    //   flex-wrap: wrap;
+    //   height: 800px;
+    //   justify-content: center;
+    //   align-items: center;
+    //   .content {
+    //     padding: 80px;
+    //   }
+    //   >div {
+    //     flex: 1 1 50%;
+    //     width: 50%;
+    //     overflow: hidden;
+    //   }
+    // }
+    // &.left-side-tall {
+    //   .one-side-tall>div:first-child {
+    //     flex-basis: 100%;
+    //   }
+    // }
+    // &.right-side-tall {
+    //   .one-side-tall>div:last-child {
+    //     flex-basis: 100%;
+    //   }
+    // }
   }
   .hero.has-image {
     background-repeat: no-repeat;
@@ -79,26 +146,35 @@
     }
     a {
       @extend .domaine;
-      font-size: 20px;
+      font-size: 11px;
       color: #000;
-      padding: 10px;
+      padding: 10px 30px;
+      display: block;
+      position: relative;
+      &.next-link,
+      &.prev-link {
+        span {
+          position: absolute;
+          top: 6px;
+        }
+      }
       &.next-link {
         text-align: right;
         span {
-          padding-left: 5px
+          right: 10px;
+          top: 4px;
         }
       }
       &.prev-link {
         span {
-          padding-right: 5px
+          left: 10px;
         }
       }
     }
     span svg {
-      width: 6px;
+      width: 10px;
       height: auto;
-      position: relative;
-      top: 2px;
+      top: 2px
     }
   }
 }
@@ -114,6 +190,22 @@
     }
     .hero.has-image {
       position: relative;
+    }
+    .prev-next-links-container {
+      a {
+        font-size: 20px;
+        &.next-link,
+        &.prev-link {
+          span {
+            top: 16px;
+          }
+        }
+        &.next-link {
+          span {
+            top: 14px;
+          }
+        }
+      }
     }
   }
 }

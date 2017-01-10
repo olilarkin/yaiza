@@ -6,9 +6,10 @@ import NavLink from '../NavLink'
 import classNames from 'classnames'
 
 const Header = (props) => {
+  console.log('props', props);
   const headerClasses = classNames({
     header: true,
-    active: props.menuIsOpen
+    active: props.headerIsActive
   });
   return (
     <div className={headerClasses}>

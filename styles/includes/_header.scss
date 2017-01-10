@@ -12,7 +12,7 @@
   font-weight: bold;
   height: $headerHeight;
   background-color:transparent;
-  transition: color $transitionTime $transitionEase, background-color $transitionTime $transitionEase;
+  transition: background-color $transitionTime * 3 $transitionEase;
   .menu-button-container {
     width: 75px;
     position: fixed;
@@ -63,8 +63,7 @@
     user-select: none;
   }
   &.active {
-    color: $lightColor;
-    background-color:#000;
+    background-color:rgba(0,0,0,.5);
     .menu-button-container {
       &:hover {
         color: $lightColor;

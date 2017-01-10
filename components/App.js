@@ -5,6 +5,7 @@ import Prismic from 'prismic.io';
 // Config
 import config from '../config/config';
 // Components
+import ExecutionEnvironment from 'exenv';
 import Header from '../components/Header/Header';
 import Nav from './Nav'
 import Footer from '../components/Footer';
@@ -60,9 +61,11 @@ class App extends React.Component {
     this.state = {
       hasLoaded: false,
       menuIsOpen: false,
+      headerIsActive: false,
       currentPage: '',
       isYoutubeVideoPlaying: false,
-      homepageSlide: 0
+      homepageSlide: 0,
+      headerHeight: 70
     };
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
@@ -72,11 +75,35 @@ class App extends React.Component {
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
     this.handleToggleYoutubeVideo = this.handleToggleYoutubeVideo.bind(this);
     this.handleSetHomepageSlide = this.handleSetHomepageSlide.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentWillMount() {
     this.getPrismicData(this.query);
   }
+
+   componentDidMount() {
+    if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  componentWillUnmount() {
+    if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  handleScroll(event) {
+    let scrollTop = event.srcElement.body.scrollTop;
+    if (scrollTop > this.state.headerHeight) {
+      this.setState({headerIsActive: true});
+    }
+    else { 
+      this.setState({headerIsActive: false});
+    }
+  }
+
 
   getProjects(data) {
     this.setState({
@@ -153,7 +180,8 @@ class App extends React.Component {
         toggleYoutubeVideo: this.handleToggleYoutubeVideo,
         isYoutubeVideoPlaying: this.state.isYoutubeVideoPlaying,
         videoURL: config.videoURL,
-        mobile: md && md.mobile()
+        mobile: md && md.mobile(),
+        headerHeight: this.state.headerHeight
       })
     );
 
@@ -163,8 +191,10 @@ class App extends React.Component {
           <Header
             toggleMenu={this.handleToggleMenu}
             menuIsOpen={this.state.menuIsOpen}
+            headerIsActive={this.state.headerIsActive}
             projects={this.state.projects}
             pathname={this.props.location.pathname}
+            headerHeight={this.state.headerHeight}
             />
         }
         {this.state.hasLoaded &&

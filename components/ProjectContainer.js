@@ -57,7 +57,12 @@ class ProjectContainer extends React.Component {
   handleScroll(event) {
     if (!this.videoPlayer) return;
     let scrollTop = event.srcElement.body.scrollTop;
-    scrollTop > 70 ? this.pauseVideo() : this.playVideo();
+    if (scrollTop > this.props.headerHeight) {
+      this.pauseVideo()
+    }
+    else {
+      this.playVideo();
+    }
   }
 
   playVideo() {
@@ -94,7 +99,7 @@ class ProjectContainer extends React.Component {
           'video-container': videoFile !== undefined,
           'active': videoFile !== undefined && this.props.isYoutubeVideoPlaying
         });
-        console.log('this.props.mobile', this.props.mobile);
+        //console.log('this.props.mobile', this.props.mobile);
         return (videoFile)
           ?
           (<div
@@ -169,21 +174,26 @@ class ProjectContainer extends React.Component {
             return (
               <Reveal effect="animated fadeInUp" className={oneSideTallClasses} key={index}>
                 {sliceLabel === 'left-side-tall' &&
-                  <div>
-                    <div className="half-width">
-                      <Image url={oneSideTallTImage}></Image>
+                  <div className="one-side-tall">
+                    <div className="tall">
+                      <img src={oneSideTallTImage} className="img-responsive" />
                     </div>
-                    <div dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
-                    <div className="half-width">
-                      <Image url={oneSideTallSImage}></Image>
-                    </div>
+                    <div className="others">
+                      <div className="half-width content" dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
+                      <div className="half-width">
+                        <img src={oneSideTallSImage} className="img-responsive" />
+                      </div></div>
                   </div>
                 }
                 {sliceLabel === 'right-side-tall' &&
-                  <div>
-                    <div className="half-width"></div>
-                    <div className="half-width"></div>
-                    <div className="half-width"></div>
+                  <div className="one-side-tall">
+                    <div className="half-width">
+                      <img src={oneSideTallSImage} className="img-responsive" />
+                    </div>
+                    <div className="half-width content" dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
+                    <div>
+                      <img src={oneSideTallTImage} className="img-responsive" />
+                    </div>
                   </div>
                 }
               </Reveal>
