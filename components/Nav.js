@@ -23,16 +23,23 @@ const Nav = (props) => {
 
   return (
     <div className={navClassNames}>
-      <div className="nav-info">
-        <h3>Yaiza Gardner</h3>
-        <small>Design, Illustration &amp; Art direction</small>
-        <p><a href="mailto:info@yaiza.co.uk">info@yaiza.co.uk</a></p>
-      </div>
-      <ul className="nav">
-        <li><NavLink pathname={props.pathname} toggleMenu={props.toggleMenu} url="/projects/about-me">About me</NavLink></li>
-        <li><NavLink pathname={props.pathname} toggleMenu={props.toggleMenu} url="/projects">View all projects</NavLink></li>
-        {navOutput}
-      </ul>
+      <div className="container">
+        <div className="nav-info">
+          <div>
+            <h3>Yaiza Gardner</h3>
+          </div>
+         <div>
+            <small>Design, Illustration &amp; Art direction</small>
+         </div>
+          <div>
+            <p><a href="mailto:info@yaiza.co.uk">info@yaiza.co.uk</a></p>
+          </div>
+        </div>
+        <ul className="nav">
+          <li><NavLink pathname={props.pathname} toggleMenu={props.toggleMenu} url="/projects/about-me">About me</NavLink></li>
+          <li><NavLink pathname={props.pathname} toggleMenu={props.toggleMenu} url="/projects">View all projects</NavLink></li>
+          {navOutput}
+        </ul></div>
       <SVGYaizaLogo width={350} height={115} className="nav-logo" />
     </div>
   );

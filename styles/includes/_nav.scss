@@ -16,16 +16,26 @@
     opacity: 1;
     visibility: visible;
     overflow: auto;
-    .nav li {
+    .nav li,
+    .nav-info > div,
+    .nav-logo {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  .container {
+    position: relative;
   }
   .nav-info {
     color: #fff;
     text-align: left;
     padding: 10px 30px;
     margin-top: $headerHeight;
+    div {
+      transform: translateY(5vh);
+      opacity: 0;
+      transition: opacity .2s ease-out, transform .2s ease-out;
+    }
     h3 {
       @extend .domaine;
     }
@@ -84,6 +94,10 @@
     width: 100%;
     z-index: 1;
     @extend .img-responsive;
+    opacity: 0;
+    transform: translateY(5vh);
+    transition: opacity .35s ease-out, transform .35s ease-out;
+    transition-delay: .75s;
     path {
       fill: #0f0f0f;
     }
@@ -105,7 +119,8 @@
 /* Animation delays */
 
 @for $i from 1 to 20 {
-  .nav-container.active .nav li:nth-child(#{$i}) {
+  .nav-container.active .nav li:nth-child(#{$i}),
+  .nav-container.active .nav-info>div:nth-child(#{$i}) {
     transition-delay: $i * .05s;
   }
 }
@@ -136,10 +151,11 @@
     }
   }
 }
+
 @media screen and (min-width:1000px) {
   .nav-container {
     .nav-logo {
-      bottom:-50%;
+      bottom: -50%;
     }
   }
 }

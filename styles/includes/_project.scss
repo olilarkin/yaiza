@@ -90,32 +90,6 @@
         }
       }
     }
-    // .one-side-tall {
-    //   display: flex;
-    //   flex-direction: column;
-    //   flex-wrap: wrap;
-    //   height: 800px;
-    //   justify-content: center;
-    //   align-items: center;
-    //   .content {
-    //     padding: 80px;
-    //   }
-    //   >div {
-    //     flex: 1 1 50%;
-    //     width: 50%;
-    //     overflow: hidden;
-    //   }
-    // }
-    // &.left-side-tall {
-    //   .one-side-tall>div:first-child {
-    //     flex-basis: 100%;
-    //   }
-    // }
-    // &.right-side-tall {
-    //   .one-side-tall>div:last-child {
-    //     flex-basis: 100%;
-    //   }
-    // }
   }
   .hero.has-image {
     background-repeat: no-repeat;
@@ -135,6 +109,7 @@
   }
   .prev-next-links-container {
     display: flex;
+    padding-top:40px;
     &>div {
       display: block;
       flex: 1 1 50%;
@@ -148,7 +123,7 @@
       @extend .domaine;
       font-size: 11px;
       color: #000;
-      padding: 10px 30px;
+      padding: 10px 30px 10px 60px;
       display: block;
       position: relative;
       &.next-link,
@@ -160,14 +135,16 @@
       }
       &.next-link {
         text-align: right;
+        padding-left:30px;
+        padding-right:60px;
         span {
-          right: 10px;
+          right:40px;
           top: 4px;
         }
       }
       &.prev-link {
         span {
-          left: 10px;
+          left: 40px;
         }
       }
     }

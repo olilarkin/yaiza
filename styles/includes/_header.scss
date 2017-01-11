@@ -11,11 +11,14 @@
   z-index: 51;
   font-weight: bold;
   height: $headerHeight;
-  background-color:transparent;
-  transition: background-color $transitionTime * 3 $transitionEase;
+  background-color: transparent;
+  .container {
+    position: relative;
+    transition: background-color $transitionTime * 3 $transitionEase;
+  }
   .menu-button-container {
     width: 75px;
-    position: fixed;
+    position: absolute;
     cursor: pointer;
     z-index: 51;
     text-align: right;
@@ -32,7 +35,7 @@
     }
   }
   .logo-link {
-    position: fixed;
+    position: absolute;
     z-index: 52;
     left: 30px;
     top: 15px;
@@ -63,7 +66,10 @@
     user-select: none;
   }
   &.active {
-    background-color:rgba(0,0,0,.5);
+    .container {
+      background-color: rgba(0, 0, 0, .5);
+      height: 100%;
+    }
     .menu-button-container {
       &:hover {
         color: $lightColor;

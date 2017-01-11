@@ -13,12 +13,12 @@ const Header = (props) => {
   });
   return (
     <div className={headerClasses}>
-      <div className="row">
+      <div className="container">
         <NavLink url="/" className="logo-link" toggleMenu={props.toggleMenu.bind(null)} willToggle={props.menuIsOpen}>
           <SVGLogo width={33} height={34} className="logo" />
         </NavLink>
-        {props.pathname === '/' && 
-        <div className="hidden-xs strapline"><p>Design, Illustration &amp; Art Direction</p></div>}
+        {props.pathname === '/' &&
+          <div className="hidden-xs strapline"><p>Design, Illustration &amp; Art Direction</p></div>}
         <div className="menu-button-container" onClick={props.toggleMenu}>
           <NavIcon {...props} />
         </div>

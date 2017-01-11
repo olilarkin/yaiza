@@ -230,7 +230,7 @@ class ProjectContainer extends React.Component {
 
 
     return (
-      <div id="project">
+      <div id="project" className="container">
         {heroPanel}
         {pageContentOutput}
         <PrevNextLinks projects={this.props.projects} thisID={this.props.params.id} />
