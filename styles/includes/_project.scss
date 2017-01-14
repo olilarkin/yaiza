@@ -14,6 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 50vh;
     >div {
       display: flex;
       justify-content: center;
@@ -105,7 +106,7 @@
   }
   .prev-next-links-container {
     display: flex;
-    padding-top: 20px;
+    padding-top: 40px;
     background-color: #fff;
     color: #000;
     &>div {
@@ -121,33 +122,33 @@
       @extend .domaine;
       font-size: 11px;
       color: #000;
-      padding: 10px 10px 10px 30px;
+      padding: 10px 15px 10px 30px;
       display: block;
       position: relative;
       &.next-link,
       &.prev-link {
         span {
           position: absolute;
-          top: 6px;
+          top: 12px;
         }
       }
       &.next-link {
         text-align: right;
-        padding-left: 10px;
+        padding-left: 15px;
         padding-right: 30px;
         span {
-          right: 10px;
-          top: 4px;
+          right: 20px;
+          top: 13px;
         }
       }
       &.prev-link {
         span {
-          left: 10px;
+          left: 20px;
         }
       }
     }
     span svg {
-      width: 10px;
+      width: 6px;
       height: auto;
       top: 2px
     }
@@ -177,19 +178,22 @@
             top: 16px;
           }
         }
-      }
-      &.prev-link {
-        span {
-          left: 40px;
+        &.next-link {
+          padding-left: 30px;
+          padding-right: 60px;
+          span {
+            right: 40px;
+            top: 17px;
+          }
+        }
+        &.prev-link {
+          span {
+            left: 40px;
+          }
         }
       }
-      &.next-link {
-        padding-left: 30px;
-        padding-right: 60px;
-        span {
-          top: 14px;
-          right: 40px;
-        }
+      span svg {
+        width: 10px;
       }
     }
   }

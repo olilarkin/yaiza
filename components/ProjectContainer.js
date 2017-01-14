@@ -150,7 +150,7 @@ class ProjectContainer extends React.Component {
             const contentDarkClasses = `content-container content-container--dark ${sliceLabel}`;
             return (<Reveal effect="animated fadeInUp" className={contentDarkClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
           case 'Image Rollover':
-            const imageRollClasses = `content-container image-roll-container ${sliceLabel}`;
+            const imageRollClasses = `image-roll-container ${sliceLabel}`;
             const imageRollColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;
             const imageRollIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;
             const imageRollImage = slice.value.value["0"].fragments["background-image"] && slice.value.value["0"].fragments["background-image"].value;
