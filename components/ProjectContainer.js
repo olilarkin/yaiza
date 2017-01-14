@@ -81,6 +81,7 @@ class ProjectContainer extends React.Component {
     const slices = projects && projects
       .filter(doc => doc.uid === thisID)
       .map(doc => {
+        if (!doc.getSliceZone('casestudy.contentArea')) return;
         // map through each slice and output into array
         for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
           slicesArray.push(slice);
@@ -145,6 +146,9 @@ class ProjectContainer extends React.Component {
           case 'content':
             const contentClasses = `content-container ${sliceLabel}`;
             return (<Reveal effect="animated fadeInUp" className={contentClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
+          case 'Content Dark':
+            const contentDarkClasses = `content-container content-container--dark ${sliceLabel}`;
+            return (<Reveal effect="animated fadeInUp" className={contentDarkClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
           case 'Image Rollover':
             const imageRollClasses = `content-container image-roll-container ${sliceLabel}`;
             const imageRollColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;

@@ -1,5 +1,5 @@
 body {
-  background: #171717;
+  background: $darkColor;
   color: #fff;
   font-size: 1.4rem;
   line-height: 1.6;
@@ -13,14 +13,14 @@ body {
   min-width: 0;
 }
 
-.container{
-  padding: 0 15px;
+.container {
+  padding: 0;
 }
 
 #wrapper {
   display: flex;
   flex-direction: column;
-  &>*:not(.header):not(#home) {
+  &>*:not(.header):not(#home):not(#footer) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -52,6 +52,12 @@ h4 {
   padding: 40px;
   display: flex;
   flex-wrap: wrap;
+  background-color: #fff;
+  color: #000;
+  &--dark {
+    background-color: $darkColor;
+    color: #ececec;
+  }
   &>* {
     flex: 1 1 100%;
   }
@@ -71,19 +77,22 @@ h4 {
   background-color: #fff;
   color: #000;
   text-align: center;
-  padding: 200px 0 30px;
+  padding-top: 50px;
+  padding-bottom:30px;
   position: relative;
   z-index: 2;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  min-width:100%;
   p {
     margin: 0;
   }
 }
 
 @media screen and (min-width:768px){
-  .container{
-    padding: 0;
+  #footer{
+    min-width:0;
+    padding-top:200px;
   }
 }

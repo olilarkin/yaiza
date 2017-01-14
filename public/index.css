@@ -646,24 +646,24 @@ address {
   font-style: normal;
   line-height: 1.42857; }
 
-.container {
+.container, #footer {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, .container:after {
+  .container:before, #footer:before, .container:after, #footer:after {
     content: " ";
     display: table; }
-  .container:after {
+  .container:after, #footer:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container {
+    .container, #footer {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container {
+    .container, #footer {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container {
+    .container, #footer {
       width: 1170px; } }
 
 .container-fluid {
@@ -1901,7 +1901,7 @@ h4, .nav-container, .nav-container .nav-info h3, #project .quote-container .quot
   src: url("/fonts/DomaineDisplayWeb-Semibold.woff") format("woff"), url("/fonts/DomaineDisplayWeb-Semibold.woff2") format("woff2"); }
 
 body {
-  background: #222;
+  background: #171717;
   color: #fff;
   font-size: 1.4rem;
   line-height: 1.6;
@@ -1912,13 +1912,13 @@ body {
   min-height: 0;
   min-width: 0; }
 
-.container {
-  padding: 0 15px; }
+.container, #footer {
+  padding: 0; }
 
 #wrapper {
   display: flex;
   flex-direction: column; }
-  #wrapper > *:not(.header):not(#home) {
+  #wrapper > *:not(.header):not(#home):not(#footer) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; }
@@ -1942,7 +1942,12 @@ h4 {
 .content-container {
   padding: 40px;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  background-color: #fff;
+  color: #000; }
+  .content-container--dark {
+    background-color: #171717;
+    color: #ececec; }
   .content-container > * {
     flex: 1 1 100%; }
   .content-container.half-width + .content-container.half-width + .content-container.half-width,
@@ -1956,7 +1961,8 @@ h4 {
   background-color: #fff;
   color: #000;
   text-align: center;
-  padding: 200px 0 30px;
+  padding-top: 200px;
+  padding-bottom: 30px;
   position: relative;
   z-index: 2;
   align-items: center;
@@ -1964,10 +1970,6 @@ h4 {
   font-weight: bold; }
   #footer p {
     margin: 0; }
-
-@media screen and (min-width: 768px) {
-  .container {
-    padding: 0; } }
 
 .splash-container {
   position: absolute;
@@ -2102,10 +2104,10 @@ h4 {
   z-index: 51;
   font-weight: bold;
   height: 70px;
-  background-color: transparent;
-  transition: background-color 0.45s ease-in; }
-  .header .container {
-    position: relative; }
+  background-color: transparent; }
+  .header .container, .header #footer {
+    position: relative;
+    transition: background-color 0.45s ease-in; }
   .header .menu-button-container {
     width: 75px;
     position: absolute;
@@ -2144,7 +2146,7 @@ h4 {
     left: 50%;
     margin-left: -130px;
     user-select: none; }
-  .header.active .container {
+  .header.active .container, .header.active #footer {
     background-color: rgba(0, 0, 0, 0.5);
     height: 100%; }
   .header.active .menu-button-container:hover {
@@ -2167,14 +2169,22 @@ h4 {
     opacity: 1;
     visibility: visible;
     overflow: auto; }
-    .nav-container.active .nav li {
+    .nav-container.active .nav li,
+    .nav-container.active .nav-info > div,
+    .nav-container.active .nav-logo {
       opacity: 1;
       transform: translateY(0); }
+  .nav-container .container, .nav-container #footer {
+    position: relative; }
   .nav-container .nav-info {
     color: #fff;
     text-align: left;
     padding: 10px 30px;
     margin-top: 70px; }
+    .nav-container .nav-info div {
+      transform: translateY(5vh);
+      opacity: 0;
+      transition: opacity .2s ease-out, transform .2s ease-out; }
     .nav-container .nav-info small {
       color: #f0f0f0;
       margin-bottom: 30px;
@@ -2217,7 +2227,11 @@ h4 {
     position: absolute;
     bottom: -20%;
     width: 100%;
-    z-index: 1; }
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(5vh);
+    transition: opacity .35s ease-out, transform .35s ease-out;
+    transition-delay: .75s; }
     .nav-container .nav-logo path {
       fill: #0f0f0f; }
 
@@ -2230,61 +2244,80 @@ h4 {
     color: #fff; }
 
 /* Animation delays */
-.nav-container.active .nav li:nth-child(1) {
+.nav-container.active .nav li:nth-child(1),
+.nav-container.active .nav-info > div:nth-child(1) {
   transition-delay: 0.05s; }
 
-.nav-container.active .nav li:nth-child(2) {
+.nav-container.active .nav li:nth-child(2),
+.nav-container.active .nav-info > div:nth-child(2) {
   transition-delay: 0.1s; }
 
-.nav-container.active .nav li:nth-child(3) {
+.nav-container.active .nav li:nth-child(3),
+.nav-container.active .nav-info > div:nth-child(3) {
   transition-delay: 0.15s; }
 
-.nav-container.active .nav li:nth-child(4) {
+.nav-container.active .nav li:nth-child(4),
+.nav-container.active .nav-info > div:nth-child(4) {
   transition-delay: 0.2s; }
 
-.nav-container.active .nav li:nth-child(5) {
+.nav-container.active .nav li:nth-child(5),
+.nav-container.active .nav-info > div:nth-child(5) {
   transition-delay: 0.25s; }
 
-.nav-container.active .nav li:nth-child(6) {
+.nav-container.active .nav li:nth-child(6),
+.nav-container.active .nav-info > div:nth-child(6) {
   transition-delay: 0.3s; }
 
-.nav-container.active .nav li:nth-child(7) {
+.nav-container.active .nav li:nth-child(7),
+.nav-container.active .nav-info > div:nth-child(7) {
   transition-delay: 0.35s; }
 
-.nav-container.active .nav li:nth-child(8) {
+.nav-container.active .nav li:nth-child(8),
+.nav-container.active .nav-info > div:nth-child(8) {
   transition-delay: 0.4s; }
 
-.nav-container.active .nav li:nth-child(9) {
+.nav-container.active .nav li:nth-child(9),
+.nav-container.active .nav-info > div:nth-child(9) {
   transition-delay: 0.45s; }
 
-.nav-container.active .nav li:nth-child(10) {
+.nav-container.active .nav li:nth-child(10),
+.nav-container.active .nav-info > div:nth-child(10) {
   transition-delay: 0.5s; }
 
-.nav-container.active .nav li:nth-child(11) {
+.nav-container.active .nav li:nth-child(11),
+.nav-container.active .nav-info > div:nth-child(11) {
   transition-delay: 0.55s; }
 
-.nav-container.active .nav li:nth-child(12) {
+.nav-container.active .nav li:nth-child(12),
+.nav-container.active .nav-info > div:nth-child(12) {
   transition-delay: 0.6s; }
 
-.nav-container.active .nav li:nth-child(13) {
+.nav-container.active .nav li:nth-child(13),
+.nav-container.active .nav-info > div:nth-child(13) {
   transition-delay: 0.65s; }
 
-.nav-container.active .nav li:nth-child(14) {
+.nav-container.active .nav li:nth-child(14),
+.nav-container.active .nav-info > div:nth-child(14) {
   transition-delay: 0.7s; }
 
-.nav-container.active .nav li:nth-child(15) {
+.nav-container.active .nav li:nth-child(15),
+.nav-container.active .nav-info > div:nth-child(15) {
   transition-delay: 0.75s; }
 
-.nav-container.active .nav li:nth-child(16) {
+.nav-container.active .nav li:nth-child(16),
+.nav-container.active .nav-info > div:nth-child(16) {
   transition-delay: 0.8s; }
 
-.nav-container.active .nav li:nth-child(17) {
+.nav-container.active .nav li:nth-child(17),
+.nav-container.active .nav-info > div:nth-child(17) {
   transition-delay: 0.85s; }
 
-.nav-container.active .nav li:nth-child(18) {
+.nav-container.active .nav li:nth-child(18),
+.nav-container.active .nav-info > div:nth-child(18) {
   transition-delay: 0.9s; }
 
-.nav-container.active .nav li:nth-child(19) {
+.nav-container.active .nav li:nth-child(19),
+.nav-container.active .nav-info > div:nth-child(19) {
   transition-delay: 0.95s; }
 
 @media screen and (min-width: 768px) {
@@ -2567,8 +2600,6 @@ http://flickity.metafizzy.co
 #project > div {
   position: relative;
   z-index: 2;
-  background-color: #fff;
-  color: #000;
   flex: 1 1 100%; }
 
 #project .image-slider-container {
@@ -2632,8 +2663,6 @@ http://flickity.metafizzy.co
       width: 50%;
       float: left;
       position: relative; }
-      #project .one-side-tall-container .one-side-tall > div.others {
-        background: #f0f0f0; }
       #project .one-side-tall-container .one-side-tall > div .half-width {
         height: 50%; }
         #project .one-side-tall-container .one-side-tall > div .half-width img {
@@ -2659,7 +2688,9 @@ http://flickity.metafizzy.co
 
 #project .prev-next-links-container {
   display: flex;
-  padding-top: 40px; }
+  padding-top: 20px;
+  background-color: #fff;
+  color: #000; }
   #project .prev-next-links-container > div {
     display: block;
     flex: 1 1 50%;
@@ -2670,7 +2701,7 @@ http://flickity.metafizzy.co
   #project .prev-next-links-container a {
     font-size: 11px;
     color: #000;
-    padding: 10px 30px 10px 60px;
+    padding: 10px 10px 10px 30px;
     display: block;
     position: relative; }
     #project .prev-next-links-container a.next-link span, #project .prev-next-links-container a.prev-link span {
@@ -2678,13 +2709,13 @@ http://flickity.metafizzy.co
       top: 6px; }
     #project .prev-next-links-container a.next-link {
       text-align: right;
-      padding-left: 30px;
-      padding-right: 60px; }
+      padding-left: 10px;
+      padding-right: 30px; }
       #project .prev-next-links-container a.next-link span {
-        right: 40px;
+        right: 10px;
         top: 4px; }
     #project .prev-next-links-container a.prev-link span {
-      left: 40px; }
+      left: 10px; }
   #project .prev-next-links-container span svg {
     width: 10px;
     height: auto;
@@ -2698,12 +2729,21 @@ http://flickity.metafizzy.co
     flex-basis: 50%; }
   #project .hero.has-image {
     position: relative; }
-  #project .prev-next-links-container a {
-    font-size: 20px; }
-    #project .prev-next-links-container a.next-link span, #project .prev-next-links-container a.prev-link span {
-      top: 16px; }
-    #project .prev-next-links-container a.next-link span {
-      top: 14px; } }
+  #project .prev-next-links-container {
+    padding-top: 40px; }
+    #project .prev-next-links-container a {
+      font-size: 20px;
+      padding: 10px 30px 10px 60px; }
+      #project .prev-next-links-container a.next-link span, #project .prev-next-links-container a.prev-link span {
+        top: 16px; }
+    #project .prev-next-links-container.prev-link span {
+      left: 40px; }
+    #project .prev-next-links-container.next-link {
+      padding-left: 30px;
+      padding-right: 60px; }
+      #project .prev-next-links-container.next-link span {
+        top: 14px;
+        right: 40px; } }
 
 video {
   position: absolute;
