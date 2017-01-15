@@ -10,15 +10,101 @@
   .image-slider-container {
     overflow: hidden;
   }
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    position: relative;
+    >div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
   .image-roll-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
-    >div {
+    position: relative;
+    overflow: hidden;
+    .image-roll-default {
       display: flex;
       justify-content: center;
       align-items: center;
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .5s ease-out, visibility .5s ease-out;
+    }
+    .image-roll-over-container {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .5s ease-out, visibility .5s ease-out;
+      .image-roll-over-image {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      .image-roll-over-assets {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translate3d(0, 200%, 0);
+        transition: transform 0s ease-out, opacity 0s ease-out, visibility 0s ease-out;
+        transition-delay: .35s;
+      }
+      .image-roll-over-icon {
+        img {
+          width: 130px;
+          margin: 20px auto;
+        }
+      }
+      .image-roll-over-text {
+        color: rgba(207, 209, 211, 0.75);
+        opacity:0;
+        visibility: hidden;
+        transition: opacity .5s ease-out, visibility .5s ease-out;
+        transition-delay: 0s;
+      }
+    }
+    &:hover {
+      .image-roll-default {
+        visibility: hidden;
+        opacity: 0;
+      }
+      .image-roll-over-container {
+        opacity: 1;
+        visibility: visible;
+      }
+      .image-roll-over-assets {
+        transform: translate3d(0, 0, 0);
+        transition: transform .5s ease-out, opacity .5s ease-out, visibility .5s ease-out;
+        transition-delay: .35s;
+      }
+      .image-roll-over-text{
+        opacity: 1;
+        visibility: visible;
+        transition-delay: .75s;
+      }
     }
   }
   .quote-container {

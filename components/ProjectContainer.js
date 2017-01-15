@@ -149,24 +149,50 @@ class ProjectContainer extends React.Component {
           case 'Content Dark':
             const contentDarkClasses = `content-container content-container--dark ${sliceLabel}`;
             return (<Reveal effect="animated fadeInUp" className={contentDarkClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
-          case 'Image Rollover':
+          case 'Logo':
+            const logoClasses = `logo-container ${sliceLabel}`;
+            const logoBGColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;
+            const logoIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;
+            return (
+              <Reveal effect="animated fadeInUp" className={logoClasses} key={index} style={{ backgroundColor: logoBGColor }}>
+                <div>
+                  {logoIcon &&
+                    <div className="image-roll-icon">
+                      <img src={logoIcon} className="img-responsive" />
+                    </div>
+                  }
+                </div>
+              </Reveal>
+            );
+            case 'Image Rollover':
             const imageRollClasses = `image-roll-container ${sliceLabel}`;
             const imageRollColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;
             const imageRollIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;
-            const imageRollImage = slice.value.value["0"].fragments["background-image"] && slice.value.value["0"].fragments["background-image"].value;
+            const imageRollBgImage = slice.value.value["0"].fragments["rollover-background-image"] && slice.value.value["0"].fragments["rollover-background-image"].main.url;
+            const imageRolloverIcon = slice.value.value["0"].fragments["rollover-icon"] && slice.value.value["0"].fragments["rollover-icon"].main.url;
+            const imageRolloverText = slice.value.value["0"].fragments["rollover-text"] && slice.value.value["0"].fragments["rollover-text"].value;
             return (
-              <Reveal effect="animated fadeInUp" className={imageRollClasses} key={index} style={{ backgroundColor: imageRollColor }}>
-                <div>
+              <Reveal effect="animated fadeInUp" className={imageRollClasses} key={index}>
+                <div className="image-roll-default" style={{ backgroundColor: imageRollColor }}>
                   {imageRollIcon &&
                     <div className="image-roll-icon">
                       <img src={imageRollIcon} className="img-responsive" />
                     </div>
                   }
-                  {imageRollImage &&
-                    <div className="image-roll-image">
-                      <img src={imageRollImage} className="img-responsive" />
-                    </div>
-                  }
+                </div>
+                <div className="image-roll-over-container">
+                  <div className="image-roll-over-image" style={{ backgroundImage: `url(${imageRollBgImage})` }} />
+                  <div className="image-roll-over-assets">
+                    {imageRolloverIcon &&
+                      <div className="image-roll-over-icon">
+                        <img src={imageRolloverIcon} className="img-responsive" />
+                      </div>
+                    }
+                    {imageRolloverText &&
+                      <div className="image-roll-over-text">
+                        <p>{imageRolloverText}</p>
+                      </div>
+                    }</div>
                 </div>
               </Reveal>
             );

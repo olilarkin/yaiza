@@ -124,7 +124,7 @@ class App extends React.Component {
   }
 
   setPrismicData(data) {
-    console.log('data', data);
+    //console.log('data', data);
     this.getProjects(data);
     this.getHomePageContent(data);
     this.setState({

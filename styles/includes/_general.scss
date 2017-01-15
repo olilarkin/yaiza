@@ -67,7 +67,8 @@ h4 {
   }
 }
 
-.image-container {
+.image-container,
+.image-roll-container {
   &.half-width.animated.fadeInUp:nth-child(odd) {
     animation-delay: .3s;
   }
