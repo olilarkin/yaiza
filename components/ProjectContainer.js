@@ -77,7 +77,6 @@ class ProjectContainer extends React.Component {
     let slicesArray = [];
     const thisID = this.props.params.id;
     const projects = this.props.projects;
-    console.log('projects', projects);
     const slices = projects && projects
       .filter(doc => doc.uid === thisID)
       .map(doc => {
@@ -100,7 +99,6 @@ class ProjectContainer extends React.Component {
           'video-container': videoFile !== undefined,
           'active': videoFile !== undefined && this.props.isYoutubeVideoPlaying
         });
-        //console.log('this.props.mobile', this.props.mobile);
         return (videoFile)
           ?
           (<div
