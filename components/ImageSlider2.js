@@ -18,23 +18,26 @@ class ImageSlider extends Component {
       imagesCount: images.length
     }
     this.fadeImages = this.fadeImages.bind(this);
+    this.clear = this.clear.bind(this);
   }
   componentDidMount() {
     this.fadeImages();
   }
 
   componentWillUnmount() {
+    this.clear();
+  }
+
+  clear() {
     clearInterval(this.timer);
   }
 
-
   fadeImages() {
-    console.log('this.state.imagesCount:', this.state.imagesCount);
-    console.log('this.state.activeImage:', this.state.activeImage);
     this.timer = setInterval(() => {
       const activeImage = this.state.activeImage < this.state.imagesCount ? this.state.activeImage : 0;
       this.setState({
-        activeImage: activeImage + 1
+        activeImage: activeImage + 1,
+        nextImage: activeImage + 2
       })
     }, 3000)
   }
@@ -42,18 +45,14 @@ class ImageSlider extends Component {
   render() {
     return (
       <div>
-        <div className="image-slider">
+        <div className="image-slider" onMouseLeave={this.fadeImages} onMouseEnter={this.clear}>
           {images.map((image, index) => {
             const imageClasses = classnames({
               'image-container': true,
-              'active': this.state.activeImage === index + 1
+              'active': this.state.activeImage === index + 1,
+              'next': this.state.nextImage === index + 1
             })
             return <div className={imageClasses} key={index} style={{ backgroundImage: `url(${image})` }}></div>
-          })}
-        </div>
-        <div className="image-slider">
-          {images.map((image, index) => {
-            return <div className="image-container" key={index} style={{ backgroundImage: `url(${image})` }}></div>
           })}
         </div>
       </div>
