@@ -8,7 +8,7 @@ There is meant to be a video in the oxford baroque top banner - should be in the
 
 Also there are more images that need to fade in with the sunset long image at the bottom - should be in the baroque slider folder. -- Added
 
-Can the background on the case study pages be white so the white copy blocks don't sit on black - will give the page more white space.
+Can the background on the case study pages be white so the white copy blocks don't sit on black - will give the page more white space. -- Done
 
 There needs to be more white space above and below the blocks of copy (larger margins) on the case study pages . 
 
