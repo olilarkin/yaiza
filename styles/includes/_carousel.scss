@@ -15,7 +15,7 @@
     text-decoration: none;
   }
   &[data-effect="Black and White"] {
-    filter: grayscale(1);
+    filter: grayscale(1) contrast(120%) saturate(100%) brightness(100%);
     transition: filter ($transitionTime * 4) ease-in-out;
     &:hover {
       filter: grayscale(0);
