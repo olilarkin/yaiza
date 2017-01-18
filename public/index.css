@@ -646,24 +646,24 @@ address {
   font-style: normal;
   line-height: 1.42857; }
 
-.container, #footer {
+.container {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, #footer:before, .container:after, #footer:after {
+  .container:before, .container:after {
     content: " ";
     display: table; }
-  .container:after, #footer:after {
+  .container:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container, #footer {
+    .container {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container, #footer {
+    .container {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container, #footer {
+    .container {
       width: 1170px; } }
 
 .container-fluid {
@@ -1889,9 +1889,10 @@ h4, .nav-container, .nav-container .nav-info h3, #project .quote-container .quot
     transform: none; } }
 
 .animated {
-  animation-duration: .75s;
+  animation-duration: .6s;
   animation-fill-mode: both;
-  animation-timing-function: ease-out; }
+  animation-timing-function: ease-out;
+  backface-visibility: hidden; }
 
 .fadeInUp {
   animation-name: fadeInUp; }
@@ -1907,12 +1908,14 @@ body {
   line-height: 1.6;
   letter-spacing: 0.05rem;
   -webkit-overflow-scrolling: touch; }
+  body.light {
+    background-color: #fff; }
 
 * {
   min-height: 0;
   min-width: 0; }
 
-.container, #footer {
+.container {
   padding: 0; }
 
 #wrapper {
@@ -1940,7 +1943,7 @@ h4 {
   line-height: 2; }
 
 .content-container {
-  padding: 40px;
+  padding: 60px 40px;
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
@@ -1954,39 +1957,48 @@ h4 {
   .content-container.half-width + .content-container.half-width + .content-container.half-width .content-container.half-width {
     padding-top: 0; }
 
-.image-container.half-width.animated.fadeInUp:nth-child(odd) {
+.image-container.half-width.animated.fadeInUp:nth-child(odd),
+.image-roll-container.half-width.animated.fadeInUp:nth-child(odd) {
   animation-delay: .3s; }
 
 #footer {
   background-color: #fff;
   color: #000;
   text-align: center;
-  padding-top: 200px;
+  padding-top: 50px;
   padding-bottom: 30px;
   position: relative;
   z-index: 2;
   align-items: center;
   justify-content: center;
-  font-weight: bold; }
+  font-weight: bold;
+  min-width: 100%; }
   #footer p {
     margin: 0; }
+
+@media screen and (min-width: 768px) {
+  #footer {
+    min-width: 0;
+    padding-top: 200px; } }
 
 .splash-container {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  cursor: pointer;
   top: 0;
   left: 0;
   background: url("/assets/splash-bg.jpg") no-repeat center top;
   background-size: cover;
   z-index: 55;
   opacity: 0;
+  transform: scale(0.85);
   visibility: hidden;
-  -webkit-transition: opacity .35s ease-out, visibility .35s ease-out;
-  transition: opacity .35s ease-out, visibility .35s ease-out; }
+  transition: opacity .6s ease-out, visibility .6s ease-out, transform .2s ease-out; }
   .splash-container.active {
     opacity: 1;
-    visibility: visible; }
+    visibility: visible;
+    transform: scale(1); }
   .splash-container__logo {
     position: absolute;
     top: 30vh;
@@ -2105,7 +2117,7 @@ h4 {
   font-weight: bold;
   height: 70px;
   background-color: transparent; }
-  .header .container, .header #footer {
+  .header .container {
     position: relative;
     transition: background-color 0.45s ease-in; }
   .header .menu-button-container {
@@ -2146,7 +2158,7 @@ h4 {
     left: 50%;
     margin-left: -130px;
     user-select: none; }
-  .header.active .container, .header.active #footer {
+  .header.active .container {
     background-color: rgba(0, 0, 0, 0.5);
     height: 100%; }
   .header.active .menu-button-container:hover {
@@ -2173,8 +2185,9 @@ h4 {
     .nav-container.active .nav-info > div,
     .nav-container.active .nav-logo {
       opacity: 1;
-      transform: translateY(0); }
-  .nav-container .container, .nav-container #footer {
+      transform: translateY(0);
+      transition-delay: .5s; }
+  .nav-container .container {
     position: relative; }
   .nav-container .nav-info {
     color: #fff;
@@ -2231,7 +2244,7 @@ h4 {
     opacity: 0;
     transform: translateY(5vh);
     transition: opacity .35s ease-out, transform .35s ease-out;
-    transition-delay: .75s; }
+    transition-delay: 0s; }
     .nav-container .nav-logo path {
       fill: #0f0f0f; }
 
@@ -2469,10 +2482,8 @@ http://flickity.metafizzy.co
 #home {
   overflow: hidden; }
   #home #carousel {
-    margin: 10vh 0 8vh; }
-
-.carousel {
-  margin: 2vh 0; }
+    margin: 15vh 0;
+    position: relative; }
 
 .carousel-cell {
   width: 75vw;
@@ -2483,7 +2494,7 @@ http://flickity.metafizzy.co
     color: #fff;
     text-decoration: none; }
   .carousel-cell[data-effect="Black and White"] {
-    filter: grayscale(1);
+    filter: grayscale(1) contrast(120%) saturate(100%) brightness(100%);
     transition: filter 0.6s ease-in-out; }
     .carousel-cell[data-effect="Black and White"]:hover {
       filter: grayscale(0); }
@@ -2518,7 +2529,7 @@ http://flickity.metafizzy.co
       height: 100%;
       transform: skew(-26deg) translateX(-100%);
       left: -20%;
-      transition: transform .25s ease-out .25s; }
+      transition: transform .5s ease-out .25s; }
   .carousel-cell__text {
     position: absolute;
     top: 50%;
@@ -2532,7 +2543,7 @@ http://flickity.metafizzy.co
       transform: translateX(-10%);
       opacity: 0;
       visibility: hidden;
-      transition: transform .2s ease-out, visibility .2s ease-out, opacity .2s ease-out; }
+      transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out; }
       .carousel-cell__text h2::after {
         content: attr(data-subtext);
         position: absolute;
@@ -2543,23 +2554,26 @@ http://flickity.metafizzy.co
         transform: translateX(-10%);
         opacity: 0;
         visibility: hidden;
-        transition: transform .2s ease-out, visibility .2s ease-out, opacity .2s ease-out; }
+        transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out; }
   .carousel-cell.is-selected .carousel-cell__content::before {
     transform: skew(-26deg) translateX(0); }
   .carousel-cell.is-selected .carousel-cell__text h2 {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
-    transition-delay: .35s; }
+    transition-delay: .45s; }
     .carousel-cell.is-selected .carousel-cell__text h2::after {
       transform: translateX(0);
       opacity: 1;
       visibility: visible;
-      transition-delay: .45s; }
+      transition-delay: .55s; }
 
 .arrow-container {
   width: 100px;
-  margin: 0 auto; }
+  margin: 10px auto 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); }
   .arrow-container .arrow {
     position: relative;
     display: inline-block;
@@ -2590,8 +2604,7 @@ http://flickity.metafizzy.co
 
 @media screen and (min-width: 768px) {
   .carousel-cell {
-    width: 80vw;
-    height: 80vh;
+    height: 70vh;
     margin: 0 10vw; } }
 
 #project .slick-slide {
@@ -2605,14 +2618,80 @@ http://flickity.metafizzy.co
 #project .image-slider-container {
   overflow: hidden; }
 
-#project .image-roll-container {
+#project .logo-container {
   display: flex;
   justify-content: center;
-  align-items: center; }
-  #project .image-roll-container > div {
+  align-items: center;
+  min-height: 50vh;
+  position: relative; }
+  #project .logo-container > div {
     display: flex;
     justify-content: center;
     align-items: center; }
+
+#project .image-roll-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  position: relative;
+  overflow: hidden; }
+  #project .image-roll-container .image-roll-default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .5s ease-out, visibility .5s ease-out; }
+  #project .image-roll-container .image-roll-over-container {
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility .5s ease-out; }
+    #project .image-roll-container .image-roll-over-container .image-roll-over-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0; }
+    #project .image-roll-container .image-roll-over-container .image-roll-over-assets {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translate3d(0, 200%, 0);
+      transition: transform 0s ease-out, opacity 0s ease-out, visibility 0s ease-out;
+      transition-delay: .35s; }
+    #project .image-roll-container .image-roll-over-container .image-roll-over-icon img {
+      width: 130px;
+      margin: 20px auto; }
+    #project .image-roll-container .image-roll-over-container .image-roll-over-text {
+      color: rgba(207, 209, 211, 0.75);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .5s ease-out, visibility .5s ease-out;
+      transition-delay: 0s; }
+  #project .image-roll-container:hover .image-roll-default {
+    visibility: hidden;
+    opacity: 0; }
+  #project .image-roll-container:hover .image-roll-over-container {
+    opacity: 1;
+    visibility: visible; }
+  #project .image-roll-container:hover .image-roll-over-assets {
+    transform: translate3d(0, 0, 0);
+    transition: transform .5s ease-out, opacity .5s ease-out, visibility .5s ease-out;
+    transition-delay: .35s; }
+  #project .image-roll-container:hover .image-roll-over-text {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: .75s; }
 
 #project .quote-container {
   padding: 80px;
@@ -2688,7 +2767,7 @@ http://flickity.metafizzy.co
 
 #project .prev-next-links-container {
   display: flex;
-  padding-top: 20px;
+  padding-top: 40px;
   background-color: #fff;
   color: #000; }
   #project .prev-next-links-container > div {
@@ -2701,30 +2780,27 @@ http://flickity.metafizzy.co
   #project .prev-next-links-container a {
     font-size: 11px;
     color: #000;
-    padding: 10px 10px 10px 30px;
+    padding: 10px 15px 10px 30px;
     display: block;
     position: relative; }
     #project .prev-next-links-container a.next-link span, #project .prev-next-links-container a.prev-link span {
       position: absolute;
-      top: 6px; }
+      top: 12px; }
     #project .prev-next-links-container a.next-link {
       text-align: right;
-      padding-left: 10px;
+      padding-left: 15px;
       padding-right: 30px; }
       #project .prev-next-links-container a.next-link span {
-        right: 10px;
-        top: 4px; }
+        right: 20px;
+        top: 13px; }
     #project .prev-next-links-container a.prev-link span {
-      left: 10px; }
+      left: 20px; }
   #project .prev-next-links-container span svg {
-    width: 10px;
+    width: 6px;
     height: auto;
     top: 2px; }
 
 @media screen and (min-width: 768px) {
-  #project > div:nth-child(2),
-  #project > div:nth-child(3) {
-    margin-top: 0; }
   #project .half-width {
     flex-basis: 50%; }
   #project .hero.has-image {
@@ -2736,14 +2812,16 @@ http://flickity.metafizzy.co
       padding: 10px 30px 10px 60px; }
       #project .prev-next-links-container a.next-link span, #project .prev-next-links-container a.prev-link span {
         top: 16px; }
-    #project .prev-next-links-container.prev-link span {
-      left: 40px; }
-    #project .prev-next-links-container.next-link {
-      padding-left: 30px;
-      padding-right: 60px; }
-      #project .prev-next-links-container.next-link span {
-        top: 14px;
-        right: 40px; } }
+      #project .prev-next-links-container a.next-link {
+        padding-left: 30px;
+        padding-right: 60px; }
+        #project .prev-next-links-container a.next-link span {
+          right: 40px;
+          top: 17px; }
+      #project .prev-next-links-container a.prev-link span {
+        left: 40px; }
+    #project .prev-next-links-container span svg {
+      width: 10px; } }
 
 video {
   position: absolute;
@@ -2769,8 +2847,13 @@ video {
     z-index: 1;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center; }
+    background-position: center center;
+    transition: all .3s ease-in;
+    opacity: 0; }
   .image-slider .image-container.active {
+    z-index: 3;
+    opacity: 1; }
+  .image-slider .image-container.next {
     z-index: 2; }
 
 #MY404 {

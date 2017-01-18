@@ -6,7 +6,7 @@ Case studies - Like the image sliders with the fade, will need to add in control
 
 There is meant to be a video in the oxford baroque top banner - should be in the folder. -- As mentioned, needs a slight rethink
 
-Also there are more images that need to fade in with the sunset long image at the bottom - should be in the baroque slider folder. 
+Also there are more images that need to fade in with the sunset long image at the bottom - should be in the baroque slider folder. -- Added
 
 Can the background on the case study pages be white so the white copy blocks don't sit on black - will give the page more white space.
 
@@ -34,7 +34,7 @@ Only thought was can the video load full screen when you go onto the page, then 
 
 On the homepage - rollover state black and white - about me, did you use the black and white image I supplied in the folder? The black and white looks a little washed out, would be better to just use an image I have tweaked to black and white instead of using html as I can control the levels more.
 
-I think the homepage sliding images need to come down in size a little, and be more narrow. There needs to be more black space around the image, more like the marvel link https://marvelapp.com/fa71a0 and the PSD
+I think the homepage sliding images need to come down in size a little, and be more narrow. There needs to be more black space around the image, more like the marvel link https://marvelapp.com/fa71a0 and the PSD -- Done
 
 Also, I've just looked at the site on my super screen at work and the case studies assets look small compared to the screen as they are still at 1170px width - will this be addressed for bigger screens so it fills more of the browser area?
 
