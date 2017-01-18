@@ -1,0 +1,47 @@
+Homepage animation  needs a little tweaking its a bit fast -- Done
+
+Will need to assign the different rollovers to the right ones. -- We can do that easily in the CMS
+
+Case studies - Like the image sliders with the fade, will need to add in controls so it can be stopped. -- I'll add a 'pause on rollover' state to address this
+
+There is meant to be a video in the oxford baroque top banner - should be in the folder. -- As mentioned, needs a slight rethink
+
+Also there are more images that need to fade in with the sunset long image at the bottom - should be in the baroque slider folder. 
+
+Can the background on the case study pages be white so the white copy blocks don't sit on black - will give the page more white space.
+
+There needs to be more white space above and below the blocks of copy (larger margins) on the case study pages . 
+
+Also some alignment issues - maserati case study - in paragraph -'The film' the paragraph in the second column needs to line up with the top of the body copy in the column next to it not the top of the heading. 
+
+Also think the copy needs to go smaller at the top of all case study pages on the left when it says print/illustration/art direction etc and needs to line up with the top of the smaller text on the right - the second paragraph underneath the larger copy.  
+
+The larger copy - describing the project, needs to go a little smaller in font size. 
+
+On the homepage - design, illustration and art direction title needs to be in a lighter weight and smaller.
+
+Rako lighting controls homepage image needs to be the pinky one with the man on the balcony - currently used on the case study.
+
+The Rako brochure cover image with the logo is the one that sits in the top banner on the case study page - should be in the folder. 
+
+The full screen menu needs some more styling - leave with me, and the logo at the bottom needs to move up - can't see much of it. If it sits behind some of the menu text thats OK.
+
+Also I think I need to add some more touches in terms of rollovers, looping gifs on some of the case study pages but will know more when they are more complete. 
+
+Also some of the jpegs look low res - eurotunnel, and link top banners for example. Will have a look at saving them again. 
+
+Only thought was can the video load full screen when you go onto the page, then when you scroll down it reduces down into the frame of the site? Would be nice to get rid of the borders either side.  
+
+On the homepage - rollover state black and white - about me, did you use the black and white image I supplied in the folder? The black and white looks a little washed out, would be better to just use an image I have tweaked to black and white instead of using html as I can control the levels more.
+
+I think the homepage sliding images need to come down in size a little, and be more narrow. There needs to be more black space around the image, more like the marvel link https://marvelapp.com/fa71a0 and the PSD
+
+Also, I've just looked at the site on my super screen at work and the case studies assets look small compared to the screen as they are still at 1170px width - will this be addressed for bigger screens so it fills more of the browser area?
+
+Watched the Maserati video all the way through, it appears to be zoomed in - look at the text - all the worlds a stage bit - and its cut off. Think we need to have the video play full screen to address  this.
+
+Also lighten the font weight on the full screen menu, currently bold make lighter
+ 
+letter spacing on body copy and nav menu 0.08rem
+
+Nav full screen menu all uppercase apart from the email. Design, Illustration and Art Direction in the grey. Close up the line spacing in the project list
