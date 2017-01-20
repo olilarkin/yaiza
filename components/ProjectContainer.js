@@ -3,7 +3,6 @@ import React from 'react';
 import ExecutionEnvironment from 'exenv';
 import { Link } from 'react-router';
 import classNames from 'classnames';
-import SVGPlayIcon from '../components/SVG/SVGPlayIcon';
 import SVGRightChevron from '../components/SVG/SVGRightChevron';
 import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';

@@ -70,6 +70,7 @@ class App extends React.Component {
     this.getPrismicData = this.getPrismicData.bind(this);
     this.setPrismicData = this.setPrismicData.bind(this);
     this.getProjects = this.getProjects.bind(this);
+    this.getProjectOverview = this.getProjectOverview.bind(this);
     this.getHomePageContent = this.getHomePageContent.bind(this);
     this.handleHideSplash = this.handleHideSplash.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
@@ -105,6 +106,12 @@ class App extends React.Component {
   }
 
 
+  getProjectOverview(data) {
+    this.setState({
+      projectOverview: data
+        .filter(doc => doc.type === 'project-overview')
+    });
+  }
   getProjects(data) {
     this.setState({
       projects: data
@@ -124,8 +131,9 @@ class App extends React.Component {
   }
 
   setPrismicData(data) {
-    //console.log('data', data);
+    console.log('data', data);
     this.getProjects(data);
+    this.getProjectOverview(data);
     this.getHomePageContent(data);
     this.setState({
       hasLoaded: true
@@ -171,6 +179,7 @@ class App extends React.Component {
     const childrenWithProps = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, {
         projects: this.state.projects,
+        projectOverview: this.state.projectOverview,
         homepageContent: this.state.homepageContent,
         setHomepageSlide: this.handleSetHomepageSlide,
         homepageSlide: this.state.homepageSlide,
