@@ -123,25 +123,28 @@
 }
 
 .arrow-container {
-  width: 100px;
-  margin: 10px auto 0;
+  width: 80px;
+  margin: 20px auto 0;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   .arrow {
     position: relative;
     display: inline-block;
-    width: 45px;
+    width: 35px;
   }
   .carousel-arrow {
     display: inline-block;
     cursor: pointer;
-    width: 50px;
+    width: 40px;
     position: absolute;
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
     transition: transform .35s ease-out, visibility .35s ease-out, opacity .35s ease-out;
+    &--right {
+      left: 2px;
+    }
     &.hideme {
       transform: translateX(-5px);
       opacity: 0;
