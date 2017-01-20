@@ -22,7 +22,7 @@ class ProjectsContainer extends React.Component {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.addEventListener('scroll', this.handleScroll);
     }
-    if (ExecutionEnvironment.canUseDOM){
+    if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.add('light')
     }
   }
@@ -31,7 +31,7 @@ class ProjectsContainer extends React.Component {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.removeEventListener('scroll', this.handleScroll);
     }
-    if (ExecutionEnvironment.canUseDOM){
+    if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.remove('light')
     }
   }
@@ -129,12 +129,26 @@ class ProjectsContainer extends React.Component {
             const contentDarkClasses = `content-container content-container--dark ${sliceLabel}`;
             return (<Reveal effect="animated fadeInUp" className={contentDarkClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
           case 'Image':
-            const images = slice.value.value;
+            const image = slice.value.value;
             const imageClasses = `image-container ${sliceLabel}`;
-            if (!images.length) return;
-            if (images.length === 1) {
-              let imageObj = images[0].fragments.Image.main;
+            if (!image.length) return;
+            if (image.length === 1) {
+              let imageObj = image[0].fragments.Image.main;
               return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}><Image url={imageObj.url}></Image></Reveal>);
+            }
+          case 'Image Group':
+            const imageGroup = slice.value.value;
+            const imageGroupClasses = 'image-group-container';
+            if (!imageGroup.length) return;
+            if (imageGroup.length === 1) {
+              let imageObj = imageGroup[0].fragments.Image.main;
+              let imageObj2 = imageGroup[0].fragments.Image2.main;
+              return (<Reveal effect="animated fadeInUp" key={index} className={sliceLabel}>
+                <div className={imageGroupClasses}>
+                  <Image url={imageObj.url}></Image>
+                  <Image url={imageObj2.url}></Image>
+                </div>
+              </Reveal>);
             }
         }
       })
@@ -142,7 +156,7 @@ class ProjectsContainer extends React.Component {
 
 
     return (
-      <div id="projectOverview" className="container">
+      <div id="project" className="container">
         {heroPanel}
         {pageContentOutput}
       </div>

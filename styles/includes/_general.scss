@@ -72,6 +72,7 @@ h4 {
 }
 
 .image-container,
+.image-group-container,
 .image-roll-container {
   &.half-width.animated.fadeInUp:nth-child(odd) {
     animation-delay: .3s;
