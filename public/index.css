@@ -1906,7 +1906,7 @@ body {
   color: #fff;
   font-size: 1.4rem;
   line-height: 1.6;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.08rem;
   -webkit-overflow-scrolling: touch;
   transition: background-color .3s ease; }
   body.light {
@@ -2166,12 +2166,13 @@ h4 {
 
 .nav-container {
   position: fixed;
+  text-transform: uppercase;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: #000;
-  color: #565656;
+  color: #c0c0c0;
   opacity: 0;
   visibility: hidden;
   z-index: 50;
@@ -2220,12 +2221,11 @@ h4 {
     -webkit-overflow-scrolling: touch; }
     .nav-container .nav li {
       display: block;
-      margin-bottom: 20px;
-      color: #565656;
+      margin-bottom: 12px;
+      color: #c0c0c0;
       cursor: pointer;
       overflow: hidden;
       padding-left: 30px;
-      font-weight: bold;
       transform: translateY(5vh);
       opacity: 0;
       transition: opacity .2s ease-out, transform .2s ease-out; }
@@ -2238,7 +2238,7 @@ h4 {
   .nav-container .nav-logo {
     display: none;
     position: absolute;
-    bottom: -20%;
+    bottom: -100px;
     width: 100%;
     z-index: 1;
     opacity: 0;
@@ -2249,7 +2249,7 @@ h4 {
       fill: #0f0f0f; }
 
 .nav-link {
-  color: #565656;
+  color: #c0c0c0;
   cursor: pointer;
   transition: color 0.15s ease-in; }
   .nav-link:hover, .nav-link.active {
@@ -2335,7 +2335,7 @@ h4 {
 
 @media screen and (min-width: 768px) {
   .nav-container .nav {
-    width: 240px;
+    width: 260px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -2355,7 +2355,7 @@ h4 {
 
 @media screen and (min-width: 1000px) {
   .nav-container .nav-logo {
-    bottom: -50%; } }
+    bottom: -100px; } }
 
 /*! Flickity v1.1.2
 http://flickity.metafizzy.co
@@ -2493,25 +2493,6 @@ http://flickity.metafizzy.co
   .carousel-cell:active, .carousel-cell:focus, .carousel-cell:visited, .carousel-cell:hover {
     color: #fff;
     text-decoration: none; }
-  .carousel-cell[data-effect="Black and White"] .carousel-cell__content {
-    filter: grayscale(1) contrast(120%);
-    transition: filter 0.6s ease-in-out; }
-  .carousel-cell[data-effect="Black and White"]:hover .carousel-cell__content {
-    filter: grayscale(0) contrast(100%); }
-  .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__content::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 1;
-    visibility: visible;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
-  .carousel-cell[data-effect="Fade Overlay"]:hover .carousel-cell__content::after {
-    opacity: 0;
-    visibility: hidden; }
   .carousel-cell__content {
     position: relative;
     width: 100%;

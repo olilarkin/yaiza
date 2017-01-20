@@ -1,12 +1,13 @@
 .nav-container {
   position: fixed;
+  text-transform: uppercase;
   @extend .domaine;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: #000;
-  color: #565656;
+  color: #c0c0c0;
   opacity: 0;
   visibility: hidden;
   z-index: 50;
@@ -67,12 +68,11 @@
     -webkit-overflow-scrolling: touch;
     li {
       display: block;
-      margin-bottom: 20px;
-      color: #565656;
+      margin-bottom: 12px;
+      color: #c0c0c0;
       cursor: pointer;
       overflow: hidden;
       padding-left: 30px;
-      font-weight: bold;
       transform: translateY(5vh);
       opacity: 0;
       transition: opacity .2s ease-out, transform .2s ease-out;
@@ -91,7 +91,7 @@
   .nav-logo {
     display: none;
     position: absolute;
-    bottom: -20%;
+    bottom: -100px;
     width: 100%;
     z-index: 1;
     @extend .img-responsive;
@@ -106,7 +106,7 @@
 }
 
 .nav-link {
-  color: #565656;
+  color: #c0c0c0;
   cursor: pointer;
   transition: color $transitionTime $transitionEase;
   &:hover,
@@ -129,7 +129,7 @@
 @media screen and (min-width:768px) {
   .nav-container {
     .nav {
-      width: 240px;
+      width: 260px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -156,7 +156,7 @@
 @media screen and (min-width:1000px) {
   .nav-container {
     .nav-logo {
-      bottom: -50%;
+      bottom: -100px;
     }
   }
 }
