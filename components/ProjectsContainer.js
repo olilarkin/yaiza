@@ -130,25 +130,81 @@ class ProjectsContainer extends React.Component {
             return (<Reveal effect="animated fadeInUp" className={contentDarkClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
           case 'Image':
             const image = slice.value.value;
-            const imageClasses = `image-container ${sliceLabel}`;
+            const imageClasses = `projects-image-container ${sliceLabel}`;
             if (!image.length) return;
             if (image.length === 1) {
               let imageObj = image[0].fragments.Image.main;
-              return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}><Image url={imageObj.url}></Image></Reveal>);
+              let linkUID = image[0].fragments.Link.uid;
+              let heading = image[0].fragments.Heading.uid;
+              let subHeading = image[0].fragments['Sub-Heading'].uid;
+
+              return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}>
+                <Link to={`/projects/${linkUID}`}>
+                  <div className="projects-image-container__content">
+                    <h2>
+                      {heading}
+                    </h2>
+                    <p>
+                      {subHeading}
+                    </p>
+                  </div>
+                  <Image url={imageObj.url}></Image>
+                </Link>
+              </Reveal>);
             }
           case 'Image Group':
             const imageGroup = slice.value.value;
-            const imageGroupClasses = 'image-group-container';
+            const imageGroupClasses = 'projects-image-group-container';
             if (!imageGroup.length) return;
             if (imageGroup.length === 1) {
-              let imageObj = imageGroup[0].fragments.Image.main;
-              let imageObj2 = imageGroup[0].fragments.Image2.main;
-              return (<Reveal effect="animated fadeInUp" key={index} className={sliceLabel}>
+              const imageObj = imageGroup[0].fragments.Image.main;
+              const tallImage = imageGroup[0].fragments['ImageType'] && imageGroup[0].fragments['ImageType'].value === 'True';
+              const linkUID = imageGroup[0].fragments.Link.uid;
+              const heading = imageGroup[0].fragments.Heading.uid;
+              const subHeading = imageGroup[0].fragments['Sub-Heading'].uid;
+              const image1Classes = classNames({
+                'animated fadeInUp': true,
+                'tall-image': tallImage
+              })
+              const imageObj2 = imageGroup[0].fragments.Image2.main;
+              const tallImage2 = imageGroup[0].fragments['Image2Type'] && imageGroup[0].fragments['Image2Type'].value === 'True';
+              const image2Classes = classNames({
+                'animated fadeInUp': true,
+                'tall-image': tallImage2
+              });
+              const linkUID2 = imageGroup[0].fragments.Link2.uid;
+              const heading2 = imageGroup[0].fragments.Heading2.uid;
+              const subHeading2 = imageGroup[0].fragments['Sub-Heading2'].uid;
+              return (<div key={index} className={sliceLabel}>
                 <div className={imageGroupClasses}>
-                  <Image url={imageObj.url}></Image>
-                  <Image url={imageObj2.url}></Image>
+                  <Reveal effect={image1Classes}>
+                    <Link to={`/projects/${linkUID}`}>
+                      <div className="projects-image-container__content">
+                        <h2>
+                          {heading}
+                        </h2>
+                        <p>
+                          {subHeading}
+                        </p>
+                      </div>
+                      <Image url={imageObj.url}></Image>
+                    </Link>
+                  </Reveal>
+                  <Reveal effect={image2Classes}>
+                    <Link to={`/projects/${linkUID2}`}>
+                      <div className="projects-image-container__content">
+                        <h2>
+                          {heading2}
+                        </h2>
+                        <p>
+                          {subHeading2}
+                        </p>
+                      </div>
+                      <Image url={imageObj2.url}></Image>
+                    </Link>
+                  </Reveal>
                 </div>
-              </Reveal>);
+              </div>);
             }
         }
       })

@@ -10,7 +10,7 @@ Also there are more images that need to fade in with the sunset long image at th
 
 Can the background on the case study pages be white so the white copy blocks don't sit on black - will give the page more white space. -- Done
 
-There needs to be more white space above and below the blocks of copy (larger margins) on the case study pages . 
+There needs to be more white space above and below the blocks of copy (larger margins) on the case study pages . -- Done
 
 Also some alignment issues - maserati case study - in paragraph -'The film' the paragraph in the second column needs to line up with the top of the body copy in the column next to it not the top of the heading. 
 

@@ -10,9 +10,9 @@
   font-size: 1.1rem;
   z-index: 51;
   height: $headerHeight;
-  background-color: transparent;
   .container {
     position: relative;
+    background-color: rgba(0,0,0,0);
     transition: background-color $transitionTime * 3 $transitionEase;
   }
   .menu-button-container {

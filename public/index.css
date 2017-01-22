@@ -1959,6 +1959,8 @@ h4 {
     padding-top: 0; }
 
 .image-container.half-width.animated.fadeInUp:nth-child(odd),
+.projects-image-container.half-width.animated.fadeInUp:nth-child(odd),
+.projects-image-group-container.half-width.animated.fadeInUp:nth-child(odd),
 .image-roll-container.half-width.animated.fadeInUp:nth-child(odd) {
   animation-delay: .3s; }
 
@@ -2115,10 +2117,10 @@ h4 {
   color: #f0f0f0;
   font-size: 1.1rem;
   z-index: 51;
-  height: 70px;
-  background-color: transparent; }
+  height: 70px; }
   .header .container {
     position: relative;
+    background-color: transparent;
     transition: background-color 0.45s ease-in; }
   .header .menu-button-container {
     width: 75px;
@@ -2556,24 +2558,26 @@ http://flickity.metafizzy.co
       transition-delay: .55s; }
 
 .arrow-container {
-  width: 100px;
-  margin: 10px auto 0;
+  width: 80px;
+  margin: 20px auto 0;
   position: absolute;
   left: 50%;
   transform: translateX(-50%); }
   .arrow-container .arrow {
     position: relative;
     display: inline-block;
-    width: 45px; }
+    width: 35px; }
   .arrow-container .carousel-arrow {
     display: inline-block;
     cursor: pointer;
-    width: 50px;
+    width: 40px;
     position: absolute;
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
     transition: transform .35s ease-out, visibility .35s ease-out, opacity .35s ease-out; }
+    .arrow-container .carousel-arrow--right {
+      left: 2px; }
     .arrow-container .carousel-arrow.hideme {
       transform: translateX(-5px);
       opacity: 0;
