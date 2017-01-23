@@ -2620,6 +2620,49 @@ http://flickity.metafizzy.co
     justify-content: center;
     align-items: center; }
 
+#project .projects-image-container a,
+#project .projects-image-group-container a {
+  display: block;
+  position: relative;
+  overflow: hidden; }
+  #project .projects-image-container a:hover .projects-image-container__content,
+  #project .projects-image-container a:hover .projects-image-group-container__content,
+  #project .projects-image-group-container a:hover .projects-image-container__content,
+  #project .projects-image-group-container a:hover .projects-image-group-container__content {
+    transform: translate3d(0, 0, 0); }
+
+#project .projects-image-container__content,
+#project .projects-image-group-container__content {
+  position: absolute;
+  top: 0;
+  width: 41%;
+  height: 100%;
+  transform: translate3d(-100%, 0, 0);
+  backface-visibility: hidden;
+  left: -20%;
+  transition: transform .5s ease-out; }
+  #project .projects-image-container__content .angle,
+  #project .projects-image-group-container__content .angle {
+    background: transparent url(/assets/angle.svg) no-repeat right center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4; }
+
+#project .projects-image-container .tall-image .projects-image-container__content,
+#project .projects-image-container .tall-image .projects-image-group-container__content,
+#project .projects-image-group-container .tall-image .projects-image-container__content,
+#project .projects-image-group-container .tall-image .projects-image-group-container__content {
+  width: 67%; }
+
+#project .half-width .projects-image-container__content, #project .half-width .projects-image-container__content,
+#project .half-width .projects-image-group-container__content,
+#project .half-width .projects-image-group-container__content {
+  width: 62%; }
+
 #project .image-roll-container {
   display: flex;
   justify-content: center;
@@ -2695,31 +2738,6 @@ http://flickity.metafizzy.co
     margin: 0;
     text-transform: uppercase;
     font-size: 1.3rem; }
-
-#project .a {
-  background: #ff34ff; }
-
-#project .b {
-  background: #8080ff; }
-
-#project .c {
-  background: #00cd00; }
-
-#project .columned {
-  display: flex;
-  flex-flow: column wrap;
-  border: 1px solid;
-  background: #CCC;
-  margin: 1em 0;
-  height: 800px; }
-
-#project .columned div {
-  flex: 1 1 auto;
-  border: 1px solid;
-  width: 50%; }
-
-#project .columned div:first-child {
-  flex-basis: 100%; }
 
 #project .one-side-tall-container {
   padding: 0; }

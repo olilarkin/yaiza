@@ -135,12 +135,12 @@ class ProjectsContainer extends React.Component {
             if (image.length === 1) {
               let imageObj = image[0].fragments.Image.main;
               let linkUID = image[0].fragments.Link.uid;
-              let heading = image[0].fragments.Heading.uid;
-              let subHeading = image[0].fragments['Sub-Heading'].uid;
-
+              let heading = image[0].fragments.Heading.value;
+              let subHeading = image[0].fragments.Subheading && image[0].fragments.Subheading.blocks[0].text;
               return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}>
                 <Link to={`/projects/${linkUID}`}>
                   <div className="projects-image-container__content">
+                    <div className="angle"></div>
                     <h2>
                       {heading}
                     </h2>
@@ -157,29 +157,30 @@ class ProjectsContainer extends React.Component {
             const imageGroupClasses = 'projects-image-group-container';
             if (!imageGroup.length) return;
             if (imageGroup.length === 1) {
-              const imageObj = imageGroup[0].fragments.Image.main;
-              const tallImage = imageGroup[0].fragments['ImageType'] && imageGroup[0].fragments['ImageType'].value === 'True';
-              const linkUID = imageGroup[0].fragments.Link.uid;
-              const heading = imageGroup[0].fragments.Heading.uid;
-              const subHeading = imageGroup[0].fragments['Sub-Heading'].uid;
-              const image1Classes = classNames({
+              let imageObj = imageGroup[0].fragments.Image.main;
+              let tallImage = imageGroup[0].fragments['ImageType'] && imageGroup[0].fragments['ImageType'].value === 'True';
+              let linkUID = imageGroup[0].fragments.Link.uid;
+              let heading = imageGroup[0].fragments.Heading.value;
+              let subHeading = imageGroup[0].fragments.Subheading && imageGroup[0].fragments.Subheading.blocks[0].text;
+              let image1Classes = classNames({
                 'animated fadeInUp': true,
                 'tall-image': tallImage
               })
-              const imageObj2 = imageGroup[0].fragments.Image2.main;
-              const tallImage2 = imageGroup[0].fragments['Image2Type'] && imageGroup[0].fragments['Image2Type'].value === 'True';
-              const image2Classes = classNames({
+              let imageObj2 = imageGroup[0].fragments.Image2.main;
+              let tallImage2 = imageGroup[0].fragments['Image2Type'] && imageGroup[0].fragments['Image2Type'].value === 'True';
+              let image2Classes = classNames({
                 'animated fadeInUp': true,
                 'tall-image': tallImage2
               });
-              const linkUID2 = imageGroup[0].fragments.Link2.uid;
-              const heading2 = imageGroup[0].fragments.Heading2.uid;
-              const subHeading2 = imageGroup[0].fragments['Sub-Heading2'].uid;
+              let linkUID2 = imageGroup[0].fragments.Link2.uid;
+              let heading2 = imageGroup[0].fragments.Heading2.value;
+              let subHeading2 = imageGroup[0].fragments.Subheading2 && imageGroup[0].fragments.Subheading2.blocks[0].text;
               return (<div key={index} className={sliceLabel}>
                 <div className={imageGroupClasses}>
                   <Reveal effect={image1Classes}>
                     <Link to={`/projects/${linkUID}`}>
                       <div className="projects-image-container__content">
+                        <div className="angle"></div>
                         <h2>
                           {heading}
                         </h2>
@@ -193,6 +194,7 @@ class ProjectsContainer extends React.Component {
                   <Reveal effect={image2Classes}>
                     <Link to={`/projects/${linkUID2}`}>
                       <div className="projects-image-container__content">
+                        <div className="angle"></div>
                         <h2>
                           {heading2}
                         </h2>
