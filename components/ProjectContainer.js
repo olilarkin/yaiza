@@ -6,7 +6,8 @@ import classNames from 'classnames';
 import SVGRightChevron from '../components/SVG/SVGRightChevron';
 import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
-import ImageSlider from './ImageSlider';
+import ImageSlider from './ImageSlider2';
+//import ImageSlider2 from './ImageSlider2';
 import Reveal from 'react-reveal';
 
 
@@ -251,11 +252,11 @@ class ProjectContainer extends React.Component {
               return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}><Image url={imageObj.url}></Image></Reveal>);
             }
             else {
-              const imagesHtml = images.map((image, index) => {
+              const imagesArray = images.map((image, index) => {
                 const imageObj = image.fragments.src.main;
-                return (<Image key={index} url={imageObj.url}></Image>);
+                return imageObj.url;
               });
-              return (<Reveal effect="animated fadeInUp" className={imageClasses} key={index}><ImageSlider key={index} images={imagesHtml} /></Reveal>);
+              return (<Reveal effect="animated fadeInUp" className={imageClasses} key={index}><ImageSlider key={index} images={imagesArray} /></Reveal>);
             }
         }
       })

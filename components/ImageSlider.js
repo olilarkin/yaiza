@@ -1,54 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class ImageSlider extends React.Component {
+import classnames from 'classnames';
+
+class ImageSlider extends Component {
   constructor(props) {
     super(props);
-    this.settings = {
-      dots: false,
-      infinite: true,
-      speed: 1000,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      pauseOnHover: false,
-      fade: true,
-      draggable: false,
-      autoplay:true,
-      useCSS: true,
-      swipe: false,
-      arrows: false,
-      touchMove: false
-    };
+    this.state = {
+      activeImage: 1,
+      imagesCount: props.images.length
+    }
+    this.fadeImages = this.fadeImages.bind(this);
+    this.clear = this.clear.bind(this);
+  }
+  componentDidMount() {
+    this.fadeImages();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
+  componentWillUnmount() {
+    this.clear();
   }
 
+  clear() {
+    clearInterval(this.timer);
+  }
+
+  fadeImages() {
+    this.timer = setInterval(() => {
+      const activeImage = this.state.activeImage < this.state.imagesCount ? this.state.activeImage : 0;
+      this.setState({
+        activeImage: activeImage + 1,
+        nextImage: activeImage + 2
+      })
+    }, 3000)
+  }
 
   render() {
-    
-    let thisSlider;
-    if (window === undefined) {
-      thisSlider = null;
-    } else {
-      const Slider = require('react-slick');
-      thisSlider = (
-        <Slider {...this.settings}>
-          {this.props.images.map((image, key) => {
-            return (
-              <div className="image-cell" key={key}>
-                {image}
-              </div>
-            )
-          })
-          }
-        </Slider>
-      )
-    }
     return (
-      <div className="image-slider-container">
-        {thisSlider}
+
+      <div className="image-slider" onMouseLeave={this.fadeImages} onMouseEnter={this.clear}>
+        {this.props.images.map((image, index) => {
+          const imageClasses = classnames({
+            'image-container': true,
+            'active': this.state.activeImage === index + 1,
+            'next': this.state.nextImage === index + 1
+          })
+          return <div className={imageClasses} key={index}>
+            <img src={image} className="img-responsive" />
+          </div>
+        })}
       </div>
+
     );
   }
-};
+}
+
+export default ImageSlider;
