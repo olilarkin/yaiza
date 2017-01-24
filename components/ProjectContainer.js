@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import SVGRightChevron from '../components/SVG/SVGRightChevron';
 import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
-import ImageSlider from './ImageSlider2';
+import ImageSlider from './ImageSlider';
 //import ImageSlider2 from './ImageSlider2';
 import Reveal from 'react-reveal';
 
