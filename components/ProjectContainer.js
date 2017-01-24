@@ -18,13 +18,24 @@ const PrevNextLinks = ({projects, thisID}) => {
   const nextProjectURL = projects && thisIndex !== projects.length - 1 && `/projects/${projects[(thisIndex + 1)].uid}`;
   const prevProjectURL = projects && thisIndex > 0 && `/projects/${projects[(thisIndex - 1)].uid}`;
 
+
   return (
     <div className="prev-next-links-container">
-      {prevProjectURL &&
+      {nextProjectURL && thisID === 'about-me' &&
+        <div className="prev">
+          <Link className="prev-link next-link" to={nextProjectURL}>My Latest Projects<span><SVGRightChevron width={67} height={144.5} /></span></Link>
+        </div>
+      }
+      {thisID === 'about-me' &&
+        <div className="next image">
+          <img src="/assets/me-laughing-web.jpg" className="img-responsive" />
+        </div>
+      }
+      {prevProjectURL && thisID !== 'about-me' &&
         <div className="prev">
           <Link className="prev-link" to={prevProjectURL}><span><SVGLeftChevron width={67} height={144.5} /></span>Previous Project</Link>
         </div>}
-      {nextProjectURL &&
+      {nextProjectURL && thisID !== 'about-me' &&
         <div className="next">
           <Link className="next-link" to={nextProjectURL}>Next Project<span><SVGRightChevron width={67} height={144.5} /></span></Link>
         </div>}
@@ -46,7 +57,7 @@ class ProjectContainer extends React.Component {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.addEventListener('scroll', this.handleScroll);
     }
-    if (ExecutionEnvironment.canUseDOM){
+    if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.add('light')
     }
   }
@@ -55,7 +66,7 @@ class ProjectContainer extends React.Component {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.removeEventListener('scroll', this.handleScroll);
     }
-    if (ExecutionEnvironment.canUseDOM){
+    if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.remove('light')
     }
   }
@@ -168,7 +179,7 @@ class ProjectContainer extends React.Component {
                 </div>
               </Reveal>
             );
-            case 'Image Rollover':
+          case 'Image Rollover':
             const imageRollClasses = `image-roll-container ${sliceLabel}`;
             const imageRollColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;
             const imageRollIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;

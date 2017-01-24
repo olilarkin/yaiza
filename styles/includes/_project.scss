@@ -241,6 +241,10 @@
       &.next {
         justify-content: flex-end;
       }
+      &.image,
+      img {
+        display: block;
+      }
     }
     a {
       @extend .domaine;
