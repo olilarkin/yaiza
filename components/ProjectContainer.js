@@ -259,7 +259,8 @@ class ProjectContainer extends React.Component {
               </Reveal>);
           case 'images':
             const images = slice.value.value;
-            const imageClasses = `image-container ${sliceLabel}`;
+            const isCentered = images[0].fragments.centered && images[0].fragments.centered.value === 'Yes' ? 'centered-image' : '';
+            const imageClasses = `image-container ${sliceLabel} ${isCentered}`;
             if (!images.length) return;
             if (images.length === 1) {
               let imageObj = images[0].fragments.src.main;

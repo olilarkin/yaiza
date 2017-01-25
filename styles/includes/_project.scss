@@ -10,6 +10,9 @@
   .image-slider-container {
     overflow: hidden;
   }
+  .centered-image img {
+    margin: 50px auto;
+  }
   .logo-container {
     display: flex;
     justify-content: center;
@@ -320,6 +323,9 @@
     }
     .hero.has-image {
       position: relative;
+    }
+    .centered-image img {
+      margin: 80px auto;
     }
     .one-side-tall-container {
       .one-side-tall {
