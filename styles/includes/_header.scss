@@ -12,9 +12,9 @@
   height: $headerHeight;
   .container {
     position: relative;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     transition: background-color $transitionTime * 3 $transitionEase;
-    height:100%;
+    height: 100%;
   }
   .menu-button-container {
     width: 75px;
@@ -69,7 +69,13 @@
     .container {
       background-color: rgba(0, 0, 0, .5);
     }
+    .logo {
+      path {
+        fill: #fff;
+      }
+    }
     .menu-button-container {
+      color: #fff;
       &:hover {
         color: $lightColor;
       }

@@ -22,17 +22,11 @@ class ProjectsContainer extends React.Component {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.addEventListener('scroll', this.handleScroll);
     }
-    if (ExecutionEnvironment.canUseDOM) {
-      document.body.classList.add('light')
-    }
   }
 
   componentWillUnmount() {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.removeEventListener('scroll', this.handleScroll);
-    }
-    if (ExecutionEnvironment.canUseDOM) {
-      document.body.classList.remove('light')
     }
   }
 
