@@ -214,7 +214,7 @@ class ProjectContainer extends React.Component {
               </Reveal>
             );
           case 'One Side Tall':
-            const oneSideTallClasses = `content-container one-side-tall-container ${sliceLabel}`;
+            const oneSideTallClasses = 'content-container one-side-tall-container';
             const oneSideTallTImage = slice.value.value["0"].fragments["tallImage"] && slice.value.value["0"].fragments["tallImage"].main.url
             const oneSideTallSImage = slice.value.value["0"].fragments["otherSideBottomImage"] && slice.value.value["0"].fragments["otherSideBottomImage"].main.url;
             const oneSideTallText = slice.value.value["0"].fragments["otherSideTopText"] && slice.value.value["0"].fragments["otherSideTopText"].asHtml();
@@ -222,14 +222,15 @@ class ProjectContainer extends React.Component {
               <Reveal effect="animated fadeInUp" className={oneSideTallClasses} key={index}>
                 {sliceLabel === 'left-side-tall' &&
                   <div className="one-side-tall">
-                    <div className="tall">
+                    <div className="tall half-width">
                       <img src={oneSideTallTImage} className="img-responsive" />
                     </div>
-                    <div className="others">
-                      <div className="half-width content" dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
-                      <div className="half-width">
+                    <div className="others half-width">
+                      <div className="content" dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
+                      <div>
                         <img src={oneSideTallSImage} className="img-responsive" />
-                      </div></div>
+                      </div>
+                    </div>
                   </div>
                 }
                 {sliceLabel === 'right-side-tall' &&

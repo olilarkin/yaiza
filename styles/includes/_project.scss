@@ -194,9 +194,14 @@
       width: 100%;
       .content {
         padding: 80px;
+        text-align: center;
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       >div {
-        width: 50%;
+        width: 100%;
         float: left;
         position: relative;
         &.tall {}
@@ -286,7 +291,7 @@
   .yai-logo-container {
     position: relative;
     width: 100%;
-    height:200px;
+    height: 200px;
     z-index: 1;
     .yai-logo {
       width: 100%;
@@ -301,7 +306,7 @@
 }
 
 .light #project .prev-next-links-container {
-  background:transparent;
+  background: transparent;
 }
 
 @media screen and (min-width:768px) {
@@ -315,6 +320,17 @@
     }
     .hero.has-image {
       position: relative;
+    }
+    .one-side-tall-container {
+      .one-side-tall {
+        .content {
+          padding: 66px 60px;
+          font-size: 1.8rem;
+        }
+        >div {
+          width: 50%;
+        }
+      }
     }
     .prev-next-links-container {
       padding-top: 40px;
@@ -343,6 +359,26 @@
       }
       span svg {
         width: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:992px) {
+  #project .one-side-tall-container {
+    .one-side-tall {
+      .content {
+        padding: 108px 115px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:1200px) {
+  #project .one-side-tall-container {
+    .one-side-tall {
+      .content {
+        padding: 152px 115px
       }
     }
   }
