@@ -7,7 +7,7 @@ import SVGRightChevron from '../components/SVG/SVGRightChevron';
 import SVGLeftChevron from '../components/SVG/SVGLeftChevron';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import ImageSlider from './ImageSlider';
-//import ImageSlider2 from './ImageSlider2';
+import SVGYaizaLogo from './SVG/SVGYaizaLogo'
 import Reveal from 'react-reveal';
 
 
@@ -20,28 +20,28 @@ const PrevNextLinks = ({projects, thisID}) => {
 
 
   return (
-    
-      <div className="prev-next-links-container animated fadeIn delayed-animation">
-        {nextProjectURL && thisID === 'about-me' &&
-          <div className="prev">
-            <Link className="prev-link next-link" to={nextProjectURL}>My Latest Projects<span><SVGRightChevron width={67} height={144.5} /></span></Link>
-          </div>
-        }
-        {thisID === 'about-me' &&
-          <div className="next image">
-            <img src="/assets/me-laughing-web.jpg" className="img-responsive" />
-          </div>
-        }
-        {prevProjectURL && thisID !== 'about-me' &&
-          <div className="prev">
-            <Link className="prev-link" to={prevProjectURL}><span><SVGLeftChevron width={67} height={144.5} /></span>Previous Project</Link>
-          </div>}
-        {nextProjectURL && thisID !== 'about-me' &&
-          <div className="next">
-            <Link className="next-link" to={nextProjectURL}>Next Project<span><SVGRightChevron width={67} height={144.5} /></span></Link>
-          </div>}
-      </div>
-    
+
+    <div className="prev-next-links-container animated fadeIn delayed-animation">
+      {nextProjectURL && thisID === 'about-me' &&
+        <div className="prev">
+          <Link className="prev-link next-link" to={nextProjectURL}>My Latest Projects<span><SVGRightChevron width={67} height={144.5} /></span></Link>
+        </div>
+      }
+      {thisID === 'about-me' &&
+        <div className="next image">
+          <img src="/assets/me-laughing-web.jpg" className="img-responsive" />
+        </div>
+      }
+      {prevProjectURL && thisID !== 'about-me' &&
+        <div className="prev">
+          <Link className="prev-link" to={prevProjectURL}><span><SVGLeftChevron width={67} height={144.5} /></span>Previous Project</Link>
+        </div>}
+      {nextProjectURL && thisID !== 'about-me' &&
+        <div className="next">
+          <Link className="next-link" to={nextProjectURL}>Next Project<span><SVGRightChevron width={67} height={144.5} /></span></Link>
+        </div>}
+    </div>
+
   );
 
 }
@@ -281,6 +281,11 @@ class ProjectContainer extends React.Component {
         {heroPanel}
         {pageContentOutput}
         <PrevNextLinks projects={this.props.projects} thisID={this.props.params.id} />
+        {this.props.params.id === 'about-me' &&
+          <div className="yai-logo-container">
+            <SVGYaizaLogo width={350} height={115} className="yai-logo" />
+          </div>
+        }
       </div>
     );
 
