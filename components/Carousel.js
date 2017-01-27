@@ -90,13 +90,23 @@ export default class Carousel extends React.Component {
             .map((content, key) => {
               const effect = content.fragments["casestudy.homepage-image-effect"] && content.fragments["casestudy.homepage-image-effect"].value;
               const url = `/projects/${content.uid}`;
+              const mainImage = content.fragments["casestudy.homepage-slider-image"] && content.fragments["casestudy.homepage-slider-image"].main.url;
+              const secondaryImage = content.fragments["casestudy.homepage-slider-second-image"] && content.fragments["casestudy.homepage-slider-second-image"].main.url;
               return (
                 <Link to={url} onClick={this.props.setHomepageSlide.bind(this, key)} className="carousel-cell" key={key} data-effect={effect}>
                   <div
                     className="carousel-cell__content"
-                    style={{ backgroundImage: `url(${content.fragments["casestudy.homepage-slider-image"].url})` }}
+                    style={{ backgroundImage: `url(${mainImage})` }}
                     >
+                    {secondaryImage &&
+                      <div
+                        className="carousel-cell__content carousel-cell__content__secondary"
+                        style={{ backgroundImage: `url(${secondaryImage})` }}
+                        >
+                      </div>
+                    }
                   </div>
+
                   <div className="carousel-cell__text">
                     <h2
                       data-subtext={content.fragments["casestudy.homepage-slide-sub-heading"].value}>
