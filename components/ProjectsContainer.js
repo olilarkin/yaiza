@@ -129,18 +129,19 @@ class ProjectsContainer extends React.Component {
             if (image.length === 1) {
               let imageObj = image[0].fragments.Image.main;
               let linkUID = image[0].fragments.Link.uid;
-              let heading = image[0].fragments.Heading.value;
-              let subHeading = image[0].fragments.Subheading && image[0].fragments.Subheading.blocks[0].text;
+              let heading = image[0].fragments.Heading && image[0].fragments.Heading.value;
+              let subHeading = image[0].fragments.Subheading && image[0].fragments.Subheading.value;
+              subHeading = subHeading && subHeading.split(',');
               return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}>
                 <Link to={`/projects/${linkUID}`}>
+                  <div className="projects-image-container__angle"></div>
                   <div className="projects-image-container__content">
-                    <div className="angle"></div>
                     <h2>
                       {heading}
                     </h2>
-                    <p>
-                      {subHeading}
-                    </p>
+                    <div className="sub-headings">
+                      {subHeading && subHeading.map((word, index) => <p key={index}>{word}</p>)}
+                    </div>
                   </div>
                   <Image url={imageObj.url}></Image>
                 </Link>
@@ -155,7 +156,8 @@ class ProjectsContainer extends React.Component {
               let tallImage = imageGroup[0].fragments['ImageType'] && imageGroup[0].fragments['ImageType'].value === 'True';
               let linkUID = imageGroup[0].fragments.Link.uid;
               let heading = imageGroup[0].fragments.Heading.value;
-              let subHeading = imageGroup[0].fragments.Subheading && imageGroup[0].fragments.Subheading.blocks[0].text;
+              let subHeading = imageGroup[0].fragments.Subheading && imageGroup[0].fragments.Subheading.value;
+              subHeading = subHeading && subHeading.split(',');
               let image1Classes = classNames({
                 'animated fadeInUp': true,
                 'tall-image': tallImage
@@ -168,33 +170,34 @@ class ProjectsContainer extends React.Component {
               });
               let linkUID2 = imageGroup[0].fragments.Link2.uid;
               let heading2 = imageGroup[0].fragments.Heading2.value;
-              let subHeading2 = imageGroup[0].fragments.Subheading2 && imageGroup[0].fragments.Subheading2.blocks[0].text;
+              let subHeading2 = imageGroup[0].fragments.Subheading && imageGroup[0].fragments.Subheading.value;
+              subHeading2 = subHeading2 && subHeading2.split(',');
               return (<div key={index} className={sliceLabel}>
                 <div className={imageGroupClasses}>
                   <Reveal effect={image1Classes}>
                     <Link to={`/projects/${linkUID}`}>
+                      <div className="projects-image-container__angle"></div>
                       <div className="projects-image-container__content">
-                        <div className="angle"></div>
                         <h2>
                           {heading}
                         </h2>
-                        <p>
-                          {subHeading}
-                        </p>
+                        <div className="sub-headings">
+                          {subHeading && subHeading.map((word, index) => <p key={index}>{word}</p>)}
+                        </div>
                       </div>
                       <Image url={imageObj.url}></Image>
                     </Link>
                   </Reveal>
                   <Reveal effect={image2Classes}>
                     <Link to={`/projects/${linkUID2}`}>
+                      <div className="projects-image-container__angle"></div>
                       <div className="projects-image-container__content">
-                        <div className="angle"></div>
                         <h2>
                           {heading2}
                         </h2>
-                        <p>
-                          {subHeading2}
-                        </p>
+                        <div className="sub-headings">
+                          {subHeading2 && subHeading2.map((word, index) => <p key={index}>{word}</p>)}
+                        </div>
                       </div>
                       <Image url={imageObj2.url}></Image>
                     </Link>

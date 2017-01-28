@@ -1880,15 +1880,25 @@ h4, .nav-container, .nav-container .nav-info h3, #project .quote-container .quot
 .lato, body, h3, .nav-container .nav-info a, .nav-container .nav {
   font-family: 'Lato', sans-serif; }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden; }
+  to {
+    opacity: 1;
+    visibility: visible; } }
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
+    visibility: hidden;
     transform: translate3d(0, 100%, 0); }
   to {
     opacity: 1;
+    visibility: visible;
     transform: none; } }
 
-.animated {
+.animated, #project .hero.has-image {
   animation-duration: .6s;
   animation-fill-mode: both;
   animation-timing-function: ease-out;
@@ -1896,6 +1906,12 @@ h4, .nav-container, .nav-container .nav-info h3, #project .quote-container .quot
 
 .fadeInUp {
   animation-name: fadeInUp; }
+
+.fadeIn, #project .hero.has-image {
+  animation-name: fadeIn; }
+
+.delayed-animation {
+  animation-delay: 2s; }
 
 @font-face {
   font-family: 'DomaineDisplay';
@@ -1934,7 +1950,8 @@ h4 {
 
 h3 {
   margin-top: 0;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  font-size: 2rem; }
 
 h4 {
   margin: 100px 10%;
@@ -1942,6 +1959,9 @@ h4 {
   text-align: center;
   font-size: 20px;
   line-height: 2; }
+
+.visually-hidden {
+  opacity: 0; }
 
 .content-container {
   padding: 60px 40px;
@@ -1958,10 +1978,13 @@ h4 {
   .content-container.half-width + .content-container.half-width + .content-container.half-width .content-container.half-width {
     padding-top: 0; }
 
-.image-container.half-width.animated.fadeInUp:nth-child(odd),
+.image-container.half-width.animated.fadeInUp:nth-child(odd), #project .image-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
 .projects-image-container.half-width.animated.fadeInUp:nth-child(odd),
+#project .projects-image-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
 .projects-image-group-container.half-width.animated.fadeInUp:nth-child(odd),
-.image-roll-container.half-width.animated.fadeInUp:nth-child(odd) {
+#project .projects-image-group-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
+.image-roll-container.half-width.animated.fadeInUp:nth-child(odd),
+#project .image-roll-container.half-width.fadeInUp.hero.has-image:nth-child(odd) {
   animation-delay: .3s; }
 
 #footer {
@@ -2163,12 +2186,17 @@ h4 {
     user-select: none; }
   .header.active .container {
     background-color: rgba(0, 0, 0, 0.5); }
-  .header.active .menu-button-container:hover {
-    color: #f0f0f0; }
+  .header.active .logo path {
+    fill: #fff; }
+  .header.active .menu-button-container {
+    color: #fff; }
+    .header.active .menu-button-container:hover {
+      color: #f0f0f0; }
 
 .nav-container {
   position: fixed;
   text-transform: uppercase;
+  font-size: 1.3rem;
   top: 0;
   left: 0;
   right: 0;
@@ -2495,6 +2523,23 @@ http://flickity.metafizzy.co
   .carousel-cell:active, .carousel-cell:focus, .carousel-cell:visited, .carousel-cell:hover {
     color: #fff;
     text-decoration: none; }
+  .carousel-cell[data-effect="Black and White"]:hover .carousel-cell__content__secondary {
+    opacity: 0;
+    visibility: hidden; }
+  .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__content::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
+  .carousel-cell[data-effect="Fade Overlay"]:hover .carousel-cell__content::after {
+    opacity: 0;
+    visibility: hidden; }
   .carousel-cell__content {
     position: relative;
     width: 100%;
@@ -2507,6 +2552,7 @@ http://flickity.metafizzy.co
       content: '';
       background: rgba(0, 0, 0, 0.4);
       position: absolute;
+      z-index: 3;
       top: 0;
       width: 40%;
       height: 100%;
@@ -2514,11 +2560,24 @@ http://flickity.metafizzy.co
       backface-visibility: hidden;
       left: -20%;
       transition: transform .75s ease-out .25s; }
+    .carousel-cell__content__secondary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+      transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
+      .carousel-cell__content__secondary::before {
+        content: none; }
   .carousel-cell__text {
     position: absolute;
     top: 50%;
     left: 0;
     width: 100%;
+    z-index: 4;
     margin-top: -36px; }
     .carousel-cell__text h2 {
       position: relative;
@@ -2609,6 +2668,9 @@ http://flickity.metafizzy.co
 #project .image-slider-container {
   overflow: hidden; }
 
+#project .centered-image img {
+  margin: 50px auto; }
+
 #project .logo-container {
   display: flex;
   justify-content: center;
@@ -2627,61 +2689,69 @@ http://flickity.metafizzy.co
   overflow: hidden; }
   #project .projects-image-container a:hover .projects-image-container__content,
   #project .projects-image-container a:hover .projects-image-group-container__content,
+  #project .projects-image-container a:hover .projects-image-container__angle,
+  #project .projects-image-container a:hover .projects-image-group-container__angle,
   #project .projects-image-group-container a:hover .projects-image-container__content,
-  #project .projects-image-group-container a:hover .projects-image-group-container__content {
+  #project .projects-image-group-container a:hover .projects-image-group-container__content,
+  #project .projects-image-group-container a:hover .projects-image-container__angle,
+  #project .projects-image-group-container a:hover .projects-image-group-container__angle {
     transform: translate3d(0, 0, 0); }
+
+#project .projects-image-container__angle,
+#project .projects-image-group-container__angle {
+  background: transparent url(/assets/angle-small.svg) no-repeat right center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 37%;
+  height: 100%;
+  opacity: 0.4;
+  z-index: 1;
+  transform: translate3d(-100%, 0, 0);
+  backface-visibility: hidden;
+  transition: transform .5s ease-out; }
 
 #project .projects-image-container__content,
 #project .projects-image-group-container__content {
   position: absolute;
   top: 0;
-  width: 41%;
-  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   transform: translate3d(-100%, 0, 0);
   backface-visibility: hidden;
-  left: -20%;
-  transition: transform .5s ease-out; }
-  #project .projects-image-container__content .angle,
-  #project .projects-image-group-container__content .angle {
-    background: transparent url(/assets/angle.svg) no-repeat right center;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-    z-index: 1; }
+  transition: transform .5s ease-out;
+  z-index: 2; }
   #project .projects-image-container__content h2,
-  #project .projects-image-container__content p,
+  #project .projects-image-container__content .sub-headings,
   #project .projects-image-group-container__content h2,
-  #project .projects-image-group-container__content p {
+  #project .projects-image-group-container__content .sub-headings {
     position: absolute;
     z-index: 2;
-    right: 20px;
-    width: 41%;
+    left: 20px;
     margin: 0;
     top: 20px; }
   #project .projects-image-container__content h2,
   #project .projects-image-group-container__content h2 {
     color: #fff;
     font-size: 1.8rem; }
-  #project .projects-image-container__content p,
-  #project .projects-image-group-container__content p {
+  #project .projects-image-container__content .sub-headings,
+  #project .projects-image-group-container__content .sub-headings {
     top: 60px;
     color: #66666e;
     font-size: 1.2rem;
     text-transform: uppercase; }
 
-#project .projects-image-container .tall-image .projects-image-container__content,
-#project .projects-image-container .tall-image .projects-image-group-container__content,
-#project .projects-image-group-container .tall-image .projects-image-container__content,
-#project .projects-image-group-container .tall-image .projects-image-group-container__content {
-  width: 67%; }
+#project .projects-image-container .tall-image .projects-image-container__angle,
+#project .projects-image-container .tall-image .projects-image-group-container__angle,
+#project .projects-image-group-container .tall-image .projects-image-container__angle,
+#project .projects-image-group-container .tall-image .projects-image-group-container__angle {
+  width: 36%; }
 
-#project .half-width .projects-image-container__content, #project .half-width .projects-image-container__content,
-#project .half-width .projects-image-group-container__content,
-#project .half-width .projects-image-group-container__content {
+#project .half-width .projects-image-container__angle, #project .half-width .projects-image-container__angle,
+#project .half-width .projects-image-group-container__angle,
+#project .half-width .projects-image-group-container__angle {
   width: 62%; }
 
 #project .image-roll-container {
@@ -2767,9 +2837,14 @@ http://flickity.metafizzy.co
     float: left;
     width: 100%; }
     #project .one-side-tall-container .one-side-tall .content {
-      padding: 80px; }
+      padding: 80px;
+      text-align: center;
+      font-size: 1.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
     #project .one-side-tall-container .one-side-tall > div {
-      width: 50%;
+      width: 100%;
       float: left;
       position: relative; }
       #project .one-side-tall-container .one-side-tall > div .half-width {
@@ -2807,6 +2882,9 @@ http://flickity.metafizzy.co
     justify-content: flex-start; }
     #project .prev-next-links-container > div.next {
       justify-content: flex-end; }
+    #project .prev-next-links-container > div.image,
+    #project .prev-next-links-container > div img {
+      display: block; }
   #project .prev-next-links-container a {
     font-size: 11px;
     color: #000;
@@ -2830,11 +2908,34 @@ http://flickity.metafizzy.co
     height: auto;
     top: 2px; }
 
+#project .yai-logo-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  z-index: 1; }
+  #project .yai-logo-container .yai-logo {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: -60px; }
+    #project .yai-logo-container .yai-logo path {
+      fill: #f3f3f3; }
+
+.light #project .prev-next-links-container {
+  background: transparent; }
+
 @media screen and (min-width: 768px) {
   #project .half-width {
     flex-basis: 50%; }
   #project .hero.has-image {
     position: relative; }
+  #project .centered-image img {
+    margin: 80px auto; }
+  #project .one-side-tall-container .one-side-tall .content {
+    padding: 66px 60px;
+    font-size: 1.8rem; }
+  #project .one-side-tall-container .one-side-tall > div {
+    width: 50%; }
   #project .prev-next-links-container {
     padding-top: 40px; }
     #project .prev-next-links-container a {
@@ -2852,6 +2953,15 @@ http://flickity.metafizzy.co
         left: 40px; }
     #project .prev-next-links-container span svg {
       width: 10px; } }
+
+@media screen and (min-width: 992px) {
+  #project .one-side-tall-container .one-side-tall .content {
+    padding: 108px 115px; } }
+
+@media screen and (min-width: 1200px) {
+  #project .one-side-tall-container .one-side-tall .content {
+    padding: 152px 115px;
+    font-size: 2.1rem; } }
 
 video {
   position: absolute;

@@ -33,37 +33,42 @@
       overflow: hidden;
       &:hover {
         .projects-image-container__content,
-        .projects-image-group-container__content {
+        .projects-image-group-container__content,
+        .projects-image-container__angle,
+        .projects-image-group-container__angle {
           transform: translate3d(0, 0, 0);
         }
       }
     }
+    &__angle {
+      background: transparent url(/assets/angle-small.svg) no-repeat right center;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 37%;
+      height: 100%;
+      opacity: 0.4;
+      z-index: 1;
+      transform: translate3d(-100%, 0, 0);
+      backface-visibility: hidden;
+      transition: transform .5s ease-out;
+    }
     &__content {
       position: absolute;
       top: 0;
-      width: 41%;
-      height: 100%;
+      left: 0;
+      bottom: 0;
+      width: 37%;
       transform: translate3d(-100%, 0, 0);
       backface-visibility: hidden;
-      left: -20%;
       transition: transform .5s ease-out;
-      .angle {
-        background: transparent url(/assets/angle.svg) no-repeat right center;
-        background-size: cover;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.4;
-        z-index: 1;
-      }
+      z-index: 2;
       h2,
-      p {
+      .sub-headings {
         position: absolute;
         z-index: 2;
-        right: 20px;
-        width: 41%;
+        left: 20px;
         margin: 0;
         top: 20px;
       }
@@ -71,26 +76,31 @@
         color: #fff;
         font-size: 1.8rem;
       }
-      p {
+      .sub-headings {
         top: 60px;
-        color: #66666e;
+        color: #f1f1f1;
         font-size: 1.2rem;
         text-transform: uppercase;
+        p {
+          margin-bottom: 2px;
+        }
       }
     }
     .tall-image {
-      .projects-image-container__content,
-      .projects-image-group-container__content {
-        // height: 50%;
-        width: 67%;
+      .projects-image-container,
+      .projects-image-group-container {
+        &__angle,
+        &__angle {
+          width: 36%;
+        }
       }
     }
   }
   .half-width {
     .projects-image-container,
     .projects-image-group-container {
-      &__content,
-      &__content {
+      &__angle,
+      &__angle {
         width: 62%;
       }
     }
