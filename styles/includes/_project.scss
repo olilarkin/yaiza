@@ -31,6 +31,18 @@
       display: block;
       position: relative;
       overflow: hidden;
+       &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 1;
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: opacity ($transitionTime * 4) ease-in-out, visibility ($transitionTime * 4) ease-in-out;
+      }
       &:hover {
         .projects-image-container__content,
         .projects-image-group-container__content,
@@ -38,8 +50,13 @@
         .projects-image-group-container__angle {
           transform: translate3d(0, 0, 0);
         }
+        &::after {
+          opacity: 0;
+          visibility: hidden;
+        }
       }
     }
+
     &__angle {
       background: transparent url(/assets/angle-small.svg) no-repeat right center;
       background-size: cover;

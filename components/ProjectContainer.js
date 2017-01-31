@@ -197,7 +197,7 @@ class ProjectContainer extends React.Component {
                     </div>
                   }
                 </div>
-                <div className="image-roll-over-container">
+                <div className="image-roll-over-container" style={{ backgroundColor: imageRollColor }}>
                   <div className="image-roll-over-image" style={{ backgroundImage: `url(${imageRollBgImage})` }} />
                   <div className="image-roll-over-assets">
                     {imageRolloverIcon &&
@@ -215,7 +215,8 @@ class ProjectContainer extends React.Component {
             );
           case 'One Side Tall':
             const oneSideTallClasses = 'content-container one-side-tall-container';
-            const oneSideTallTImage = slice.value.value["0"].fragments["tallImage"] && slice.value.value["0"].fragments["tallImage"].main.url
+            const oneSideTallTImage = slice.value.value["0"].fragments["tallImage"] && slice.value.value["0"].fragments["tallImage"].main.url;
+            const oneSideTallTopSImage = slice.value.value["0"].fragments["otherSideTopImage"] && slice.value.value["0"].fragments["otherSideTopImage"].main.url;
             const oneSideTallSImage = slice.value.value["0"].fragments["otherSideBottomImage"] && slice.value.value["0"].fragments["otherSideBottomImage"].main.url;
             const oneSideTallText = slice.value.value["0"].fragments["otherSideTopText"] && slice.value.value["0"].fragments["otherSideTopText"].asHtml();
             return (
@@ -226,7 +227,14 @@ class ProjectContainer extends React.Component {
                       <img src={oneSideTallTImage} className="img-responsive" />
                     </div>
                     <div className="others half-width">
-                      <div className="content" dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
+                      {!oneSideTallTopSImage && oneSideTallText &&
+                        <div className="content" dangerouslySetInnerHTML={{ __html: oneSideTallText }} />
+                      }
+                      {oneSideTallTopSImage &&
+                        <div>
+                          <img src={oneSideTallTopSImage} className="img-responsive" />
+                        </div>
+                      }
                       <div>
                         <img src={oneSideTallSImage} className="img-responsive" />
                       </div>
@@ -235,11 +243,20 @@ class ProjectContainer extends React.Component {
                 }
                 {sliceLabel === 'right-side-tall' &&
                   <div className="one-side-tall">
-                    <div className="half-width">
-                      <img src={oneSideTallSImage} className="img-responsive" />
+                    <div className="others half-width">
+                      {!oneSideTallTopSImage && oneSideTallText &&
+                        <div className="content" dangerouslySetInnerHTML={{ __html: oneSideTallText }} />
+                      }
+                      {oneSideTallTopSImage &&
+                        <div>
+                          <img src={oneSideTallTopSImage} className="img-responsive" />
+                        </div>
+                      }
+                      <div>
+                        <img src={oneSideTallSImage} className="img-responsive" />
+                      </div>
                     </div>
-                    <div className="half-width content" dangerouslySetInnerHTML={{ __html: slice.value.value["0"].fragments["otherSideTopText"].asHtml() }} />
-                    <div>
+                    <div className="tall half-width">
                       <img src={oneSideTallTImage} className="img-responsive" />
                     </div>
                   </div>
