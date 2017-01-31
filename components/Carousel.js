@@ -1,4 +1,5 @@
 import React from 'react';
+import ExecutionEnvironment from 'exenv';
 import { Link } from 'react-router';
 import SVGRightArrow from './SVG/SVGRightArrow';
 import SVGLeftArrow from './SVG/SVGLeftArrow';
@@ -27,7 +28,9 @@ export default class Carousel extends React.Component {
     }
     this.goNext = this.goNext.bind(this);
     this.goPrev = this.goPrev.bind(this);
+    this.applyBgColor = this.applyBgColor.bind(this);
     this.checkArrows = this.checkArrows.bind(this);
+    this.bgColors = []
     this.state = {
       isLeftArrowVisible: false,
       isRightArrowVisible: true
@@ -36,15 +39,26 @@ export default class Carousel extends React.Component {
 
   componentDidMount() {
     this.checkArrows();
-    this.sliderInstance.flkty.on('settle', () => {
+    console.log('this.bgColors', this.bgColors);
+    this.applyBgColor();
+    this.sliderInstance.flkty.on('settle', (slider) => {
       this.checkArrows();
+    });
+    this.sliderInstance.flkty.on('select', (slider) => {
+      this.applyBgColor();
     });
   }
 
   componentWillUnmount() {
     this.sliderInstance.flkty.off('settle');
+    this.sliderInstance.flkty.off('select');
   }
 
+  applyBgColor() {
+    if (ExecutionEnvironment.canUseDOM) {
+      document.body.style.backgroundColor = this.bgColors[this.sliderInstance.flkty.selectedIndex] || '#000';
+    }
+  }
 
   checkArrows() {
     if (!this.sliderInstance) return;
@@ -89,6 +103,8 @@ export default class Carousel extends React.Component {
             })
             .map((content, key) => {
               const effect = content.fragments["casestudy.homepage-image-effect"] && content.fragments["casestudy.homepage-image-effect"].value;
+              const pageBGColor = content.fragments["casestudy.homepage-background-colour"] && content.fragments["casestudy.homepage-background-colour"].value || '#000';
+              this.bgColors.push(pageBGColor);
               const url = `/projects/${content.uid}`;
               const mainImage = content.fragments["casestudy.homepage-slider-image"] && content.fragments["casestudy.homepage-slider-image"].main.url;
               const secondaryImage = content.fragments["casestudy.homepage-slider-second-image"] && content.fragments["casestudy.homepage-slider-second-image"].main.url;
@@ -110,8 +126,8 @@ export default class Carousel extends React.Component {
 
                   <div className="carousel-cell__text">
                     <h2
-                      data-subtext={content.fragments["casestudy.homepage-slide-sub-heading"].value}>
-                      {content.fragments["casestudy.homepage-slide-heading"].value}
+                      data-subtext={content.fragments["casestudy.homepage-slide-sub-heading"] && content.fragments["casestudy.homepage-slide-sub-heading"].value}>
+                      {content.fragments["casestudy.homepage-slide-heading"] && content.fragments["casestudy.homepage-slide-heading"].value}
                     </h2>
                   </div>
                 </Link>

@@ -6,7 +6,7 @@ body {
   letter-spacing: 0.08rem;
   @extend .lato;
   -webkit-overflow-scrolling: touch;
-  transition: background-color .3s ease;
+  transition: background-color .75s ease;
   &.light {
     background-color: #fff;
   }
