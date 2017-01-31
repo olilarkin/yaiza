@@ -94,18 +94,19 @@ export default class Carousel extends React.Component {
               const secondaryImage = content.fragments["casestudy.homepage-slider-second-image"] && content.fragments["casestudy.homepage-slider-second-image"].main.url;
               return (
                 <Link to={url} onClick={this.props.setHomepageSlide.bind(this, key)} className="carousel-cell" key={key} data-effect={effect}>
-                  <div
-                    className="carousel-cell__content"
-                    style={{ backgroundImage: `url(${mainImage})` }}
-                    >
-                    {secondaryImage &&
-                      <div
-                        className="carousel-cell__content carousel-cell__content__secondary"
-                        style={{ backgroundImage: `url(${secondaryImage})` }}
-                        >
-                      </div>
-                    }
-                  </div>
+                  <div className="carousel-cell__container">
+                    <div
+                      className="carousel-cell__content"
+                      style={{ backgroundImage: `url(${mainImage})` }}
+                      >
+                      {secondaryImage &&
+                        <div
+                          className="carousel-cell__content carousel-cell__content__secondary"
+                          style={{ backgroundImage: `url(${secondaryImage})` }}
+                          >
+                        </div>
+                      }
+                    </div></div>
 
                   <div className="carousel-cell__text">
                     <h2

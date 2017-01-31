@@ -1892,14 +1892,14 @@ h4, .nav-container, .nav-container .nav-info h3, #project .quote-container .quot
   from {
     opacity: 0;
     visibility: hidden;
-    transform: translate3d(0, 100%, 0); }
+    transform: translate3d(0, 50%, 0); }
   to {
     opacity: 1;
     visibility: visible;
     transform: none; } }
 
 .animated, #project .hero.has-image {
-  animation-duration: .6s;
+  animation-duration: 1s;
   animation-fill-mode: both;
   animation-timing-function: ease-out;
   backface-visibility: hidden; }
@@ -1988,8 +1988,8 @@ h4 {
   animation-delay: .3s; }
 
 #footer {
-  background-color: #fff;
-  color: #000;
+  background-color: #000;
+  color: #fff;
   text-align: center;
   padding-top: 50px;
   padding-bottom: 30px;
@@ -2001,6 +2001,10 @@ h4 {
   min-width: 100%; }
   #footer p {
     margin: 0; }
+
+.light #footer {
+  background-color: #fff;
+  color: #000; }
 
 @media screen and (min-width: 768px) {
   #footer {
@@ -2272,8 +2276,8 @@ h4 {
     width: 100%;
     z-index: 1;
     opacity: 0;
-    transform: translateY(5vh);
-    transition: opacity .35s ease-out, transform .35s ease-out;
+    transform: translateY(25vh);
+    transition: opacity .75s ease-out, transform .75s ease-out;
     transition-delay: 0s; }
     .nav-container .nav-logo path {
       fill: #0f0f0f; }
@@ -2526,7 +2530,7 @@ http://flickity.metafizzy.co
   .carousel-cell[data-effect="Black and White"]:hover .carousel-cell__content__secondary {
     opacity: 0;
     visibility: hidden; }
-  .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__content::after {
+  .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__container::after {
     content: '';
     position: absolute;
     left: 0;
@@ -2537,18 +2541,19 @@ http://flickity.metafizzy.co
     visibility: visible;
     background-color: rgba(0, 0, 0, 0.5);
     transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
-  .carousel-cell[data-effect="Fade Overlay"]:hover .carousel-cell__content::after {
+  .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__content {
+    transition: transform 3s; }
+  .carousel-cell[data-effect="Fade Overlay"]:hover .carousel-cell__container::after {
     opacity: 0;
     visibility: hidden; }
-  .carousel-cell__content {
+  .carousel-cell[data-effect="Fade Overlay"]:hover .carousel-cell__content {
+    transform: scale(1.1); }
+  .carousel-cell__container {
     position: relative;
     width: 100%;
     height: 100%;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
     overflow: hidden; }
-    .carousel-cell__content::before {
+    .carousel-cell__container::before {
       content: '';
       background: rgba(0, 0, 0, 0.4);
       position: absolute;
@@ -2560,18 +2565,20 @@ http://flickity.metafizzy.co
       backface-visibility: hidden;
       left: -20%;
       transition: transform .75s ease-out .25s; }
+  .carousel-cell__content {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
     .carousel-cell__content__secondary {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
       opacity: 1;
       visibility: visible;
       z-index: 2;
       transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
-      .carousel-cell__content__secondary::before {
-        content: none; }
   .carousel-cell__text {
     position: absolute;
     top: 50%;
@@ -2600,7 +2607,7 @@ http://flickity.metafizzy.co
         opacity: 0;
         visibility: hidden;
         transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out; }
-  .carousel-cell.is-selected .carousel-cell__content::before {
+  .carousel-cell.is-selected .carousel-cell__container::before {
     transform: skew(-26deg) translate3d(0, 0, 0);
     backface-visibility: hidden; }
   .carousel-cell.is-selected .carousel-cell__text h2 {
@@ -2687,6 +2694,18 @@ http://flickity.metafizzy.co
   display: block;
   position: relative;
   overflow: hidden; }
+  #project .projects-image-container a::after,
+  #project .projects-image-group-container a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
   #project .projects-image-container a:hover .projects-image-container__content,
   #project .projects-image-container a:hover .projects-image-group-container__content,
   #project .projects-image-container a:hover .projects-image-container__angle,
@@ -2696,6 +2715,10 @@ http://flickity.metafizzy.co
   #project .projects-image-group-container a:hover .projects-image-container__angle,
   #project .projects-image-group-container a:hover .projects-image-group-container__angle {
     transform: translate3d(0, 0, 0); }
+  #project .projects-image-container a:hover::after,
+  #project .projects-image-group-container a:hover::after {
+    opacity: 0;
+    visibility: hidden; }
 
 #project .projects-image-container__angle,
 #project .projects-image-group-container__angle {
@@ -2717,8 +2740,8 @@ http://flickity.metafizzy.co
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
   bottom: 0;
+  width: 37%;
   transform: translate3d(-100%, 0, 0);
   backface-visibility: hidden;
   transition: transform .5s ease-out;
@@ -2739,13 +2762,19 @@ http://flickity.metafizzy.co
   #project .projects-image-container__content .sub-headings,
   #project .projects-image-group-container__content .sub-headings {
     top: 60px;
-    color: #66666e;
+    color: #f1f1f1;
     font-size: 1.2rem;
     text-transform: uppercase; }
+    #project .projects-image-container__content .sub-headings p,
+    #project .projects-image-group-container__content .sub-headings p {
+      margin-bottom: 2px; }
 
-#project .projects-image-container .tall-image .projects-image-container__angle,
+#project .projects-image-container .tall-image .projects-image-container__angle, #project .projects-image-container .tall-image .projects-image-container__angle,
+#project .projects-image-container .tall-image .projects-image-group-container__angle,
 #project .projects-image-container .tall-image .projects-image-group-container__angle,
 #project .projects-image-group-container .tall-image .projects-image-container__angle,
+#project .projects-image-group-container .tall-image .projects-image-container__angle,
+#project .projects-image-group-container .tall-image .projects-image-group-container__angle,
 #project .projects-image-group-container .tall-image .projects-image-group-container__angle {
   width: 36%; }
 

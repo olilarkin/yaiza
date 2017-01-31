@@ -97,8 +97,8 @@
     z-index: 1;
     @extend .img-responsive;
     opacity: 0;
-    transform: translateY(5vh);
-    transition: opacity .35s ease-out, transform .35s ease-out;
+    transform: translateY(25vh);
+    transition: opacity .75s ease-out, transform .75s ease-out;
     transition-delay: 0s;
     path {
       fill: #0f0f0f;
