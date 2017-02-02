@@ -39,7 +39,6 @@ export default class Carousel extends React.Component {
 
   componentDidMount() {
     this.checkArrows();
-    console.log('this.bgColors', this.bgColors);
     this.applyBgColor();
     this.sliderInstance.flkty.on('settle', (slider) => {
       this.checkArrows();

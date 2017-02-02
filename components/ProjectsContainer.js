@@ -18,9 +18,11 @@ class ProjectsContainer extends React.Component {
     this.pauseVideo = this.pauseVideo.bind(this);
   }
 
+
   componentDidMount() {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.addEventListener('scroll', this.handleScroll);
+      document.body.style.backgroundColor = '#000';
     }
   }
 
@@ -85,19 +87,19 @@ class ProjectsContainer extends React.Component {
                 poster={heroImage}
                 onCanPlayThrough={() => {
                   // Do stuff 
-                } }>
+                }}>
                 <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
                 <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
               </Video>
             }
             {!this.props.mobile &&
               <Video
-                ref={(player) => { this.videoPlayer = player } }
+                ref={(player) => { this.videoPlayer = player }}
                 autoPlay
                 loop
                 poster={heroImage}
                 onCanPlayThrough={() => {
-                } }>
+                }}>
                 <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
                 <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
               </Video>
