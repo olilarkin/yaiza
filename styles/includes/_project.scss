@@ -31,7 +31,7 @@
       display: block;
       position: relative;
       overflow: hidden;
-       &::after {
+      &::after {
         content: '';
         position: absolute;
         left: 0;
@@ -56,7 +56,6 @@
         }
       }
     }
-
     &__angle {
       background: transparent url(/assets/angle-small.svg) no-repeat right center;
       background-size: cover;
@@ -290,6 +289,7 @@
       padding: 10px 15px 10px 30px;
       display: block;
       position: relative;
+      height: 52px;
       &.next-link,
       &.prev-link {
         span {
@@ -301,6 +301,10 @@
         text-align: right;
         padding-left: 15px;
         padding-right: 30px;
+        &::after {
+          left: 30px;
+          right: 60px;
+        }
         span {
           right: 20px;
           top: 13px;
@@ -309,6 +313,10 @@
       &.prev-link {
         span {
           left: 20px;
+        }
+        &::after {
+          right: 30px;
+          left: 60px;
         }
       }
     }

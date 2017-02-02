@@ -10,6 +10,9 @@
     color: #fff;
     text-decoration: none;
   }
+  &::after{
+    content:none;
+  }
   &[data-effect="Black and White"] {
     &:hover {
       .carousel-cell__content__secondary {
