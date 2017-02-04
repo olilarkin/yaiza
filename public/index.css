@@ -1877,8 +1877,11 @@ h2,
 h4, .nav-container, .nav-container .nav-info h3, #project .quote-container .quote-text, #project .prev-next-links-container a {
   font-family: 'DomaineDisplay', serif; }
 
-.lato, body, h3, .nav-container .nav-info a, .nav-container .nav {
+.lato, body, h3, #footer, .nav-container .nav-info a, .nav-container .nav {
   font-family: 'Lato', sans-serif; }
+
+.light-font, #footer {
+  font-weight: 300; }
 
 @keyframes fadeIn {
   from {
@@ -1924,9 +1927,9 @@ body {
   line-height: 1.6;
   letter-spacing: 0.08rem;
   -webkit-overflow-scrolling: touch;
-  transition: background-color .3s ease; }
+  transition: background-color .75s ease; }
   body.light {
-    background-color: #fff; }
+    background-color: #fff !important; }
 
 * {
   min-height: 0;
@@ -1948,6 +1951,9 @@ h2,
 h4 {
   margin-top: 0; }
 
+h2 {
+  font-size: 25px; }
+
 h3 {
   margin-top: 0;
   margin-bottom: 30px;
@@ -1959,6 +1965,27 @@ h4 {
   text-align: center;
   font-size: 20px;
   line-height: 2; }
+
+a {
+  position: relative;
+  padding-bottom: 6px; }
+  a:hover {
+    text-decoration: none; }
+    a:hover::after {
+      transform: scale(1, 1);
+      opacity: 1; }
+  a::after {
+    opacity: 0;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 2px;
+    background: #444;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform: scale(0, 1);
+    transform-origin: center center; }
 
 .visually-hidden {
   opacity: 0; }
@@ -1997,8 +2024,8 @@ h4 {
   z-index: 2;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  min-width: 100%; }
+  min-width: 100%;
+  font-size: 12px; }
   #footer p {
     margin: 0; }
 
@@ -2063,6 +2090,8 @@ h4 {
   display: block;
   width: 100%;
   height: 100%; }
+  .toggle .cross::after {
+    content: none; }
 
 .toggle .cross span:before {
   transition-property: margin, -webkit-transform, top, left, width;
@@ -2280,7 +2309,7 @@ h4 {
     transition: opacity .75s ease-out, transform .75s ease-out;
     transition-delay: 0s; }
     .nav-container .nav-logo path {
-      fill: #0f0f0f; }
+      fill: rgba(30, 30, 30, 0.59); }
 
 .nav-link {
   color: #c0c0c0;
@@ -2527,27 +2556,29 @@ http://flickity.metafizzy.co
   .carousel-cell:active, .carousel-cell:focus, .carousel-cell:visited, .carousel-cell:hover {
     color: #fff;
     text-decoration: none; }
+  .carousel-cell::after {
+    content: none; }
   .carousel-cell[data-effect="Black and White"]:hover .carousel-cell__content__secondary {
     opacity: 0;
     visibility: hidden; }
   .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__container::after {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
     opacity: 1;
     visibility: visible;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
   .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__content {
-    transition: transform 3s; }
+    transition: transform 10s .5s; }
   .carousel-cell[data-effect="Fade Overlay"]:hover .carousel-cell__container::after {
     opacity: 0;
     visibility: hidden; }
   .carousel-cell[data-effect="Fade Overlay"]:hover .carousel-cell__content {
-    transform: scale(1.1); }
+    transform: scale3d(1.1, 1.1, 1); }
   .carousel-cell__container {
     position: relative;
     width: 100%;
@@ -2917,30 +2948,17 @@ http://flickity.metafizzy.co
   #project .prev-next-links-container a {
     font-size: 11px;
     color: #000;
-    padding: 10px 15px 10px 30px;
+    padding: 10px;
     display: block;
-    position: relative; }
-    #project .prev-next-links-container a.next-link span, #project .prev-next-links-container a.prev-link span {
-      position: absolute;
-      top: 12px; }
+    position: relative;
+    height: 52px; }
     #project .prev-next-links-container a.next-link {
-      text-align: right;
-      padding-left: 15px;
-      padding-right: 30px; }
-      #project .prev-next-links-container a.next-link span {
-        right: 20px;
-        top: 13px; }
-    #project .prev-next-links-container a.prev-link span {
-      left: 20px; }
-  #project .prev-next-links-container span svg {
-    width: 6px;
-    height: auto;
-    top: 2px; }
+      text-align: right; }
 
 #project .yai-logo-container {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 250px;
   z-index: 1; }
   #project .yai-logo-container .yai-logo {
     width: 100%;
@@ -2968,20 +2986,7 @@ http://flickity.metafizzy.co
   #project .prev-next-links-container {
     padding-top: 40px; }
     #project .prev-next-links-container a {
-      font-size: 20px;
-      padding: 10px 30px 10px 60px; }
-      #project .prev-next-links-container a.next-link span, #project .prev-next-links-container a.prev-link span {
-        top: 16px; }
-      #project .prev-next-links-container a.next-link {
-        padding-left: 30px;
-        padding-right: 60px; }
-        #project .prev-next-links-container a.next-link span {
-          right: 40px;
-          top: 17px; }
-      #project .prev-next-links-container a.prev-link span {
-        left: 40px; }
-    #project .prev-next-links-container span svg {
-      width: 10px; } }
+      font-size: 20px; } }
 
 @media screen and (min-width: 992px) {
   #project .one-side-tall-container .one-side-tall .content {

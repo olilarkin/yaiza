@@ -286,44 +286,25 @@
       @extend .domaine;
       font-size: 11px;
       color: #000;
-      padding: 10px 15px 10px 30px;
+      padding: 10px;
       display: block;
       position: relative;
       height: 52px;
-      &.next-link,
-      &.prev-link {
-        span {
-          position: absolute;
-          top: 12px;
-        }
-      }
       &.next-link {
         text-align: right;
-        padding-left: 15px;
-        padding-right: 30px;
+        padding-right: 40px;
         &::after {
-          left: 30px;
-          right: 60px;
-        }
-        span {
-          right: 20px;
-          top: 13px;
+          right: 40px;
+          left: 10px;
         }
       }
       &.prev-link {
-        span {
-          left: 20px;
-        }
+        padding-left: 40px;
         &::after {
-          right: 30px;
-          left: 60px;
+          left: 40px;
+          right: 10px;
         }
       }
-    }
-    span svg {
-      width: 6px;
-      height: auto;
-      top: 2px
     }
   }
   .yai-logo-container {
@@ -377,29 +358,6 @@
       padding-top: 40px;
       a {
         font-size: 20px;
-        padding: 10px 30px 10px 60px;
-        &.next-link,
-        &.prev-link {
-          span {
-            top: 16px;
-          }
-        }
-        &.next-link {
-          padding-left: 30px;
-          padding-right: 60px;
-          span {
-            right: 40px;
-            top: 17px;
-          }
-        }
-        &.prev-link {
-          span {
-            left: 40px;
-          }
-        }
-      }
-      span svg {
-        width: 10px;
       }
     }
   }
