@@ -64,6 +64,9 @@
     left: 50%;
     margin-left: -130px;
     user-select: none;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity $transitionTime $transitionEase, visibility $transitionTime $transitionEase;
   }
   &.active {
     .container {
@@ -73,6 +76,10 @@
       path {
         fill: #fff;
       }
+    }
+    .strapline {
+      opacity: 0;
+      visibility: hidden;
     }
     .menu-button-container {
       color: #fff;
