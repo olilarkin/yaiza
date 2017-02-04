@@ -139,6 +139,9 @@ export default class Carousel extends React.Component {
     return (
       <div id="carousel">
         {slider}
+        <div className="all-link-container">
+          <Link to="/projects">View all</Link>
+        </div>
         <div className="arrow-container">
           <div className="arrow">
             <div className={leftArrowClasses} onClick={() => { this.goPrev() } }>

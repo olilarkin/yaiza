@@ -9,6 +9,7 @@ body {
   transition: background-color .75s ease;
   &.light {
     background-color: #fff!important;
+    color: #000;
   }
 }
 
@@ -36,10 +37,12 @@ h2,
 h4 {
   @extend .domaine;
   margin-top: 0;
+  color: #000;
 }
 
 h2 {
   font-size: 25px;
+  margin-bottom: 60px;
 }
 
 h3 {
@@ -60,7 +63,10 @@ h4 {
 a {
   position: relative;
   padding-bottom: 6px;
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
     text-decoration: none;
     &::after {
       transform: scale(1, 1);
@@ -84,34 +90,6 @@ a {
 
 .visually-hidden {
   opacity: 0;
-}
-
-.content-container {
-  padding: 60px 40px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #fff;
-  color: #000;
-  &--dark {
-    background-color: $darkColor;
-    color: #ececec;
-  }
-  &>* {
-    flex: 1 1 100%;
-  }
-  &.half-width+.content-container.half-width+.content-container.half-width,
-  &.half-width+.content-container.half-width+.content-container.half-width .content-container.half-width {
-    padding-top: 0;
-  }
-}
-
-.image-container,
-.projects-image-container,
-.projects-image-group-container,
-.image-roll-container {
-  &.half-width.animated.fadeInUp:nth-child(odd) {
-    animation-delay: .3s;
-  }
 }
 
 #footer {

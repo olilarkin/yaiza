@@ -22,7 +22,7 @@ class ProjectsContainer extends React.Component {
   componentDidMount() {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.addEventListener('scroll', this.handleScroll);
-      document.body.style.backgroundColor = '#000';
+      document.body.style.backgroundColor = '#171717;';
     }
   }
 

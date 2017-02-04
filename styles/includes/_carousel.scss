@@ -10,8 +10,8 @@
     color: #fff;
     text-decoration: none;
   }
-  &::after{
-    content:none;
+  &::after {
+    content: none;
   }
   &[data-effect="Black and White"] {
     &:hover {
@@ -26,10 +26,10 @@
       &::after {
         content: '';
         position: absolute;
-        left:-1px;
-        top:-1px;
-        right:-1px;
-        bottom:-1px;
+        left: -1px;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
         opacity: 1;
         visibility: visible;
         background-color: rgba(0, 0, 0, 0.2);
@@ -47,7 +47,7 @@
         }
       }
       .carousel-cell__content {
-        transform: scale3d(1.1,1.1,1);
+        transform: scale3d(1.1, 1.1, 1);
       }
     }
   }
@@ -186,6 +186,24 @@
       .arrow-part {
         fill: #fff;
       }
+    }
+  }
+}
+
+.all-link-container {
+  position: absolute;
+  width: 75vw;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: right;
+  margin: 20px auto 0;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  a {
+    color: #7a7979;
+    transition: color $transitionTime $transitionEase;
+    &:hover {
+      color: #fff;
     }
   }
 }

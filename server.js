@@ -55,7 +55,7 @@ function renderPage(appHtml) {
     <link type="text/css" rel="stylesheet" href="index.css">
     </head>
     <body>
-    <div id=app>${appHtml}</div>
+    <div id=app tabindex="-1">${appHtml}</div>
     <script src="/bundle.js"></script>
     </body>
     </html>

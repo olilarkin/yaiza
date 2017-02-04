@@ -264,7 +264,7 @@ class ProjectContainer extends React.Component {
               </Reveal>
             );
           case 'Quote':
-            const quoteClasses = `content-container quote-container ${sliceLabel}`;
+            const quoteClasses = `quote-container ${sliceLabel}`;
             const quoteText = slice.value.value["0"].fragments["quote-text"].value;
             const quoteSource = slice.value.value["0"].fragments["quote-source"].value;
             return (
@@ -273,6 +273,12 @@ class ProjectContainer extends React.Component {
                   <p className="quote-text">{quoteText}</p>
                   <p className="quote-source">{quoteSource}</p>
                 </div>
+              </Reveal>);
+          case 'Sub Heading':
+            const subHeadingText = slice.value.value;
+            return (
+              <Reveal effect="animated fadeInUp" className="sub-heading-container" key={index}>
+                <h2>{subHeadingText}</h2>
               </Reveal>);
           case 'images':
             const images = slice.value.value;
