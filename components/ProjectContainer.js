@@ -129,19 +129,19 @@ class ProjectContainer extends React.Component {
                 poster={heroImage}
                 onCanPlayThrough={() => {
                   // Do stuff 
-                } }>
+                }}>
                 <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
                 <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
               </Video>
             }
             {!this.props.mobile &&
               <Video
-                ref={(player) => { this.videoPlayer = player } }
+                ref={(player) => { this.videoPlayer = player }}
                 autoPlay
                 loop
                 poster={heroImage}
                 onCanPlayThrough={() => {
-                } }>
+                }}>
                 <source src={`${this.props.videoURL}${videoFile}.webm`} type="video/webm" />
                 <source src={`${this.props.videoURL}${videoFile}.mp4`} type="video/mp4" />
               </Video>

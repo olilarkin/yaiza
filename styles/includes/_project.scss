@@ -18,21 +18,37 @@
     flex-wrap: wrap;
     background-color: #fff;
     color: #000;
+    padding: 100px 40px;
     &--dark {
       background-color: $darkColor;
       color: #ececec;
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: #ececec;
+      }
     }
     &>* {
       flex: 1 1 100%;
     }
-    &.half-width {
-      padding: 100px 100px 100px 40px;
-    }
-    &.half-width+.content-container.half-width {
-      padding: 100px 40px 100px 100px;
-    }
+    &.half-width,
     &.half-width+.content-container.half-width+.content-container.half-width,
-    &.half-width+.content-container.half-width+.content-container.half-width .content-container.half-width {
+    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
+    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
+      padding-right: 100px;
+      padding-left: 40px;
+    }
+    &.half-width+.content-container.half-width,
+    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
+    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
+    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
+      padding-left: 100px;
+      padding-right: 40px;
+    }
+    &+.content-container,
+    &.half-width+.content-container.half-width+.content-container.half-width,
+    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
       padding-top: 0;
       margin-top: -50px;
     }
@@ -63,6 +79,16 @@
       display: block;
       position: relative;
       overflow: hidden;
+      padding-bottom: 0;
+      font-weight: 400;
+      &:hover,
+      &:active,
+      &:focus,
+      &:visited {
+        &::after {
+          transform: none;
+        }
+      }
       &::after {
         content: '';
         position: absolute;
@@ -71,8 +97,10 @@
         bottom: 0;
         right: 0;
         opacity: 1;
+        height:auto;
         visibility: visible;
-        background-color: rgba(0, 0, 0, 0.5);
+        transform: none;
+        background: rgba(0, 0, 0, 0.5);
         transition: opacity ($transitionTime * 4) ease-in-out, visibility ($transitionTime * 4) ease-in-out;
       }
       &:hover {
@@ -269,6 +297,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        p {
+          margin-bottom: 10px;
+        }
       }
       >div {
         width: 100%;

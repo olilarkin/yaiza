@@ -16,6 +16,9 @@ body {
 * {
   min-height: 0;
   min-width: 0;
+  &:focus {
+    outline: none;
+  }
 }
 
 .container {
@@ -32,6 +35,10 @@ body {
   }
 }
 
+p {
+  margin-bottom: 20px;
+}
+
 h1,
 h2,
 h4 {
@@ -39,6 +46,7 @@ h4 {
   margin-top: 0;
   color: #000;
 }
+
 
 h2 {
   font-size: 25px;
@@ -57,16 +65,24 @@ h4 {
   font-weight: bold;
   text-align: center;
   font-size: 20px;
-  line-height: 2;
+  line-height: 1.4;
+}
+
+h6 {
+  margin-top:0;
+  margin-bottom:15px;
 }
 
 a {
   position: relative;
   padding-bottom: 6px;
+  color: #000;
+  font-weight: bold;
   &:hover,
   &:active,
   &:focus,
   &:visited {
+    color: #000;
     text-decoration: none;
     &::after {
       transform: scale(1, 1);
