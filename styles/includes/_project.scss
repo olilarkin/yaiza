@@ -52,7 +52,7 @@
       padding-left: 100px;
       padding-right: 40px;
     }
-    &+.content-container,
+    &:not(.half-width)+.content-container:not(.half-width),
     &.half-width+.content-container.half-width+.content-container.half-width,
     &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
       padding-top: 0;

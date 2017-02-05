@@ -2006,7 +2006,7 @@ a {
   opacity: 0; }
 
 #footer {
-  background-color: #000;
+  background-color: #171717;
   color: #fff;
   text-align: center;
   padding-top: 50px;
@@ -2743,6 +2743,10 @@ http://flickity.metafizzy.co
     #project .content-container--dark h3,
     #project .content-container--dark h4 {
       color: #ececec; }
+    #project .content-container--dark a {
+      color: #ececec; }
+      #project .content-container--dark a::after {
+        background: #f0f0f0; }
   #project .content-container > * {
     flex: 1 1 100%; }
   #project .content-container.half-width,
@@ -2757,7 +2761,7 @@ http://flickity.metafizzy.co
   #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
     padding-left: 100px;
     padding-right: 40px; }
-  #project .content-container + .content-container,
+  #project .content-container:not(.half-width) + .content-container:not(.half-width),
   #project .content-container.half-width + .content-container.half-width + .content-container.half-width,
   #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
     padding-top: 0;
