@@ -19,7 +19,7 @@
     visibility: visible;
     overflow: auto;
     .nav li,
-    .nav-info > div,
+    .nav-info>div,
     .nav-logo {
       opacity: 1;
       transform: translateY(0);
@@ -41,11 +41,13 @@
     }
     h3 {
       @extend .domaine;
+      margin-bottom: 10px;
     }
     small {
       color: $lightColor;
       margin-bottom: 30px;
       display: block;
+      @extend .lato;
     }
     a {
       @extend .lato;
@@ -69,8 +71,8 @@
     -webkit-overflow-scrolling: touch;
     li {
       display: block;
-      margin-bottom: 12px;
-      color: #c0c0c0;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
       cursor: pointer;
       overflow: hidden;
       padding-left: 30px;
