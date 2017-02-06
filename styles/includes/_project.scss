@@ -38,20 +38,6 @@
     &>* {
       flex: 1 1 100%;
     }
-    &.half-width,
-    &.half-width+.content-container.half-width+.content-container.half-width,
-    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
-    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
-      padding-right: 100px;
-      padding-left: 40px;
-    }
-    &.half-width+.content-container.half-width,
-    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
-    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
-    &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
-      padding-left: 100px;
-      padding-right: 40px;
-    }
     &:not(.half-width)+.content-container:not(.half-width),
     &.half-width+.content-container.half-width+.content-container.half-width,
     &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
@@ -370,16 +356,16 @@
       height: 52px;
       &.next-link {
         text-align: right;
-        padding-right: 40px;
+        padding-right: 20px;
         &::after {
-          right: 40px;
+          right: 20px;
           left: 10px;
         }
       }
       &.prev-link {
-        padding-left: 40px;
+        padding-left: 20px;
         &::after {
-          left: 40px;
+          left: 20px;
           right: 10px;
         }
       }
@@ -408,12 +394,24 @@
 
 @media screen and (min-width:768px) {
   #project {
-    &>div:nth-child(2),
-    &>div:nth-child(3) {
-      // margin-top: 0;
-    }
     .half-width {
       flex-basis: 50%;
+    }
+    .content-container {
+      &.half-width,
+      &.half-width+.content-container.half-width+.content-container.half-width,
+      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
+      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
+        padding-right: 100px;
+        padding-left: 40px;
+      }
+      &.half-width+.content-container.half-width,
+      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
+      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
+      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
+        padding-left: 100px;
+        padding-right: 40px;
+      }
     }
     .hero.has-image {
       position: relative;
@@ -436,6 +434,18 @@
       padding-top: 40px;
       a {
         font-size: 20px;
+        &.next-link {
+          padding-right: 40px;
+          &::after {
+            right: 40px;
+          }
+        }
+        &.prev-link {
+          padding-left: 40px;
+          &::after {
+            left: 40px;
+          }
+        }
       }
     }
   }
