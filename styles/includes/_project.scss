@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     background-color: #fff;
     color: #000;
-    padding: 100px 40px;
+    padding: 20px;
     &--dark {
       background-color: $darkColor;
       color: #ececec;
@@ -42,7 +42,6 @@
     &.half-width+.content-container.half-width+.content-container.half-width,
     &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
       padding-top: 0;
-      margin-top: -50px;
     }
   }
   .image-container,
@@ -268,7 +267,7 @@
     }
   }
   .sub-heading-container {
-    padding: 60px 40px 0;
+    padding: 40px 20px 20px;
     display: flex;
     flex-wrap: wrap;
     background-color: #fff;
@@ -398,6 +397,7 @@
       flex-basis: 50%;
     }
     .content-container {
+      padding: 100px 40px;
       &.half-width,
       &.half-width+.content-container.half-width+.content-container.half-width,
       &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
@@ -411,6 +411,11 @@
       &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
         padding-left: 100px;
         padding-right: 40px;
+      }
+      &:not(.half-width)+.content-container:not(.half-width),
+      &.half-width+.content-container.half-width+.content-container.half-width,
+      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
+        margin-top: -50px;
       }
     }
     .hero.has-image {
@@ -429,6 +434,9 @@
           width: 50%;
         }
       }
+    }
+    .sub-heading-container {
+      padding: 60px 40px 0;
     }
     .prev-next-links-container {
       padding-top: 40px;

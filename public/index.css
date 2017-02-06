@@ -2734,7 +2734,7 @@ http://flickity.metafizzy.co
   flex-wrap: wrap;
   background-color: #fff;
   color: #000;
-  padding: 100px 40px; }
+  padding: 20px; }
   #project .content-container--dark {
     background-color: #171717;
     color: #ececec; }
@@ -2749,23 +2749,10 @@ http://flickity.metafizzy.co
         background: #f0f0f0; }
   #project .content-container > * {
     flex: 1 1 100%; }
-  #project .content-container.half-width,
-  #project .content-container.half-width + .content-container.half-width + .content-container.half-width,
-  #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width,
-  #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
-    padding-right: 100px;
-    padding-left: 40px; }
-  #project .content-container.half-width + .content-container.half-width,
-  #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width,
-  #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width,
-  #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
-    padding-left: 100px;
-    padding-right: 40px; }
   #project .content-container:not(.half-width) + .content-container:not(.half-width),
   #project .content-container.half-width + .content-container.half-width + .content-container.half-width,
   #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
-    padding-top: 0;
-    margin-top: -50px; }
+    padding-top: 0; }
 
 #project .image-container.half-width.animated.fadeInUp:nth-child(odd), #project .image-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
 #project .projects-image-container.half-width.animated.fadeInUp:nth-child(odd), #project .projects-image-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
@@ -3038,14 +3025,14 @@ http://flickity.metafizzy.co
     height: 52px; }
     #project .prev-next-links-container a.next-link {
       text-align: right;
-      padding-right: 40px; }
+      padding-right: 20px; }
       #project .prev-next-links-container a.next-link::after {
-        right: 40px;
+        right: 20px;
         left: 10px; }
     #project .prev-next-links-container a.prev-link {
-      padding-left: 40px; }
+      padding-left: 20px; }
       #project .prev-next-links-container a.prev-link::after {
-        left: 40px;
+        left: 20px;
         right: 10px; }
 
 #project .yai-logo-container {
@@ -3067,6 +3054,24 @@ http://flickity.metafizzy.co
 @media screen and (min-width: 768px) {
   #project .half-width {
     flex-basis: 50%; }
+  #project .content-container {
+    padding: 100px 40px; }
+    #project .content-container.half-width,
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width,
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width,
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
+      padding-right: 100px;
+      padding-left: 40px; }
+    #project .content-container.half-width + .content-container.half-width,
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width,
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width,
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
+      padding-left: 100px;
+      padding-right: 40px; }
+    #project .content-container:not(.half-width) + .content-container:not(.half-width),
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width,
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
+      margin-top: -50px; }
   #project .hero.has-image {
     position: relative; }
   #project .centered-image img {
@@ -3079,7 +3084,15 @@ http://flickity.metafizzy.co
   #project .prev-next-links-container {
     padding-top: 40px; }
     #project .prev-next-links-container a {
-      font-size: 20px; } }
+      font-size: 20px; }
+      #project .prev-next-links-container a.next-link {
+        padding-right: 40px; }
+        #project .prev-next-links-container a.next-link::after {
+          right: 40px; }
+      #project .prev-next-links-container a.prev-link {
+        padding-left: 40px; }
+        #project .prev-next-links-container a.prev-link::after {
+          left: 40px; } }
 
 @media screen and (min-width: 992px) {
   #project .one-side-tall-container .one-side-tall .content {
