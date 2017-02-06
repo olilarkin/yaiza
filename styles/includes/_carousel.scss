@@ -68,11 +68,11 @@
       position: absolute;
       z-index: 3;
       top: 0;
-      width: 40%;
+      width: 80%;
       height: 100%;
       transform: skew(-26deg) translate3d(-100%, 0, 0);
       backface-visibility: hidden;
-      left: -20%;
+      left: -50%;
       transition: transform .75s ease-out .25s;
     }
   }
@@ -109,13 +109,15 @@
       visibility: hidden;
       transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out;
       color: #fff;
+      font-size: 19px;
       &::after {
         content: attr(data-subtext);
         position: absolute;
         top: 40px;
         font-family: 'Lato', sans-serif;
         font-size: 1.4rem;
-        margin-left: -20px;
+        margin-left: 0;
+        left: 40px;
         transform: translate3d(-10%, 0, 0);
         backface-visibility: hidden;
         opacity: 0;
@@ -219,5 +221,47 @@
   .carousel-cell {
     height: 70vh;
     margin: 0 10vw;
+    &__container {
+      &::before {
+        width: 40%;
+        height: 100%;
+        transform: skew(-26deg) translate3d(-100%, 0, 0);
+        left: -20%;
+      }
+    }
+    &__text {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      margin-top: -36px;
+      h2 {
+        margin-top: 0;
+        margin-left: -20px;
+        transform: translate3d(-10%, 0, 0);
+        font-size: 25px;
+        &::after {
+          top: 40px;
+          font-size: 1.4rem;
+          margin-left: -20px;
+          left: auto;
+          transform: translate3d(-10%, 0, 0);
+        }
+      }
+    }
+    &.is-selected {
+      .carousel-cell__container {
+        &::before {
+          transform: skew(-26deg) translate3d(0, 0, 0);
+        }
+      }
+      .carousel-cell__text {
+        h2 {
+          transform: translate3d(0, 0, 0);
+          &::after {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+      }
+    }
   }
 }
