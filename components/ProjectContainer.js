@@ -214,7 +214,7 @@ class ProjectContainer extends React.Component {
               </Reveal>
             );
           case 'One Side Tall':
-            const oneSideTallClasses = 'content-container one-side-tall-container';
+            const oneSideTallClasses = 'one-side-tall-container';
             const oneSideTallTImage = slice.value.value["0"].fragments["tallImage"] && slice.value.value["0"].fragments["tallImage"].main.url;
             const oneSideTallTopSImage = slice.value.value["0"].fragments["otherSideTopImage"] && slice.value.value["0"].fragments["otherSideTopImage"].main.url;
             const oneSideTallSImage = slice.value.value["0"].fragments["otherSideBottomImage"] && slice.value.value["0"].fragments["otherSideBottomImage"].main.url;
