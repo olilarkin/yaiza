@@ -102,6 +102,7 @@
       opacity: 0;
       visibility: hidden;
       transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out;
+      color:#fff;
       &::after {
         content: attr(data-subtext);
         position: absolute;
