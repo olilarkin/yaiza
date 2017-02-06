@@ -2630,7 +2630,8 @@ http://flickity.metafizzy.co
       backface-visibility: hidden;
       opacity: 0;
       visibility: hidden;
-      transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out; }
+      transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out;
+      color: #fff; }
       .carousel-cell__text h2::after {
         content: attr(data-subtext);
         position: absolute;
@@ -2952,7 +2953,7 @@ http://flickity.metafizzy.co
     font-size: 1.3rem; }
 
 #project .sub-heading-container {
-  padding: 60px 40px 0;
+  padding: 40px 20px 20px;
   display: flex;
   flex-wrap: wrap;
   background-color: #fff; }
@@ -3053,7 +3054,8 @@ http://flickity.metafizzy.co
 
 @media screen and (min-width: 768px) {
   #project .half-width {
-    flex-basis: 50%; }
+    flex-basis: 50%;
+    max-width: 50%; }
   #project .content-container {
     padding: 100px 40px; }
     #project .content-container.half-width,
@@ -3071,7 +3073,8 @@ http://flickity.metafizzy.co
     #project .content-container:not(.half-width) + .content-container:not(.half-width),
     #project .content-container.half-width + .content-container.half-width + .content-container.half-width,
     #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
-      margin-top: -50px; }
+      margin-top: -50px;
+      padding-top: 0; }
   #project .hero.has-image {
     position: relative; }
   #project .centered-image img {
@@ -3081,6 +3084,8 @@ http://flickity.metafizzy.co
     font-size: 1.8rem; }
   #project .one-side-tall-container .one-side-tall > div {
     width: 50%; }
+  #project .sub-heading-container {
+    padding: 60px 40px 0; }
   #project .prev-next-links-container {
     padding-top: 40px; }
     #project .prev-next-links-container a {

@@ -395,6 +395,7 @@
   #project {
     .half-width {
       flex-basis: 50%;
+      max-width: 50%;
     }
     .content-container {
       padding: 100px 40px;
@@ -416,6 +417,7 @@
       &.half-width+.content-container.half-width+.content-container.half-width,
       &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
         margin-top: -50px;
+        padding-top:0;
       }
     }
     .hero.has-image {
