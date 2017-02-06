@@ -29,9 +29,9 @@
         color: #ececec;
       }
       a {
-        color: #ececec;
+        color: #898363;
         &::after {
-          background: #f0f0f0;
+          background: #a59e7a;
         }
       }
     }
@@ -417,7 +417,7 @@
       &.half-width+.content-container.half-width+.content-container.half-width,
       &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
         margin-top: -50px;
-        padding-top:0;
+        padding-top: 0;
       }
     }
     .hero.has-image {

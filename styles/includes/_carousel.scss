@@ -14,10 +14,16 @@
     content: none;
   }
   &[data-effect="Black and White"] {
+    .carousel-cell__content:not(.carousel-cell__content__secondary) {
+      transition: transform 10s .5s;
+    }
     &:hover {
       .carousel-cell__content__secondary {
         opacity: 0;
         visibility: hidden;
+      }
+      .carousel-cell__content:not(.carousel-cell__content__secondary) {
+        transform: scale3d(1.1, 1.1, 1);
       }
     }
   }
@@ -102,7 +108,7 @@
       opacity: 0;
       visibility: hidden;
       transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out;
-      color:#fff;
+      color: #fff;
       &::after {
         content: attr(data-subtext);
         position: absolute;
