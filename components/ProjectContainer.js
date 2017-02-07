@@ -169,6 +169,7 @@ class ProjectContainer extends React.Component {
           case 'Logo':
             const logoClasses = `logo-container ${sliceLabel}`;
             const logoBGColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;
+            const logoCaption = slice.value.value["0"].fragments["caption"] && slice.value.value["0"].fragments["caption"].value;
             const logoIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;
             return (
               <Reveal effect="animated fadeInUp" className={logoClasses} key={index} style={{ backgroundColor: logoBGColor }}>
@@ -177,6 +178,9 @@ class ProjectContainer extends React.Component {
                     <div className="image-roll-icon">
                       <img src={logoIcon} className="img-responsive" />
                     </div>
+                  }
+                  {logoCaption &&
+                    <h6>{logoCaption}</h6>
                   }
                 </div>
               </Reveal>

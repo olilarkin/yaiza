@@ -73,10 +73,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 10px;
     >div {
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
+      h6 {
+        margin-top: 40px;
+      }
     }
   }
   .projects-image-container,

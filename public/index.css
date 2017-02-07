@@ -2823,8 +2823,10 @@ http://flickity.metafizzy.co
   position: relative; }
   #project .logo-container > div {
     display: flex;
-    justify-content: center;
-    align-items: center; }
+    flex-direction: column;
+    justify-content: center; }
+    #project .logo-container > div h6 {
+      margin-top: 40px; }
 
 #project .projects-image-container a,
 #project .projects-image-group-container a {
