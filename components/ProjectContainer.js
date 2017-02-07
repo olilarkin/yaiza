@@ -167,9 +167,10 @@ class ProjectContainer extends React.Component {
             const contentDarkClasses = `content-container content-container--dark ${sliceLabel}`;
             return (<Reveal effect="animated fadeInUp" className={contentDarkClasses} key={index}><div dangerouslySetInnerHTML={{ __html: slice.value.asHtml() }} /></Reveal>);
           case 'Logo':
-            const logoClasses = `logo-container ${sliceLabel}`;
             const logoBGColor = slice.value.value["0"].fragments["background-colour"] && slice.value.value["0"].fragments["background-colour"].value;
             const logoCaption = slice.value.value["0"].fragments["caption"] && slice.value.value["0"].fragments["caption"].value;
+            const hasCaption = logoCaption ? 'has-caption' : '';
+            const logoClasses = `logo-container ${sliceLabel} ${hasCaption}`;
             const logoIcon = slice.value.value["0"].fragments["icon"] && slice.value.value["0"].fragments["icon"].main.url;
             return (
               <Reveal effect="animated fadeInUp" className={logoClasses} key={index} style={{ backgroundColor: logoBGColor }}>
