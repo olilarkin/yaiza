@@ -73,6 +73,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    min-height: 40vh;
     &.has-caption {
       justify-content: flex-start;
       padding: 10px 15px;
@@ -478,6 +479,7 @@
       padding: 60px 40px 0;
     }
     .logo-container {
+      min-height: 0;
       &.has-caption {
         justify-content: center;
         padding: 106px 10px 100px;
