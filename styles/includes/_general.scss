@@ -138,3 +138,10 @@
       padding-top: 200px;
     }
   }
+  
+  @media screen and (min-width:1500px) {
+    .container {
+      width: 1540px;
+      max-width: calc(100% - 30px);
+    }
+  }

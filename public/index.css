@@ -1877,7 +1877,7 @@ h2,
 h4, .nav-container, .nav-container .nav-info h3, #project .quote-container .quote-text, #project .prev-next-links-container a {
   font-family: 'DomaineDisplay', serif; }
 
-.lato, body, h3, #footer, .nav-container .nav-info a, .nav-container .nav {
+.lato, body, h3, #footer, .nav-container .nav-info small, .nav-container .nav-info a, .nav-container .nav {
   font-family: 'Lato', sans-serif; }
 
 .light-font, #footer {
@@ -1975,8 +1975,9 @@ h4 {
   line-height: 1.4; }
 
 h6 {
-  margin-top: 0;
-  margin-bottom: 15px; }
+  margin-top: 1px;
+  margin-bottom: 10px;
+  line-height: 1.6; }
 
 a {
   position: relative;
@@ -2267,6 +2268,8 @@ a {
       transform: translateY(5vh);
       opacity: 0;
       transition: opacity .2s ease-out, transform .2s ease-out; }
+    .nav-container .nav-info h3 {
+      margin-bottom: 10px; }
     .nav-container .nav-info small {
       color: #f0f0f0;
       margin-bottom: 30px;
@@ -2289,8 +2292,8 @@ a {
     -webkit-overflow-scrolling: touch; }
     .nav-container .nav li {
       display: block;
-      margin-bottom: 12px;
-      color: #c0c0c0;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
       cursor: pointer;
       overflow: hidden;
       padding-left: 30px;
@@ -2563,9 +2566,13 @@ http://flickity.metafizzy.co
     text-decoration: none; }
   .carousel-cell::after {
     content: none; }
+  .carousel-cell[data-effect="Black and White"] .carousel-cell__content:not(.carousel-cell__content__secondary) {
+    transition: transform 10s .5s; }
   .carousel-cell[data-effect="Black and White"]:hover .carousel-cell__content__secondary {
     opacity: 0;
     visibility: hidden; }
+  .carousel-cell[data-effect="Black and White"]:hover .carousel-cell__content:not(.carousel-cell__content__secondary) {
+    transform: scale3d(1.1, 1.1, 1); }
   .carousel-cell[data-effect="Fade Overlay"] .carousel-cell__container::after {
     content: '';
     position: absolute;
@@ -2595,11 +2602,11 @@ http://flickity.metafizzy.co
       position: absolute;
       z-index: 3;
       top: 0;
-      width: 40%;
+      width: 80%;
       height: 100%;
       transform: skew(-26deg) translate3d(-100%, 0, 0);
       backface-visibility: hidden;
-      left: -20%;
+      left: -50%;
       transition: transform .75s ease-out .25s; }
   .carousel-cell__content {
     background-position: center center;
@@ -2631,14 +2638,16 @@ http://flickity.metafizzy.co
       opacity: 0;
       visibility: hidden;
       transition: transform .5s ease-out, visibility .5s ease-out, opacity .5s ease-out;
-      color: #fff; }
+      color: #fff;
+      font-size: 19px; }
       .carousel-cell__text h2::after {
         content: attr(data-subtext);
         position: absolute;
         top: 40px;
         font-family: 'Lato', sans-serif;
         font-size: 1.4rem;
-        margin-left: -20px;
+        margin-left: 0;
+        left: 40px;
         transform: translate3d(-10%, 0, 0);
         backface-visibility: hidden;
         opacity: 0;
@@ -2706,7 +2715,8 @@ http://flickity.metafizzy.co
   text-transform: uppercase;
   font-size: 1.1rem; }
   .all-link-container a {
-    color: #7a7979;
+    color: #cecece;
+    font-weight: normal;
     transition: color 0.15s ease-in; }
     .all-link-container a:hover {
       color: #fff; }
@@ -2714,7 +2724,34 @@ http://flickity.metafizzy.co
 @media screen and (min-width: 768px) {
   .carousel-cell {
     height: 70vh;
-    margin: 0 10vw; } }
+    margin: 0 10vw; }
+    .carousel-cell__container::before {
+      width: 40%;
+      height: 100%;
+      transform: skew(-26deg) translate3d(-100%, 0, 0);
+      left: -20%; }
+    .carousel-cell__text {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      margin-top: -36px; }
+      .carousel-cell__text h2 {
+        margin-top: 0;
+        margin-left: -20px;
+        transform: translate3d(-10%, 0, 0);
+        font-size: 25px; }
+        .carousel-cell__text h2::after {
+          top: 40px;
+          font-size: 1.4rem;
+          margin-left: -20px;
+          left: auto;
+          transform: translate3d(-10%, 0, 0); }
+    .carousel-cell.is-selected .carousel-cell__container::before {
+      transform: skew(-26deg) translate3d(0, 0, 0); }
+    .carousel-cell.is-selected .carousel-cell__text h2 {
+      transform: translate3d(0, 0, 0); }
+      .carousel-cell.is-selected .carousel-cell__text h2::after {
+        transform: translate3d(0, 0, 0); } }
 
 #project .slick-slide {
   height: auto; }
@@ -2745,9 +2782,9 @@ http://flickity.metafizzy.co
     #project .content-container--dark h4 {
       color: #ececec; }
     #project .content-container--dark a {
-      color: #ececec; }
+      color: #898363; }
       #project .content-container--dark a::after {
-        background: #f0f0f0; }
+        background: #a59e7a; }
   #project .content-container > * {
     flex: 1 1 100%; }
   #project .content-container:not(.half-width) + .content-container:not(.half-width),
@@ -2765,7 +2802,6 @@ http://flickity.metafizzy.co
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
   position: relative; }
   #project .logo-container > div {
     display: flex;
@@ -2797,6 +2833,7 @@ http://flickity.metafizzy.co
     height: auto;
     visibility: visible;
     transform: none;
+    display: none;
     background: rgba(0, 0, 0, 0.5);
     transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out; }
   #project .projects-image-container a:hover .projects-image-container__content,
@@ -2826,7 +2863,8 @@ http://flickity.metafizzy.co
   z-index: 1;
   transform: translate3d(-100%, 0, 0);
   backface-visibility: hidden;
-  transition: transform .5s ease-out; }
+  transition: transform .5s ease-out;
+  display: none; }
 
 #project .projects-image-container__content,
 #project .projects-image-group-container__content {
@@ -2838,7 +2876,8 @@ http://flickity.metafizzy.co
   transform: translate3d(-100%, 0, 0);
   backface-visibility: hidden;
   transition: transform .5s ease-out;
-  z-index: 2; }
+  z-index: 2;
+  display: none; }
   #project .projects-image-container__content h2,
   #project .projects-image-container__content .sub-headings,
   #project .projects-image-group-container__content h2,
@@ -3072,9 +3111,13 @@ http://flickity.metafizzy.co
       padding-right: 40px; }
     #project .content-container:not(.half-width) + .content-container:not(.half-width),
     #project .content-container.half-width + .content-container.half-width + .content-container.half-width,
-    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
+    #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width,
+    #project .content-container:not(.half-width) + .content-container,
+    #project .content-container:not(.half-width) + .content-container + .content-container {
       margin-top: -50px;
       padding-top: 0; }
+  #project .quote-container {
+    font-size: 1.8rem; }
   #project .hero.has-image {
     position: relative; }
   #project .centered-image img {
@@ -3097,9 +3140,20 @@ http://flickity.metafizzy.co
       #project .prev-next-links-container a.prev-link {
         padding-left: 40px; }
         #project .prev-next-links-container a.prev-link::after {
-          left: 40px; } }
+          left: 40px; }
+  #project .projects-image-container a::after,
+  #project .projects-image-group-container a::after {
+    display: block; }
+  #project .projects-image-container__angle,
+  #project .projects-image-group-container__angle {
+    display: block; }
+  #project .projects-image-container__content,
+  #project .projects-image-group-container__content {
+    display: block; } }
 
 @media screen and (min-width: 992px) {
+  #project .quote-container {
+    font-size: 2.6rem; }
   #project .one-side-tall-container .one-side-tall .content {
     padding: 108px 115px; } }
 

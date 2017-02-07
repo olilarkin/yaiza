@@ -31,7 +31,7 @@ class ImageSlider extends Component {
         activeImage: activeImage + 1,
         nextImage: activeImage + 2
       })
-    }, 3000)
+    }, 2000)
   }
 
   render() {
