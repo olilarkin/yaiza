@@ -418,10 +418,15 @@
       }
       &:not(.half-width)+.content-container:not(.half-width),
       &.half-width+.content-container.half-width+.content-container.half-width,
-      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width {
+      &.half-width+.content-container.half-width+.content-container.half-width+.content-container.half-width,
+      &:not(.half-width)+.content-container,
+      &:not(.half-width)+.content-container+.content-container {
         margin-top: -50px;
         padding-top: 0;
       }
+    }
+    .quote-container {
+      font-size: 1.8rem;
     }
     .hero.has-image {
       position: relative;
@@ -479,21 +484,28 @@
 }
 
 @media screen and (min-width:992px) {
-  #project .one-side-tall-container {
-    .one-side-tall {
-      .content {
-        padding: 108px 115px;
+  #project {
+    .quote-container {
+      font-size: 2.6rem;
+    }
+    .one-side-tall-container {
+      .one-side-tall {
+        .content {
+          padding: 108px 115px;
+        }
       }
     }
   }
 }
 
 @media screen and (min-width:1200px) {
-  #project .one-side-tall-container {
-    .one-side-tall {
-      .content {
-        padding: 152px 115px;
-        font-size: 2.1rem;
+  #project {
+    .one-side-tall-container {
+      .one-side-tall {
+        .content {
+          padding: 152px 115px;
+          font-size: 2.1rem;
+        }
       }
     }
   }
