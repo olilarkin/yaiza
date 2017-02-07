@@ -2030,6 +2030,11 @@ a {
     min-width: 0;
     padding-top: 200px; } }
 
+@media screen and (min-width: 1500px) {
+  .container {
+    width: 1540px;
+    max-width: calc(100% - 30px); } }
+
 .splash-container {
   position: absolute;
   width: 100vw;
@@ -2792,6 +2797,19 @@ http://flickity.metafizzy.co
   #project .content-container.half-width + .content-container.half-width + .content-container.half-width + .content-container.half-width {
     padding-top: 0; }
 
+#project .image-container.has-title {
+  padding-top: 40px; }
+  #project .image-container.has-title h2 {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 50%;
+    padding: 20px 0;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 5;
+    font-size: 15px; }
+
 #project .image-container.half-width.animated.fadeInUp:nth-child(odd), #project .image-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
 #project .projects-image-container.half-width.animated.fadeInUp:nth-child(odd), #project .projects-image-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
 #project .projects-image-group-container.half-width.animated.fadeInUp:nth-child(odd), #project .projects-image-group-container.half-width.fadeInUp.hero.has-image:nth-child(odd),
@@ -3116,6 +3134,8 @@ http://flickity.metafizzy.co
     #project .content-container:not(.half-width) + .content-container + .content-container {
       margin-top: -50px;
       padding-top: 0; }
+  #project .image-container.has-title h2 {
+    font-size: 20px; }
   #project .quote-container {
     font-size: 1.8rem; }
   #project .hero.has-image {
@@ -3154,6 +3174,9 @@ http://flickity.metafizzy.co
 @media screen and (min-width: 992px) {
   #project .quote-container {
     font-size: 2.6rem; }
+  #project .image-container.has-title h2 {
+    padding: 40px 0;
+    font-size: 25px; }
   #project .one-side-tall-container .one-side-tall .content {
     padding: 108px 115px; } }
 
@@ -3161,6 +3184,11 @@ http://flickity.metafizzy.co
   #project .one-side-tall-container .one-side-tall .content {
     padding: 152px 115px;
     font-size: 2.1rem; } }
+
+@media screen and (min-width: 1500px) {
+  #project .one-side-tall-container .one-side-tall .content {
+    padding: 226px 115px;
+    font-size: 2.4rem; } }
 
 video {
   position: absolute;
@@ -3177,7 +3205,7 @@ video {
   width: 100%; }
   .image-slider .image-container {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 1;
@@ -3185,7 +3213,7 @@ video {
     background-repeat: no-repeat;
     background-position: center center;
     opacity: 0;
-    transition: opacity .75s ease; }
+    transition: opacity 1s ease; }
   .image-slider .image-container.active {
     z-index: 3;
     opacity: 1;

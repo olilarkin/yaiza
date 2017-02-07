@@ -283,18 +283,27 @@ class ProjectContainer extends React.Component {
           case 'images':
             const images = slice.value.value;
             const isCentered = images[0].fragments.centered && images[0].fragments.centered.value === 'Yes' ? 'centered-image' : '';
-            const imageClasses = `image-container ${sliceLabel} ${isCentered}`;
+            const imageTitle = images[0].fragments.title && images[0].fragments.title.value;
+            const hasTitle = imageTitle ? 'has-title' : '';
+            const bgColor = images[0].fragments['background-colour'] && images[0].fragments['background-colour'].value;
+            const imageClasses = `image-container ${sliceLabel} ${isCentered} ${hasTitle}`;
             if (!images.length) return;
             if (images.length === 1) {
               let imageObj = images[0].fragments.src.main;
-              return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses}><Image url={imageObj.url}></Image></Reveal>);
+              return (<Reveal effect="animated fadeInUp" key={index} className={imageClasses} style={{ backgroundColor: bgColor }}>
+                {hasTitle && <h2>{imageTitle}</h2>}
+                <Image url={imageObj.url}></Image>
+              </Reveal>);
             }
             else {
               const imagesArray = images.map((image, index) => {
                 const imageObj = image.fragments.src.main;
                 return imageObj.url;
               });
-              return (<Reveal effect="animated fadeInUp" className={imageClasses} key={index}><ImageSlider key={index} images={imagesArray} /></Reveal>);
+              return (<Reveal effect="animated fadeInUp" className={imageClasses} key={index} style={{ backgroundColor: bgColor }}>
+                {hasTitle && <h2>{imageTitle}</h2>}
+                <ImageSlider key={index} images={imagesArray} />
+              </Reveal>);
             }
         }
       })
