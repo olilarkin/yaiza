@@ -1,4 +1,4 @@
 export default {
   apiURL: 'https://yaiza.cdn.prismic.io/api',
-  videoURL: '/assets/videos/'
+  videoURL: 'http://owennicol.co.uk/videos/'
 } 
