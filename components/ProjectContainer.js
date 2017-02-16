@@ -24,7 +24,7 @@ const PrevNextLinks = ({projects, thisID}) => {
     <div className="prev-next-links-container animated fadeIn delayed-animation">
       {nextProjectURL && thisID === 'about-me' &&
         <div className="prev">
-          <Link className="prev-link" to={nextProjectURL}>My Latest Projects</Link>
+          <a className="prev-link" href={nextProjectURL}>My Latest Projects</a>
         </div>
       }
       {thisID === 'about-me' &&
@@ -34,11 +34,11 @@ const PrevNextLinks = ({projects, thisID}) => {
       }
       {prevProjectURL && thisID !== 'about-me' &&
         <div className="prev">
-          <Link className="prev-link" to={prevProjectURL}>Previous Project</Link>
+          <a className="prev-link" href={prevProjectURL}>Previous Project</a>
         </div>}
       {nextProjectURL && thisID !== 'about-me' &&
         <div className="next">
-          <Link className="next-link" to={nextProjectURL}>Next Project</Link>
+          <a className="next-link" href={nextProjectURL}>Next Project</a>
         </div>}
     </div>
 

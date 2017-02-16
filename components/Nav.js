@@ -13,11 +13,13 @@ const Nav = (props) => {
     'active': props.menuIsOpen
   });
 
+  let linkClasses = 'nav-link ' + (props.className || '');
+
   const navOutput = props.projects && props.projects
     .filter(item => item.uid !== 'about-me')
     .map((item, key) => {
       return (
-        <li key={key}><NavLink pathname={props.pathname} toggleMenu={props.toggleMenu} url={`/projects/${item.uid}`}>{item.fragments["casestudy.homepage-slide-heading"].value}</NavLink></li>)
+        <li key={key}><a className={linkClasses} href={`/projects/${item.uid}`}>{item.fragments["casestudy.homepage-slide-heading"].value}</a></li>)
     });
 
 
@@ -36,8 +38,8 @@ const Nav = (props) => {
           </div>
         </div>
         <ul className="nav">
-          <li><NavLink pathname={props.pathname} toggleMenu={props.toggleMenu} url="/projects/about-me">About me</NavLink></li>
-          <li><NavLink pathname={props.pathname} toggleMenu={props.toggleMenu} url="/projects">View all projects</NavLink></li>
+          <li><a className={linkClasses} href="/projects/about-me">About me</a></li>
+          <li><a className={linkClasses} href="/projects">View all projects</a></li>
           {navOutput}
         </ul></div>
       <SVGYaizaLogo width={350} height={115} className="nav-logo" />
