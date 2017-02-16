@@ -55,7 +55,6 @@ class ProjectsContainer extends React.Component {
     let slicesArray = [];
     const thisID = this.props.params.id;
     const project = this.props.projectOverview;
-    console.log('project', project);
     const slices = project && project
       .map(doc => {
         if (!doc.getSliceZone('project-overview.contentArea')) return;

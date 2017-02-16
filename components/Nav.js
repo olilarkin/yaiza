@@ -43,7 +43,7 @@ const Nav = (props) => {
         </div>
         <ul className="nav">
           <li><a className={`nav-link ${props.pathname === '/projects/about-me' && 'active'}`} href="/projects/about-me">About me</a></li>
-          <li><a className={`nav-link ${props.pathname === 'projects' && 'active'}`} href="/projects">View all projects</a></li>
+          <li><a className={`nav-link ${props.pathname === '/projects' && 'active'}`} href="/projects">View all projects</a></li>
           {navOutput}
         </ul></div>
       <SVGYaizaLogo width={350} height={115} className="nav-logo" />
