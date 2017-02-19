@@ -11,7 +11,8 @@ video {
   }
 }
 
-video::-webkit-media-controls-start-playback-glyph {
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-play-button {
   opacity: 1;
   transform: translate(-50%, -50%);
 }
