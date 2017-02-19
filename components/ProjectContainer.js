@@ -126,6 +126,7 @@ class ProjectContainer extends React.Component {
             {this.props.mobile &&
               <Video
                 controls
+                loop
                 poster={heroImage}
                 onCanPlayThrough={() => {
                   // Do stuff 
