@@ -122,11 +122,10 @@ class ProjectContainer extends React.Component {
           ?
           (<div
             key={key}
-            className={heroClasses} >
+            className={heroClasses}>
             {this.props.mobile &&
               <Video
-                controls
-                autoplay
+                
                 poster={heroImage}
                 onCanPlayThrough={() => {
                   // Do stuff 
