@@ -50,7 +50,7 @@ if (typeof window !== 'undefined') {
   md = new MobileDetect(window.navigator.userAgent);
 }
 
-alert(md.mobile())
+window.alert(md.mobile())
 
 if (process.env.APP_ENV === 'browser') {
   // Styles
