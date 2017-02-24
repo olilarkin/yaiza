@@ -50,8 +50,6 @@ if (typeof window !== 'undefined') {
   md = new MobileDetect(window.navigator.userAgent);
 }
 
-window.alert(md.mobile())
-
 if (process.env.APP_ENV === 'browser') {
   // Styles
   require('../styles/index.scss');
@@ -196,7 +194,9 @@ class App extends React.Component {
     );
 
     return (
+      
       <div id="wrapper">
+      <div>MOBILE: --- {md.mobile()}</div>
         {this.state.hasLoaded &&
           <Header
             toggleMenu={this.handleToggleMenu}
