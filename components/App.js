@@ -196,7 +196,6 @@ class App extends React.Component {
     return (
       
       <div id="wrapper">
-      <div>MOBILE: --- {md.mobile()}</div>
         {this.state.hasLoaded &&
           <Header
             toggleMenu={this.handleToggleMenu}
