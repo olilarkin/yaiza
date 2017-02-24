@@ -126,6 +126,7 @@ class ProjectContainer extends React.Component {
             {this.props.mobile &&
               <Video
                 controls
+                autoplay
                 poster={heroImage}
                 onCanPlayThrough={() => {
                   // Do stuff 
@@ -137,7 +138,7 @@ class ProjectContainer extends React.Component {
             {!this.props.mobile &&
               <Video
                 ref={(player) => { this.videoPlayer = player }}
-                autoPlay
+                autoplay
                 loop
                 poster={heroImage}
                 onCanPlayThrough={() => {
