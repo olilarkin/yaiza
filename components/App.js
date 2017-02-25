@@ -48,7 +48,7 @@ let MobileDetect = require('mobile-detect');
 let md;
 if (typeof window !== 'undefined') {
   md = new MobileDetect(window.navigator.userAgent);
-  console.log('AM I MOBILE?: ', md)
+  console.log('AM I MOBILE?: ', md.mobile())
 }
 
 if (process.env.APP_ENV === 'browser') {
@@ -189,7 +189,7 @@ class App extends React.Component {
         toggleYoutubeVideo: this.handleToggleYoutubeVideo,
         isYoutubeVideoPlaying: this.state.isYoutubeVideoPlaying,
         videoURL: config.videoURL,
-        mobile: md && md.mobile() !== '',
+        mobile: md && md.mobile(),
         headerHeight: this.state.headerHeight
       })
     );
