@@ -48,6 +48,7 @@ let MobileDetect = require('mobile-detect');
 let md;
 if (typeof window !== 'undefined') {
   md = new MobileDetect(window.navigator.userAgent);
+  console.log('AM I MOBILE?: ', md)
 }
 
 if (process.env.APP_ENV === 'browser') {
