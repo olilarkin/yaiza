@@ -61,6 +61,7 @@ class ProjectContainer extends React.Component {
     }
     if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.add('light')
+      const videoPlayer = document.getElementByID('VideoPlayer').setAttribute('controls', true)
     }
   }
 
@@ -125,8 +126,8 @@ class ProjectContainer extends React.Component {
             className={heroClasses}>
             {this.props.mobile &&
               <Video
-                controls
                 poster={heroImage}
+                id="VideoPlayer"
                 onCanPlayThrough={() => {
                   // Do stuff 
                 }}>
@@ -137,6 +138,7 @@ class ProjectContainer extends React.Component {
             {!this.props.mobile &&
               <Video
                 ref={(player) => { this.videoPlayer = player }}
+                id="VideoPlayer"
                 autoplay
                 loop
                 poster={heroImage}
