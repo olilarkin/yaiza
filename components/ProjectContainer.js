@@ -60,7 +60,7 @@ class ProjectContainer extends React.Component {
       window.addEventListener('scroll', this.handleScroll);
       setTimeout(() => {
           if(this.videoPlayer) this.playVideo()
-        }, 2000)
+        }, 4000)
 
     }
     if (ExecutionEnvironment.canUseDOM) {
@@ -69,7 +69,7 @@ class ProjectContainer extends React.Component {
         setTimeout(() => {
           const VP = document.getElementById('VideoPlayer')
           if(VP) VP.setAttribute('controls', 'controls')
-        }, 2000)
+        }, 4000)
       }
     }
   }
