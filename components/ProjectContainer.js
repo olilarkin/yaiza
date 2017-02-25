@@ -131,7 +131,6 @@ class ProjectContainer extends React.Component {
           'video-container': videoFile !== undefined,
           'active': videoFile !== undefined && this.props.isYoutubeVideoPlaying
         });
-        console.log('mobile: ', this.props.mobile)
         return (videoFile)
           ?
           (<div
