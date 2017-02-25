@@ -58,13 +58,6 @@ class ProjectContainer extends React.Component {
   componentDidMount() {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.addEventListener('scroll', this.handleScroll);
-      setTimeout(() => {
-          const VP = document.getElementById('VideoPlayer')
-          if(VP) {
-            VP.setAttribute('autoplay', 'autoplay')
-            VP.removeAttribute("controls")
-          }
-        }, 2000)
     }
     if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.add('light')
