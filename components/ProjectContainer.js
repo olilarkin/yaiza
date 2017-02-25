@@ -61,7 +61,7 @@ class ProjectContainer extends React.Component {
     }
     if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.add('light')
-      const videoPlayer = document.getElementByID('VideoPlayer').setAttribute('controls', true)
+      const videoPlayer = document.getElementByID('VideoPlayer').setAttribute('controls', 'controls')
     }
   }
 
