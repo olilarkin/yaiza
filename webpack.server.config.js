@@ -12,11 +12,11 @@ module.exports = {
 
   target: 'node',
 
-  plugins: new webpack.ProvidePlugin({ Flickity: 'flickity'}),
+  plugins: new webpack.ProvidePlugin({ Flickity: 'flickity' }),
 
   // keep node_module paths out of the bundle
   externals: fs.readdirSync(path.resolve(__dirname, 'node_modules')).concat([
-    'react-dom/server', 'react/addons',
+    'react-dom/server', 'react/addons'
   ]).reduce(function (ext, mod) {
     ext[mod] = 'commonjs ' + mod
     return ext
@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        loaders: ['style', 'css', 'sass']
       },
       {
         test: /\.json$/,

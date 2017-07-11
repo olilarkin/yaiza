@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "webpack-dev-server --colors --inline --content-base public/ --history-api-fallback",
+    "start:dev": "webpack-dev-server --port 8888 --colors --inline --content-base public/ --history-api-fallback",
     "start:prod": "npm run build",
     "build:client": "webpack -p --progress --colors",
     "build:server": "webpack --colors --progress --config webpack.server.config.js",
@@ -30,7 +30,7 @@
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-react-inline-elements": "^6.8.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.2.11",
-    "babel-polyfill": "^6.20.0",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",

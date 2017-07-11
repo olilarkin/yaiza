@@ -1,7 +1,7 @@
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './index.js',
+  entry: ['babel-polyfill', './index.js'],
 
   output: {
     path: 'public',
@@ -11,20 +11,20 @@ module.exports = {
 
   plugins: process.env.NODE_ENV === 'production'
     ? [
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
-        new webpack.ProvidePlugin({ Flickity: 'flickity'}),
-        new webpack.DefinePlugin({
-          'process.env': {
-            'NODE_ENV': JSON.stringify('production')
-          }
-        })
-      ]
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurrenceOrderPlugin(),
+      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.ProvidePlugin({ Flickity: 'flickity' }),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      })
+    ]
     : [
-        new webpack.DefinePlugin({ 'process.env': { APP_ENV: JSON.stringify('browser') } }),
-        new webpack.ProvidePlugin({ Flickity: 'flickity'})
-      ],
+      new webpack.DefinePlugin({ 'process.env': { APP_ENV: JSON.stringify('browser') } }),
+      new webpack.ProvidePlugin({ Flickity: 'flickity' })
+    ],
 
   module: {
     loaders: [
@@ -35,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        loaders: ['style', 'css', 'sass']
       },
       {
         test: /flickity/,
