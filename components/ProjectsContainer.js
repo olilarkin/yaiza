@@ -171,7 +171,7 @@ class ProjectsContainer extends React.Component {
               });
               let linkUID2 = imageGroup[0].fragments.Link2.uid;
               let heading2 = imageGroup[0].fragments.Heading2.value;
-              let subHeading2 = imageGroup[].fragments.Subheading2 && imageGroup[0].fragments.Subheading2.value;
+              let subHeading2 = imageGroup[0].fragments.Subheading2 && imageGroup[0].fragments.Subheading2.value;
               subHeading2 = subHeading2 && subHeading2.split(',');
               return (<div key={index} className={sliceLabel}>
                 <div className={imageGroupClasses}>
