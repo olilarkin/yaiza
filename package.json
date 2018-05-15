@@ -17,6 +17,9 @@
     "postbuild": "npm run build:sass",
     "postinstall": "npm run start:prod"
   },
+  "resolutions": {
+    "unidragger": "2.2.3"
+  },
   "repository": {
     "type": "git"
   },
