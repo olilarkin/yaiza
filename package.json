@@ -62,7 +62,7 @@
     "sass-loader": "4.0.2",
     "slick-carousel": "^1.6.0",
     "style-loader": "^0.13.1",
-    "superagent": "^2.2.0",
+    "superagent": "^3.8.3",
     "swiper": "^3.4.1",
     "url-loader": "^0.5.7",
     "unidragger": "2.2.3",
