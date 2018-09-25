@@ -83,9 +83,12 @@ class App extends React.Component {
     this.getPrismicData(this.query);
   }
 
-   componentDidMount() {
-    if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
-      window.addEventListener('scroll', this.handleScroll);
+   componentDidMount() {      
+    if (ExecutionEnvironment.canUseDOM){
+      document.addEventListener("contextmenu", function(e){ e.preventDefault(); }, false)
+      if (!this.props.mobile) {
+        window.addEventListener('scroll', this.handleScroll);
+      }
     }
   }
 
