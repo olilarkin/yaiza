@@ -12,9 +12,8 @@
     "start:prod": "npm run build",
     "build:client": "webpack -p --progress --colors",
     "build:server": "webpack --colors --progress --config webpack.server.config.js",
-    "build": "npm run start:prod",
-    "build:sass": "node-sass styles/index.scss public/index.css",
-    "postbuild": "npm run build:sass"
+    "build": "npm run build:client && npm run build:server && npm run build:sass",
+    "build:sass": "node-sass styles/index.scss public/index.css"
   },
   "resolutions": {
     "unidragger": "2.2.3"
@@ -68,6 +67,5 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "1.16.2"
-  },
-  "heroku-run-build-script": true
+  }
 }
