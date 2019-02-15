@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import Reveal from 'react-reveal';
+import { Helmet } from "react-helmet";
 
 
 const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
@@ -55,6 +56,8 @@ class ProjectsContainer extends React.Component {
     let slicesArray = [];
     const thisID = this.props.params.id;
     const project = this.props.projectOverview;
+    const description = project && project[0].fragments && project[0].fragments['project-overview.meta-description'].asText()
+    const keywords = project && project[0].fragments && project[0].fragments['project-overview.meta-keywords'].asText()
     const slices = project && project
       .map(doc => {
         if (!doc.getSliceZone('project-overview.contentArea')) return;
@@ -213,6 +216,11 @@ class ProjectsContainer extends React.Component {
 
     return (
       <div id="project" className="container">
+        <Helmet>
+          <title>Yaiza&nbsp;{slicesArray[0] ? `| ${slicesArray[0].value.blocks[0].text}` : ''}</title>
+          <meta name="description" content={description} />
+          <meta name="keywords" content={keywords} />
+        </Helmet>
         {heroPanel}
         {pageContentOutput}
       </div>

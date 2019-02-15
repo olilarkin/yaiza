@@ -4,6 +4,7 @@ if (typeof(window) == 'undefined'){
 var express = require('express')
 var path = require('path')
 var compression = require('compression')
+var Helmet = require('react-helmet')
 import React from 'react'
 // we'll use this to render our app to an html string
 import { renderToString } from 'react-dom/server'
@@ -35,6 +36,7 @@ app.get('*', (req, res) => {
     } else if (props) {
       // if we got props then we matched a route and can render
       const appHtml = renderToString(<RouterContext {...props}/>)
+      const helmet = Helmet.renderStatic();
       res.send(renderPage(appHtml))
     } else {
       // no errors, no redirect, we just didn't match anything

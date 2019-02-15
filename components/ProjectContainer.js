@@ -9,11 +9,12 @@ import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import ImageSlider from './ImageSlider';
 import SVGYaizaLogo from './SVG/SVGYaizaLogo'
 import Reveal from 'react-reveal';
+import { Helmet } from "react-helmet";
 
 
 const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
 
-const PrevNextLinks = ({projects, thisID}) => {
+const PrevNextLinks = ({ projects, thisID }) => {
   const thisIndex = projects && projects.findIndex(project => project.uid === thisID);
   const nextProjectURL = projects && thisIndex !== projects.length - 1 && `/projects/${projects[(thisIndex + 1)].uid}`;
   const prevProjectURL = projects && thisIndex > 0 && `/projects/${projects[(thisIndex - 1)].uid}`;
@@ -59,16 +60,16 @@ class ProjectContainer extends React.Component {
     if (ExecutionEnvironment.canUseDOM && !this.props.mobile) {
       window.addEventListener('scroll', this.handleScroll);
       setTimeout(() => {
-          if(this.videoPlayer) this.playVideo()
-        }, 4000)
+        if (this.videoPlayer) this.playVideo()
+      }, 4000)
 
     }
     if (ExecutionEnvironment.canUseDOM) {
       document.body.classList.add('light')
-      if(this.props.mobile){
+      if (this.props.mobile) {
         setTimeout(() => {
           const VP = document.getElementById('VideoPlayer')
-          if(VP) VP.setAttribute('controls', 'controls')
+          if (VP) VP.setAttribute('controls', 'controls')
         }, 4000)
       }
     }
@@ -106,22 +107,19 @@ class ProjectContainer extends React.Component {
     let slicesArray = [];
     const thisID = this.props.params.id;
     const projects = this.props.projects;
-    const slices = projects && projects
-      .filter(doc => doc.uid === thisID)
-      .map(doc => {
-        if (!doc.getSliceZone('casestudy.contentArea')) return;
-        // map through each slice and output into array
-        for (let slice of doc.getSliceZone('casestudy.contentArea').slices) {
-          slicesArray.push(slice);
-        };
-      });
+    const thisProject = projects && projects.find(doc => doc.uid === thisID)
+    if (!thisProject) return null
+    if (!thisProject.getSliceZone('casestudy.contentArea')) return null
+    const description = thisProject.fragments['casestudy.meta-description'] && thisProject.fragments['casestudy.meta-description'].asText()
+    const keywords = thisProject.fragments['casestudy.meta-keywords'] && thisProject.fragments['casestudy.meta-keywords'].asText()
+    // map through each slice and output into array
+    for (let slice of thisProject.getSliceZone('casestudy.contentArea').slices) {
+      slicesArray.push(slice);
+    };
 
-
-    const heroPanel = projects && projects
-      .filter(doc => doc.uid === thisID)
-      .map((doc, key) => {
-        const videoFile = doc.fragments["casestudy.hero-video-file"] && doc.fragments["casestudy.hero-video-file"].value;
-        const heroImage = doc.fragments["casestudy.hero-image"] && doc.fragments["casestudy.hero-image"].url;
+    const heroPanel = () => {
+        const videoFile = thisProject.fragments["casestudy.hero-video-file"] && thisProject.fragments["casestudy.hero-video-file"].value;
+        const heroImage = thisProject.fragments["casestudy.hero-image"] && thisProject.fragments["casestudy.hero-image"].url;
         let heroClasses = classNames({
           'hero': true,
           'has-image': heroImage !== undefined,
@@ -131,7 +129,7 @@ class ProjectContainer extends React.Component {
         return (videoFile)
           ?
           (<div
-            key={key}
+            key={videoFile}
             className={heroClasses}>
             {this.props.mobile &&
               <Video
@@ -160,11 +158,11 @@ class ProjectContainer extends React.Component {
 
           </div>)
           :
-          <div
-            key={key}
+          (<div
+            key={heroClasses}
             className={heroClasses}
-            style={{ 'backgroundImage': `url(${heroImage})` }} />;
-      });
+            style={{ 'backgroundImage': `url(${heroImage})` }} />);
+      };
 
 
     const pageContentOutput = slicesArray.length
@@ -328,7 +326,12 @@ class ProjectContainer extends React.Component {
 
     return (
       <div id="project" className="container">
-        {heroPanel}
+        <Helmet>
+          <title>Yaiza&nbsp;{slicesArray[0] ? `| ${slicesArray[0].value.blocks[0].text}` : ''}</title>
+          {description && <meta name="description" content={description} />}
+          {keywords && <meta name="keywords" content={keywords} />}
+        </Helmet>
+        {heroPanel()}
         {pageContentOutput}
         <PrevNextLinks projects={this.props.projects} thisID={this.props.params.id} />
         {this.props.params.id === 'about-me' &&

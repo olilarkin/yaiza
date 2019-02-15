@@ -55,6 +55,7 @@
     "react-bootstrap": "^0.30.6",
     "react-dom": "^15.4.2",
     "react-flickity-component": "^0.1.0",
+    "react-helmet": "^5.2.0",
     "react-html5video": "^1.4.0",
     "react-reveal": "^0.1.1",
     "react-router": "^3.0.0",
@@ -64,8 +65,8 @@
     "style-loader": "^0.13.1",
     "superagent": "^3.8.3",
     "swiper": "^3.4.1",
-    "url-loader": "^0.5.7",
     "unidragger": "2.2.3",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "1.16.2"
   }

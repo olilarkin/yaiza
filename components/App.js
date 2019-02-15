@@ -128,8 +128,15 @@ class App extends React.Component {
   }
 
   getHomePageContent(data) {
+    const homepageDoc = data.find(doc => doc.type === 'homepage')
+    const description = homepageDoc.fragments['homepage.meta-description'].asText()
+    const keywords = homepageDoc.fragments['homepage.meta-keywords'].asText()
     this.setState({
-      homepageContent: data.filter(doc => doc.tags.find(tag => 'homepage'))
+      homepageContent: data.filter(doc => doc.tags.find(tag => 'homepage')),
+      homepageMeta: {
+        description,
+        keywords,
+      }
     });
   }
 
@@ -183,6 +190,7 @@ class App extends React.Component {
         projects: this.state.projects,
         projectOverview: this.state.projectOverview,
         homepageContent: this.state.homepageContent,
+        homepageMeta: this.state.homepageMeta,
         setHomepageSlide: this.handleSetHomepageSlide,
         homepageSlide: this.state.homepageSlide,
         hasLoaded: this.state.hasLoaded,
