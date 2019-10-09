@@ -4,6 +4,9 @@ import SVGLogo from '../SVG/SVGLogo'
 import NavIcon from './NavIcon'
 import NavLink from '../NavLink'
 import classNames from 'classnames'
+import SVGFBLogo from '../SVG/SVGFBLogo'
+import SVGInstaLogo from '../SVG/SVGInstaLogo'
+import SVGLinkedInLogo from '../SVG/SVGLinkedInLogo'
 
 const Header = (props) => {
   const headerClasses = classNames({
@@ -21,6 +24,9 @@ const Header = (props) => {
         <div className="menu-button-container" onClick={props.toggleMenu}>
           <NavIcon {...props} />
         </div>
+        <a href="https://www.facebook.com/YaizaGraphics/"><SVGFBLogo /></a>
+        <a href="https://www.instagram.com/yaizagraphics/"><SVGInstaLogo /></a>
+        <a href="https://www.linkedin.com/in/yaiza-gardner-423b062a/"><SVGLinkedInLogo /></a>
       </div>
     </div>
   );
