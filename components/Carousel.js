@@ -3,6 +3,9 @@ import ExecutionEnvironment from 'exenv';
 import { Link } from 'react-router';
 import SVGRightArrow from './SVG/SVGRightArrow';
 import SVGLeftArrow from './SVG/SVGLeftArrow';
+import SVGFBLogo from './SVG/SVGFBLogo'
+import SVGInstaLogo from './SVG/SVGInstaLogo'
+import SVGLinkedInLogo from './SVG/SVGLinkedInLogo'
 import classNames from 'classnames';
 let Flickity;
 if (typeof window === 'undefined') {
@@ -154,6 +157,11 @@ export default class Carousel extends React.Component {
             </div>
           </div>
         </div>
+        <div className="socials">
+          <a href="https://www.facebook.com/YaizaGraphics/"><SVGFBLogo /></a>
+          <a href="https://www.instagram.com/yaizagraphics/"><SVGInstaLogo /></a>
+          <a href="https://www.linkedin.com/in/yaiza-gardner-423b062a/"><SVGLinkedInLogo /></a>
+          </div>
       </div>
     );
   }

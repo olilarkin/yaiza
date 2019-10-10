@@ -21,12 +21,12 @@ const Header = (props) => {
         </NavLink>
         {props.pathname === '/' &&
           <div className="hidden-xs strapline"><p>Design, Illustration &amp; Art Direction</p></div>}
-        <div className="menu-button-container" onClick={props.toggleMenu}>
+          <div className="menu-button-container" onClick={props.toggleMenu}>
+          {/* <a href="https://www.facebook.com/YaizaGraphics/"><SVGFBLogo /></a>
+          <a href="https://www.instagram.com/yaizagraphics/"><SVGInstaLogo /></a>
+          <a href="https://www.linkedin.com/in/yaiza-gardner-423b062a/"><SVGLinkedInLogo /></a> */}
           <NavIcon {...props} />
         </div>
-        <a href="https://www.facebook.com/YaizaGraphics/"><SVGFBLogo /></a>
-        <a href="https://www.instagram.com/yaizagraphics/"><SVGInstaLogo /></a>
-        <a href="https://www.linkedin.com/in/yaiza-gardner-423b062a/"><SVGLinkedInLogo /></a>
       </div>
     </div>
   );
