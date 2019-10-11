@@ -124,14 +124,48 @@
     @extend .light-font;
     p {
       margin: 0;
+      padding-top: 10px;
+    }
+    svg {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    svg path {
+      fill: #5d5d5d
+    }
+    svg circle {
+      fill: #5d5d5d
     }
   }
   
   &.light #footer {
     background-color: #fff;
     color: #000;
+    svg path {
+      fill: #000
+    }
+    svg circle {
+      fill: #000
+    }
   }
-  
+
+  .socials {
+    width: 150px;
+    margin: 20px auto 0;
+    position: absolute;
+    left: 12.5%;
+    svg {
+      margin-left: 0px;
+      margin-right: 10px;
+    }
+    svg path {
+      fill: #5d5d5d
+    }
+    svg circle {
+      fill: #5d5d5d
+    }
+  }
+
   @media screen and (min-width:768px) {
     #footer {
       min-width: 0;

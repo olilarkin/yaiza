@@ -2023,37 +2023,36 @@ a {
   min-width: 100%;
   font-size: 12px; }
   #footer p {
-    margin: 0; }
+    margin: 0;
+    padding-top: 10px; }
+  #footer svg {
+    margin-left: 10px;
+    margin-right: 10px; }
+  #footer svg path {
+    fill: #5d5d5d; }
+  #footer svg circle {
+    fill: #5d5d5d; }
 
 .light #footer {
   background-color: #fff;
-  color: #000; 
-}
+  color: #000; }
+  .light #footer svg path {
+    fill: #000; }
+  .light #footer svg circle {
+    fill: #000; }
 
-#footer svg {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-#footer svg path {
-  fill: #5d5d5d
-}
-
-#footer svg circle {
-  fill: #5d5d5d
-}
-
-#footer p{
-  padding-top: 10px;
-}
-
-.light #footer svg path {
-  fill: #000
-}
-
-.light #footer svg circle {
-  fill: #000
-}
+.socials {
+  width: 150px;
+  margin: 20px auto 0;
+  position: absolute;
+  left: 12.5%; }
+  .socials svg {
+    margin-left: 0px;
+    margin-right: 10px; }
+  .socials svg path {
+    fill: #5d5d5d; }
+  .socials svg circle {
+    fill: #5d5d5d; }
 
 @media screen and (min-width: 768px) {
   #footer {
@@ -2706,26 +2705,6 @@ http://flickity.metafizzy.co
       opacity: 1;
       visibility: visible;
       transition-delay: .55s; }
-
-.socials {
-  width: 150px;
-  margin: 20px auto 0;
-  position: absolute;
-  left: 12.5%;
-}
-
-.socials svg {
-  margin-left: 0px;
-  margin-right: 10px;
-}
-
-.socials svg path {
-  fill: #5d5d5d
-}
-
-.socials svg circle {
-  fill: #5d5d5d
-}
 
 .arrow-container {
   width: 80px;
