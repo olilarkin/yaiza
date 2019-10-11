@@ -2029,9 +2029,9 @@ a {
     margin-left: 10px;
     margin-right: 10px; }
   #footer svg path {
-    fill: #5d5d5d; }
+    fill: #838383; }
   #footer svg circle {
-    fill: #5d5d5d; }
+    fill: #838383; }
 
 .light #footer {
   background-color: #fff;
@@ -2051,9 +2051,9 @@ a {
     margin-right: 10px;
     width: 15px; }
   .socials svg path {
-    fill: #5d5d5d; }
+    fill: #838383; }
   .socials svg circle {
-    fill: #5d5d5d; }
+    fill: #838383; }
   .socials a {
     position: relative;
     padding-bottom: 6px;
@@ -2762,7 +2762,7 @@ http://flickity.metafizzy.co
       display: inline-block;
       max-width: 100%; }
     .arrow-container .carousel-arrow .arrow-part {
-      fill: #7a7979;
+      fill: #838383;
       transition: fill 0.15s ease-in; }
     .arrow-container .carousel-arrow:hover .arrow-part {
       fill: #fff; }
