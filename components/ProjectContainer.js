@@ -9,7 +9,7 @@ import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import ImageSlider from './ImageSlider';
 import SVGYaizaLogo from './SVG/SVGYaizaLogo'
 import Reveal from 'react-reveal';
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 
 const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
@@ -326,11 +326,11 @@ class ProjectContainer extends React.Component {
 
     return (
       <div id="project" className="container">
-        <Helmet>
+        {/* <Helmet>
           <title>Yaiza&nbsp;{slicesArray[0] ? `| ${slicesArray[0].value.blocks[0].text}` : ''}</title>
           {description && <meta name="description" content={description} />}
           {keywords && <meta name="keywords" content={keywords} />}
-        </Helmet>
+        </Helmet> */}
         {heroPanel()}
         {pageContentOutput}
         <PrevNextLinks projects={this.props.projects} thisID={this.props.params.id} />

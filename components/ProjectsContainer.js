@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import { default as Video, Play, Mute, Seek } from 'react-html5video';
 import Reveal from 'react-reveal';
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 
 const Image = (props) => (<div className={props.classes}><img src={props.url} className="img-responsive" /></div>);
@@ -216,11 +216,11 @@ class ProjectsContainer extends React.Component {
 
     return (
       <div id="project" className="container">
-        <Helmet>
+        {/* <Helmet>
           <title>Yaiza&nbsp;{slicesArray[0] ? `| ${slicesArray[0].value.blocks[0].text}` : ''}</title>
           <meta name="description" content={description} />
           <meta name="keywords" content={keywords} />
-        </Helmet>
+        </Helmet> */}
         {heroPanel}
         {pageContentOutput}
       </div>
