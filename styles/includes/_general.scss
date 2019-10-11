@@ -157,12 +157,45 @@
     svg {
       margin-left: 0px;
       margin-right: 10px;
+      width: 15px;
     }
     svg path {
       fill: #5d5d5d
     }
     svg circle {
       fill: #5d5d5d
+    }
+
+    a {
+      position: relative;
+      padding-bottom: 6px;
+      color: #000;
+      font-weight: bold;
+      &:hover,
+      &:active,
+      &:focus,
+      &:visited {
+        color: #000;
+        text-decoration: none;
+        &::after {
+          transform: scale(1, 1);
+          opacity: 1;
+        }
+      }
+      &::after {
+        opacity: 0;
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 2px;
+        height: 2px;
+        width: 12px;
+        background: #444;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+        transform: scale(0, 1);
+        transform-origin: center center;
+      }
     }
   }
 
