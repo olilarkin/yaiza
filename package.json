@@ -68,7 +68,7 @@
     "unidragger": "2.2.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "1.16.2"
+    "webpack-dev-server": "5.2.6"
   },
   "heroku-run-build-script": false
 }
